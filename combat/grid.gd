@@ -1,0 +1,81 @@
+class_name Grid extends Node2D
+
+var units : Array[UnitController] = []
+var tiles : Dictionary[Vector2i, UnitController] = {}
+@export var grid_size : Vector2i = Vector2i(10, 10)
+@export var cell_size : Vector2 = Vector2(64, 64)
+@export var combat_manager : CombatManager
+
+func _ready():
+	queue_redraw()
+
+func add_units():
+	for unit in units:
+		if unit.is_player_unit:
+			combat_manager.player_units.append(unit)
+		else:
+			combat_manager.enemy_units.append(unit)
+
+func _draw():
+	for x in range(grid_size.x):
+		for y in range(grid_size.y):
+			var cell_pos = Vector2(x * cell_size.x, y * cell_size.y)
+			var cell_rect = Rect2(cell_pos, cell_size)
+			draw_rect(cell_rect, Color(1, 1, 1, 0.2), false)
+			draw_line(cell_rect.position, cell_rect.position + Vector2(cell_size.x, 0), Color(1, 1, 1, 0.5))
+			draw_line(cell_rect.position, cell_rect.position + Vector2(0, cell_size.y), Color(1, 1, 1, 0.5))
+
+func grid_to_world(grid_pos: Vector2i) -> Vector2:
+	return self.position + Vector2(grid_pos.x * cell_size.x, grid_pos.y * cell_size.y)
+
+func world_to_grid(world_pos: Vector2) -> Vector2i:
+	var grid_x = int((world_pos.x - self.position.x) / cell_size.x)
+	var grid_y = int((world_pos.y - self.position.y) / cell_size.y)
+	return Vector2i(grid_x, grid_y)
+
+func is_in_bounds(grid_pos: Vector2i) -> bool:
+	return grid_pos.x >= 0 and grid_pos.x < grid_size.x and grid_pos.y >= 0 and grid_pos.y < grid_size.y
+
+func get_neighbours(grid_pos: Vector2i) -> Array[Vector2i]:
+	var neighbour_positions : Array[Vector2i] = []
+	for d in [Vector2i(0, -1), Vector2i(0, 1), Vector2i(-1, 0), Vector2i(1, 0)]:
+		var neighbour_pos = grid_pos + d
+		if is_in_bounds(neighbour_pos):
+			neighbour_positions.append(neighbour_pos)
+	return neighbour_positions
+
+func get_closest_enemy(unit: UnitController) -> UnitController:
+	var closest_enemy : UnitController = null
+	var closest_distance = INF
+	for enemy in units:
+		if enemy.is_player_unit == unit.is_player_unit:
+			continue
+		
+		var distance = unit.grid_pos.distance_to(enemy.grid_pos)
+		if distance < closest_distance:
+			closest_distance = distance
+			closest_enemy = enemy
+	return closest_enemy
+
+func get_path_to_closest_enemy(unit_a : UnitController) -> Array[Vector2i]:
+	var queue : Array[Array] = []
+	var visited : Dictionary[Vector2i, bool] = {}
+
+	var starting_array : Array[Vector2i] = [unit_a.grid_pos]
+	queue.append(starting_array)
+
+	while queue.size() > 0:
+		var path = queue.pop_front()
+		var current_pos = path[-1]
+
+		for neighbour in get_neighbours(current_pos):
+			if tiles.has(neighbour) and tiles[neighbour].is_player_unit != unit_a.is_player_unit:
+				return path
+
+			if not visited.has(neighbour) and not tiles.has(neighbour):
+				visited[neighbour] = true
+				var new_path = path.duplicate()
+				new_path.append(neighbour)
+				queue.append(new_path)
+
+	return [unit_a.grid_pos]

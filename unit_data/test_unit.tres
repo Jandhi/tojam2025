@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Unit" load_steps=2 format=3 uid="uid://cf7s8u0wiech5"]
+
+[ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="1_1coxl"]
+
+[resource]
+script = ExtResource("1_1coxl")
+name = ""
+max_health = 10
+armour = 0.0
+resist = 0.0
+movement_cooldown = 1
+melee_damage = 1
+melee_is_magic = false
+melee_attack_cooldown = 3
+reach = 1
+ranged_damage = 0
+ranged_is_magic = false
+ranged_attack_cooldown = 0
+attack_range = 0
+metadata/_custom_type_script = "uid://b5eww7paeebiu"

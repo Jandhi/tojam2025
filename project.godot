@@ -11,9 +11,15 @@ config_version=5
 [application]
 
 config/name="TOJam2025"
+run/main_scene="uid://trqe16na7c6n"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 AudioManager="*res://common/audio/audio_manager.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
