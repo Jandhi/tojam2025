@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_1coxl")
-name = ""
+name = "Johann"
+unit_type = "Test Unit"
 max_health = 10
 armour = 0.0
 resist = 0.0

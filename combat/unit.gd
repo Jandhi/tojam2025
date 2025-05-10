@@ -1,6 +1,8 @@
 class_name Unit extends Resource
 
-@export var name : String
+@export var unit_type : String
+@export var portrait : Texture2D
+@export var tags : Array[String] = []
 
 @export_group("Stats")
 @export var max_health : int

@@ -15,22 +15,21 @@ func add_units():
 			combat_manager.player_units.append(unit)
 		else:
 			combat_manager.enemy_units.append(unit)
+		combat_manager.all_units.append(unit)
 
 func _draw():
 	for x in range(grid_size.x):
 		for y in range(grid_size.y):
-			var cell_pos = Vector2(x * cell_size.x, y * cell_size.y)
+			var cell_pos = Vector2(x * cell_size.x, y * cell_size.y) - Vector2(cell_size.x / 2, cell_size.y / 2)
 			var cell_rect = Rect2(cell_pos, cell_size)
 			draw_rect(cell_rect, Color(1, 1, 1, 0.2), false)
-			draw_line(cell_rect.position, cell_rect.position + Vector2(cell_size.x, 0), Color(1, 1, 1, 0.5))
-			draw_line(cell_rect.position, cell_rect.position + Vector2(0, cell_size.y), Color(1, 1, 1, 0.5))
 
 func grid_to_world(grid_pos: Vector2i) -> Vector2:
-	return self.position + Vector2(grid_pos.x * cell_size.x, grid_pos.y * cell_size.y)
+	return Vector2(grid_pos.x * cell_size.x, grid_pos.y * cell_size.y)
 
 func world_to_grid(world_pos: Vector2) -> Vector2i:
-	var grid_x = int((world_pos.x - self.position.x) / cell_size.x)
-	var grid_y = int((world_pos.y - self.position.y) / cell_size.y)
+	var grid_x = int((world_pos.x) / cell_size.x)
+	var grid_y = int((world_pos.y) / cell_size.y)
 	return Vector2i(grid_x, grid_y)
 
 func is_in_bounds(grid_pos: Vector2i) -> bool:
