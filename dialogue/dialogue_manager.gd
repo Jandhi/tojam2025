@@ -38,6 +38,14 @@ var too_far_from_commander_dialogues = [
 	"Commander, I can't hear you!",
 ]
 
+var cant_place_on_right_side_dialogues = [
+	"I can't place my minions on the right side of the battlefield!",
+	"That's enemy territory!",
+	"That's not my side!",
+	"That's the enemy's side!",
+	"That's not my side of the battlefield!",
+]
+
 func _ready() -> void:
 	instance = self
 	
@@ -58,11 +66,19 @@ func bored(unit) -> void:
 		var dialogue = random_dialogue_by_tag[tag].pick_random()
 		show_dialogue(dialogue, unit)
 
+	if unit.unit.is_female:
+		AudioManager.play("mumble", 0.2, 1.0, false, 0.4)
+	else:
+		AudioManager.play("mumble", 0.2, 1.0, false, -0.1)
+
 func minions_are_too_far_from_commander(unit) -> void:
 	show_dialogue(units_are_too_far_from_commander_dialogues.pick_random(), unit, true)
 
 func too_far_from_commander(unit) -> void:
 	show_dialogue(too_far_from_commander_dialogues.pick_random(), unit)
+
+func cant_place_on_right_side(unit) -> void:
+	show_dialogue(cant_place_on_right_side_dialogues.pick_random(), unit)
 
 func show_dialogue(text : String, unit, forced : bool = false) -> void:
 	if time_since_last_popup < min_time_between_popups and not forced:

@@ -4,6 +4,7 @@ signal hovered
 signal unhovered
 signal attempted_to_move_commander_to_roster
 signal too_far_from_commander
+signal attempted_to_place_on_right_side
 
 @export var unit_name : String
 @export var unit : Unit
@@ -81,6 +82,11 @@ func force_reset_positions():
 	healthbar.position = base_healthbar_position
 
 func dropped():
+	if unit.is_female:
+		AudioManager.play("grunt", 0.2, 1.0, false, 0.4)
+	else:
+		AudioManager.play("grunt", 0.2, 1.0, false, -0.1)
+
 	if pickup_tween != null:
 		pickup_tween.stop()
 	pickup_tween = get_tree().create_tween().set_parallel()
@@ -125,6 +131,10 @@ func check_preferences():
 
 	if complaint != "" and talk_cooldown <= 0:
 		DialogueManager.instance.show_dialogue(complaint, self)
+		if unit.is_female:
+			AudioManager.play("mumble", 0.2, 1.0, false, 0.4)
+		else:
+			AudioManager.play("mumble", 0.2, 1.0, false, -0.1)
 
 	# Update morale on screen
 	if is_hovered:
@@ -224,6 +234,10 @@ func _input(event: InputEvent) -> void:
 			return
 
 		if grid.tiles.has(new_location):
+			return
+
+		if new_location.x >= grid.grid_size.x / 2.0:
+			attempted_to_place_on_right_side.emit()
 			return
 
 		if movement_tween != null:

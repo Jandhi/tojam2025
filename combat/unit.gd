@@ -7,6 +7,7 @@ class_name Unit extends Resource
 @export var portrait : Texture2D
 @export var tags : Array[String] = []
 @export var preferences : Array[PlacementPreference] = []
+@export var is_female : bool
 
 @export_group("Stats")
 @export var max_health : int

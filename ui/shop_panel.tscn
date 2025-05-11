@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3xkk7i87uv02"]
+
+[ext_resource type="Texture2D" uid="uid://c6lsqpu0yr1j1" path="res://textures/shop_panel.png" id="1_nn7w2"]
+[ext_resource type="Script" uid="uid://cxo87x6gvmljr" path="res://ui/shop_panel.gd" id="2_m7ocl"]
+
+[node name="ShopPanel" type="Sprite2D"]
+texture = ExtResource("1_nn7w2")
+script = ExtResource("2_m7ocl")
+
+[node name="Control" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -269.0
+offset_top = 159.0
+offset_right = -398.0
+offset_bottom = -621.0
+grow_horizontal = 2
+grow_vertical = 2

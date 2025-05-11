@@ -4,6 +4,7 @@ class_name CombatManager extends Node
 @export var selected_circle : SelectedCircle
 @export var unit_display : UnitDisplay
 @export var dialogue_manager : DialogueManager
+@export var shop_panel : ShopPanel
 
 var player_leader : UnitController
 var player_units : Array[UnitController] = []
@@ -17,6 +18,8 @@ var allowed_distance_from_leader : int = 2
 const TICK_LENGTH = 0.5
 
 func _ready() -> void:
+	AudioManager.play("menu_theme")
+
 	selected_circle.visible = false
 	setup_units()
 
@@ -29,6 +32,9 @@ func _ready() -> void:
 	)
 
 func play_combat():
+	shop_panel.exit_shop()
+	AudioManager.play("battle_theme", 0.0, 1.0)
+
 	if combat_is_playing:
 		return
 
@@ -74,11 +80,19 @@ func play_combat():
 
 	if victory:
 		print("Victory!")
+		AudioManager.play("victory", 0.0, 1.0, true)
+		finished_battle()
+
+		await get_tree().create_timer(2.0).timeout
+		AudioManager.play("shop_theme")
+		shop_panel.enter_shop()
+
 	else:
 		print("Defeat!")
+		AudioManager.play("loss", 0.0, 1.0, true)
 
 	combat_is_playing = false
-	finished_battle()
+	
 
 func finished_battle():
 	for unit in player_units:
@@ -112,6 +126,9 @@ func setup_unit(unit: UnitController):
 	)
 	unit.too_far_from_commander.connect(func():
 		DialogueManager.instance.too_far_from_commander(unit)
+	)
+	unit.attempted_to_place_on_right_side.connect(func():
+		DialogueManager.instance.cant_place_on_right_side(player_leader)
 	)
 
 	if unit.is_player_commander:
