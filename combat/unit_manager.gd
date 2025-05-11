@@ -1,27 +1,26 @@
 extends Node
 
-var bloodsister = preload("res://unit_data/bloodsister.tscn")
-var brotherhood = preload("res://unit_data/brotherhood.tscn")
-var churchman = preload("res://unit_data/churchman.tscn")
-var cultist = preload("res://unit_data/cultist.tscn")
-var hedgewitch = preload("res://unit_data/hedgewitch.tscn")
-var night_court_archer = preload("res://unit_data/night_court_archer.tscn")
-var nun = preload("res://unit_data/nun.tscn")
-var sellswordf = preload("res://unit_data/sellswordf.tscn")
-var sellswordm = preload("res://unit_data/sellswordm.tscn")
-var zombie = preload("res://unit_data/zombie.tscn")
+
 
 var units = [
-	bloodsister,
-	brotherhood,
-	churchman,
-	cultist,
-	hedgewitch,
-	night_court_archer,
-	nun,
-	sellswordf,
-	sellswordm,
-	zombie
+	preload("res://unit_data/battlesister.tscn"),
+	preload("res://unit_data/battlesisterArcher.tscn"),
+	preload("res://unit_data/bloodsister.tscn"),
+	preload("res://unit_data/bloodSisterArcher.tscn"),
+	preload("res://unit_data/brotherhood.tscn"),
+	preload("res://unit_data/brotherhoodArcher.tscn"),
+	preload("res://unit_data/churchman.tscn"),
+	preload("res://unit_data/cultist.tscn"),
+
+	preload("res://unit_data/hedgewitch.tscn"),
+	preload("res://unit_data/imp.tscn"),
+	preload("res://unit_data/night_court_archer.tscn"),
+	preload("res://unit_data/nun.tscn"),
+	preload("res://unit_data/sellswordarcher.tscn"),
+	preload("res://unit_data/sellswordm.tscn"),
+	preload("res://unit_data/treeman.tscn"),
+	preload("res://unit_data/troll.tscn"),
+	preload("res://unit_data/zombie.tscn"),
 ]
 
 func spawn_unit() -> UnitController:

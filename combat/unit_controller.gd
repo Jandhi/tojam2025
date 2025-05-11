@@ -349,6 +349,10 @@ func melee_attack(target: UnitController):
 
 	target.take_damage(unit.melee_damage, unit.melee_is_magic)
 
+	# tempish
+	await get_tree().create_timer(CombatManager.TICK_LENGTH * 3).timeout
+
+
 	animated_sprite.play("idle")
 
 func ranged_attack(target: UnitController):
@@ -366,7 +370,11 @@ func ranged_attack(target: UnitController):
 	add_child(arrow)
 	arrow.fly_to(unit.ranged_damage, unit.ranged_is_magic, target)
 
-	await get_tree().create_timer(CombatManager.TICK_LENGTH * 1/3).timeout
+	# settings 1 from 1/3
+	await get_tree().create_timer(CombatManager.TICK_LENGTH * 1).timeout
+
+	# tempish
+	await get_tree().create_timer(CombatManager.TICK_LENGTH * 3).timeout
 
 	animated_sprite.play("idle")
 
@@ -395,6 +403,9 @@ func take_damage(amount : int, is_magic : bool):
 		grid.tiles.erase(grid_pos)
 		grid.units.erase(self)
 		self.grid_pos = Vector2i(1000, 1000)
+
+	# tempish
+	await get_tree().create_timer(CombatManager.TICK_LENGTH * 3).timeout
 
 	animated_sprite.play("idle")
 

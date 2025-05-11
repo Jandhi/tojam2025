@@ -103,8 +103,8 @@ func enter_game():
 		AudioManager.play("loot")
 		shop_panel.enter_shop()
 
-		set_gold(0)
-		set_pacts(0)
+		set_gold(3)
+		set_pacts(2)
 
 		var inner_popup = PopupUI.show_popup(get_tree().root, "[center]Units will cost Gold or Pacts. Units have preferences they want to abide by, else they lose morale and fight less effectively. Good luck!", "I understand")
 		inner_popup.popup_closed.connect(func():

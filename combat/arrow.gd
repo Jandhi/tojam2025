@@ -9,7 +9,7 @@ func fly_to(damage : int, is_magic : bool, target:  UnitController) -> void:
 
 	rotate(diff.angle())
 
-	var tween = get_tree().create_tween().tween_property(self, "global_position", target_pos, CombatManager.TICK_LENGTH * 1/3)
+	var tween = get_tree().create_tween().tween_property(self, "global_position", target_pos, CombatManager.TICK_LENGTH)
 
 	await tween.finished
 
