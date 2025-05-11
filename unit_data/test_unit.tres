@@ -11,6 +11,7 @@ evil_last_name = true
 has_last_name = true
 tags = Array[String](["human"])
 preferences = Array[ExtResource("1_k4o3y")]([])
+is_female = false
 max_health = 10
 armour = 0.0
 resist = 0.0

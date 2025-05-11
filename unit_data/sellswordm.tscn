@@ -1,0 +1,169 @@
+[gd_scene load_steps=22 format=3 uid="uid://biiuttv0g1veu"]
+
+[ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_olpdp"]
+[ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_0ugls"]
+[ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="3_kf68d"]
+[ext_resource type="Texture2D" uid="uid://cmjcq6tac37ja" path="res://textures/units/sellswordm.png" id="4_olpdp"]
+
+[sub_resource type="Resource" id="Resource_olpdp"]
+script = ExtResource("3_kf68d")
+unit_type = "Sellsword"
+name_origin = "arab_male"
+evil_last_name = false
+has_last_name = false
+tags = Array[String](["man", "farisian"])
+preferences = Array[ExtResource("2_0ugls")]([])
+is_female = false
+max_health = 20
+armour = 25.0
+resist = 25.0
+movement_cooldown = 4
+melee_damage = 6
+melee_is_magic = false
+melee_attack_cooldown = 8
+reach = 0
+ranged_damage = 0
+ranged_is_magic = false
+ranged_attack_cooldown = 0
+attack_range = 0
+metadata/_custom_type_script = "uid://b5eww7paeebiu"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ugls"]
+atlas = ExtResource("4_olpdp")
+region = Rect2(5000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kf68d"]
+atlas = ExtResource("4_olpdp")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4vec"]
+atlas = ExtResource("4_olpdp")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5j23"]
+atlas = ExtResource("4_olpdp")
+region = Rect2(1000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2nev"]
+atlas = ExtResource("4_olpdp")
+region = Rect2(1500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2sq7"]
+atlas = ExtResource("4_olpdp")
+region = Rect2(2000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g164g"]
+atlas = ExtResource("4_olpdp")
+region = Rect2(2500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odigt"]
+atlas = ExtResource("4_olpdp")
+region = Rect2(3000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ky28j"]
+atlas = ExtResource("4_olpdp")
+region = Rect2(3500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmcir"]
+atlas = ExtResource("4_olpdp")
+region = Rect2(4000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6jke"]
+atlas = ExtResource("4_olpdp")
+region = Rect2(4500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wujyr"]
+atlas = ExtResource("4_olpdp")
+region = Rect2(5500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgiia"]
+atlas = ExtResource("4_olpdp")
+region = Rect2(6000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c38h6"]
+atlas = ExtResource("4_olpdp")
+region = Rect2(6500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owqb1"]
+atlas = ExtResource("4_olpdp")
+region = Rect2(7000, 0, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ugls"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ugls")
+}],
+"loop": true,
+"name": &"flinch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kf68d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4vec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5j23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2nev")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2sq7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g164g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odigt")
+}],
+"loop": true,
+"name": &"melee",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ky28j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmcir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6jke")
+}],
+"loop": true,
+"name": &"ranged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wujyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgiia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c38h6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owqb1")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Unit" instance=ExtResource("1_olpdp")]
+unit = SubResource("Resource_olpdp")
+
+[node name="Sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_0ugls")
+animation = &"flinch"

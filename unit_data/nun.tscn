@@ -1,0 +1,169 @@
+[gd_scene load_steps=22 format=3 uid="uid://lwwarok0xaf7"]
+
+[ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_qdabd"]
+[ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_7n3ur"]
+[ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="3_gouo7"]
+[ext_resource type="Texture2D" uid="uid://b1kdxvboj6csb" path="res://textures/units/nun.png" id="4_qdabd"]
+
+[sub_resource type="Resource" id="Resource_qdabd"]
+script = ExtResource("3_gouo7")
+unit_type = "Nun"
+name_origin = "italian_female"
+evil_last_name = false
+has_last_name = true
+tags = Array[String](["woman", "lilian"])
+preferences = Array[ExtResource("2_7n3ur")]([])
+is_female = true
+max_health = 20
+armour = 0.0
+resist = 75.0
+movement_cooldown = 4
+melee_damage = 4
+melee_is_magic = false
+melee_attack_cooldown = 10
+reach = 0
+ranged_damage = 10
+ranged_is_magic = true
+ranged_attack_cooldown = 25
+attack_range = 3
+metadata/_custom_type_script = "uid://b5eww7paeebiu"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7n3ur"]
+atlas = ExtResource("4_qdabd")
+region = Rect2(5000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gouo7"]
+atlas = ExtResource("4_qdabd")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mh6j"]
+atlas = ExtResource("4_qdabd")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b12oo"]
+atlas = ExtResource("4_qdabd")
+region = Rect2(1000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxtu6"]
+atlas = ExtResource("4_qdabd")
+region = Rect2(1500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjuwq"]
+atlas = ExtResource("4_qdabd")
+region = Rect2(2000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fl83"]
+atlas = ExtResource("4_qdabd")
+region = Rect2(2500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvnju"]
+atlas = ExtResource("4_qdabd")
+region = Rect2(3000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsqyb"]
+atlas = ExtResource("4_qdabd")
+region = Rect2(3500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vkue"]
+atlas = ExtResource("4_qdabd")
+region = Rect2(4000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n12h7"]
+atlas = ExtResource("4_qdabd")
+region = Rect2(4500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uhl0"]
+atlas = ExtResource("4_qdabd")
+region = Rect2(5500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rdmj"]
+atlas = ExtResource("4_qdabd")
+region = Rect2(6000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_co0dv"]
+atlas = ExtResource("4_qdabd")
+region = Rect2(6500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acpt2"]
+atlas = ExtResource("4_qdabd")
+region = Rect2(7000, 0, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7n3ur"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7n3ur")
+}],
+"loop": true,
+"name": &"flinch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gouo7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mh6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b12oo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxtu6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kjuwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fl83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvnju")
+}],
+"loop": true,
+"name": &"melee",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsqyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vkue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n12h7")
+}],
+"loop": true,
+"name": &"ranged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8uhl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rdmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_co0dv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acpt2")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Unit" instance=ExtResource("1_qdabd")]
+unit = SubResource("Resource_qdabd")
+
+[node name="Sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_7n3ur")
+animation = &"flinch"

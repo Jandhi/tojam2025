@@ -1,0 +1,169 @@
+[gd_scene load_steps=22 format=3 uid="uid://cquaokudxd8wy"]
+
+[ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_iy5w6"]
+[ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_eqgc6"]
+[ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="3_odfk6"]
+[ext_resource type="Texture2D" uid="uid://dm77l7sk57twb" path="res://textures/units/sellswordf.png" id="4_iy5w6"]
+
+[sub_resource type="Resource" id="Resource_iy5w6"]
+script = ExtResource("3_odfk6")
+unit_type = "Sellsword"
+name_origin = "arab_female"
+evil_last_name = false
+has_last_name = false
+tags = Array[String](["woman", "farisian", "mercenary"])
+preferences = Array[ExtResource("2_eqgc6")]([])
+is_female = true
+max_health = 20
+armour = 25.0
+resist = 25.0
+movement_cooldown = 4
+melee_damage = 4
+melee_is_magic = false
+melee_attack_cooldown = 8
+reach = 0
+ranged_damage = 3
+ranged_is_magic = false
+ranged_attack_cooldown = 15
+attack_range = 8
+metadata/_custom_type_script = "uid://b5eww7paeebiu"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqgc6"]
+atlas = ExtResource("4_iy5w6")
+region = Rect2(5000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odfk6"]
+atlas = ExtResource("4_iy5w6")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilvwu"]
+atlas = ExtResource("4_iy5w6")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0nlx"]
+atlas = ExtResource("4_iy5w6")
+region = Rect2(1000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uof5"]
+atlas = ExtResource("4_iy5w6")
+region = Rect2(1500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdkga"]
+atlas = ExtResource("4_iy5w6")
+region = Rect2(2000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhkh1"]
+atlas = ExtResource("4_iy5w6")
+region = Rect2(2500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f6l6"]
+atlas = ExtResource("4_iy5w6")
+region = Rect2(3000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swb8y"]
+atlas = ExtResource("4_iy5w6")
+region = Rect2(3500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7c6cs"]
+atlas = ExtResource("4_iy5w6")
+region = Rect2(4000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ee4mx"]
+atlas = ExtResource("4_iy5w6")
+region = Rect2(4500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o642c"]
+atlas = ExtResource("4_iy5w6")
+region = Rect2(5500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6i3ox"]
+atlas = ExtResource("4_iy5w6")
+region = Rect2(6000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ys1ic"]
+atlas = ExtResource("4_iy5w6")
+region = Rect2(6500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3uh7"]
+atlas = ExtResource("4_iy5w6")
+region = Rect2(7000, 0, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eqgc6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqgc6")
+}],
+"loop": true,
+"name": &"flinch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odfk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilvwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0nlx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uof5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdkga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhkh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f6l6")
+}],
+"loop": true,
+"name": &"melee",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swb8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7c6cs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ee4mx")
+}],
+"loop": true,
+"name": &"ranged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o642c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6i3ox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ys1ic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3uh7")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Unit" instance=ExtResource("1_iy5w6")]
+unit = SubResource("Resource_iy5w6")
+
+[node name="Sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_eqgc6")
+animation = &"flinch"
