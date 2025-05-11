@@ -1,11 +1,16 @@
-[gd_resource type="Resource" script_class="Unit" load_steps=2 format=3 uid="uid://cf7s8u0wiech5"]
+[gd_resource type="Resource" script_class="Unit" load_steps=3 format=3 uid="uid://cf7s8u0wiech5"]
 
 [ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="1_1coxl"]
+[ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="1_k4o3y"]
 
 [resource]
 script = ExtResource("1_1coxl")
-name = "Johann"
 unit_type = "Test Unit"
+name_origin = "german_male"
+evil_last_name = true
+has_last_name = true
+tags = Array[String](["human"])
+preferences = Array[ExtResource("1_k4o3y")]([])
 max_health = 10
 armour = 0.0
 resist = 0.0
@@ -14,8 +19,8 @@ melee_damage = 1
 melee_is_magic = false
 melee_attack_cooldown = 3
 reach = 1
-ranged_damage = 0
+ranged_damage = 3
 ranged_is_magic = false
-ranged_attack_cooldown = 0
-attack_range = 0
+ranged_attack_cooldown = 5
+attack_range = 5
 metadata/_custom_type_script = "uid://b5eww7paeebiu"

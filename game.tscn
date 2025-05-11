@@ -1,14 +1,22 @@
-[gd_scene load_steps=15 format=3 uid="uid://trqe16na7c6n"]
+[gd_scene load_steps=18 format=3 uid="uid://trqe16na7c6n"]
 
 [ext_resource type="Script" uid="uid://bsor0m08akrft" path="res://combat/grid.gd" id="1_80nbo"]
 [ext_resource type="PackedScene" uid="uid://dj81viqtup7xf" path="res://ui/unit_display.tscn" id="1_eow3j"]
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="2_e2o6t"]
 [ext_resource type="Resource" uid="uid://cf7s8u0wiech5" path="res://unit_data/test_unit.tres" id="3_feb5d"]
 [ext_resource type="Script" uid="uid://b7g2367t5hxt7" path="res://combat/combat_manager.gd" id="4_fc0e3"]
-[ext_resource type="Texture2D" uid="uid://gf56hfundv6c" path="res://selected_circle.webp" id="5_7jktm"]
+[ext_resource type="Texture2D" uid="uid://gf56hfundv6c" path="res://textures/selected_circle.webp" id="5_7jktm"]
+[ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="5_mfdv2"]
+[ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="6_iotsf"]
 [ext_resource type="Script" uid="uid://b60f4cmajugr7" path="res://selected_circle.gd" id="6_ryrav"]
 [ext_resource type="Script" uid="uid://c1xsiv7lgwjs8" path="res://dialogue/dialogue_manager.gd" id="8_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://cl3g7x27e5sbe" path="res://dialogue/dialogue_popup.tscn" id="9_vef74"]
+
+[sub_resource type="Resource" id="Resource_mfdv2"]
+script = ExtResource("6_iotsf")
+tag = "elf"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ryrav"]
 atlas = ExtResource("5_7jktm")
@@ -68,12 +76,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.117067, 0.104, 0.16, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="UnitDisplay" parent="UI/Panel" instance=ExtResource("1_eow3j")]
 layout_mode = 1
-offset_right = 589.0
-offset_bottom = 0.0
+offset_top = 23.0
+offset_right = 1026.0
+offset_bottom = -21.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -5
@@ -94,6 +103,7 @@ combat_manager = NodePath("../CombatManager")
 metadata/_custom_type_script = "uid://bsor0m08akrft"
 
 [node name="Unit" parent="MainGrid" node_paths=PackedStringArray("grid", "roster") instance=ExtResource("2_e2o6t")]
+modulate = Color(0.671618, 0.507209, 3.85046e-07, 1)
 position = Vector2(138, 143)
 unit_name = "Johann"
 unit = ExtResource("3_feb5d")
@@ -113,6 +123,7 @@ roster = NodePath("../../Roster")
 position = Vector2(218, 235)
 unit_name = "Kevin"
 unit = ExtResource("3_feb5d")
+preferences = Array[ExtResource("5_mfdv2")]([SubResource("Resource_mfdv2")])
 grid = NodePath("..")
 roster = NodePath("../../Roster")
 
@@ -120,6 +131,7 @@ roster = NodePath("../../Roster")
 position = Vector2(149, 311)
 unit_name = "Morg"
 unit = ExtResource("3_feb5d")
+tags = Array[String](["elf"])
 grid = NodePath("..")
 roster = NodePath("../../Roster")
 
@@ -139,12 +151,12 @@ offset_right = 230.0
 offset_bottom = 479.0
 text = "start combat"
 
-[node name="CombatManager" type="Node" parent="." node_paths=PackedStringArray("player_leader", "grid", "selected_circle", "unit_display")]
+[node name="CombatManager" type="Node" parent="." node_paths=PackedStringArray("grid", "selected_circle", "unit_display", "dialogue_manager")]
 script = ExtResource("4_fc0e3")
-player_leader = NodePath("../MainGrid/Unit")
 grid = NodePath("../MainGrid")
 selected_circle = NodePath("../SelectedCircle")
 unit_display = NodePath("../UI/Panel/UnitDisplay")
+dialogue_manager = NodePath("../DialogueManager")
 metadata/_custom_type_script = "uid://b7g2367t5hxt7"
 
 [node name="SelectedCircle" type="AnimatedSprite2D" parent="."]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cl3g7x27e5sbe"]
+[gd_scene load_steps=3 format=3 uid="uid://cl3g7x27e5sbe"]
 
 [ext_resource type="Script" uid="uid://dgntbtdwyd5gy" path="res://dialogue/dialogue_popup.gd" id="1_ecb0l"]
+[ext_resource type="Theme" uid="uid://b2yaipa16p558" path="res://dialogue/dialogue_theme.tres" id="2_ln0an"]
 
 [node name="DialoguePopup" type="Control" node_paths=PackedStringArray("text")]
 self_modulate = Color(0.748312, 0.429674, 0.575438, 1)
@@ -20,9 +21,9 @@ text = NodePath("ColorRect/VBoxContainer/RichTextLabel")
 z_index = -1
 layout_mode = 0
 offset_left = -150.0
-offset_top = -50.0
+offset_top = -27.0
 offset_right = 150.0
-offset_bottom = 50.0
+offset_bottom = 20.0
 color = Color(0, 0, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
@@ -39,11 +40,7 @@ size_flags_vertical = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/bold_italics_font_size = 24
-theme_override_font_sizes/italics_font_size = 24
-theme_override_font_sizes/mono_font_size = 24
-theme_override_font_sizes/normal_font_size = 24
-theme_override_font_sizes/bold_font_size = 24
+theme = ExtResource("2_ln0an")
 bbcode_enabled = true
 text = "[center]I am afraid of [shake]Ghosts[/shake]"
 fit_content = true

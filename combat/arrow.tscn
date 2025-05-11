@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbdbsnjgohx5a"]
+
+[ext_resource type="Texture2D" uid="uid://bjawssna46i8c" path="res://textures/arrow.webp" id="1_ce422"]
+[ext_resource type="Script" uid="uid://bktob0qf2topy" path="res://combat/arrow.gd" id="2_jyyon"]
+
+[node name="Arrow" type="Sprite2D"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_ce422")
+offset = Vector2(0, 15)
+script = ExtResource("2_jyyon")

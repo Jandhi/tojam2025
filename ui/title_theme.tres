@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://co5py1prs3hsj"]
+
+[ext_resource type="FontFile" uid="uid://c5euy1idyacph" path="res://fonts/UnifrakturMaguntia-Regular.ttf" id="1_68srj"]
+
+[resource]
+default_font = ExtResource("1_68srj")
+default_font_size = 64
+RichTextLabel/colors/default_color = Color(0.843137, 0, 0.32549, 1)

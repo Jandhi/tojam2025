@@ -32,6 +32,9 @@ func world_to_grid(world_pos: Vector2) -> Vector2i:
 	var grid_y = int((world_pos.y) / cell_size.y)
 	return Vector2i(grid_x, grid_y)
 
+func distance_to_commander(location : Vector2i) -> int:
+	return abs(location.x - combat_manager.player_leader.grid_pos.x) + abs(location.y - combat_manager.player_leader.grid_pos.y)
+
 func is_in_bounds(grid_pos: Vector2i) -> bool:
 	return grid_pos.x >= 0 and grid_pos.x < grid_size.x and grid_pos.y >= 0 and grid_pos.y < grid_size.y
 
@@ -47,6 +50,9 @@ func get_closest_enemy(unit: UnitController) -> UnitController:
 	var closest_enemy : UnitController = null
 	var closest_distance = INF
 	for enemy in units:
+		if not is_instance_valid(enemy):
+			continue
+
 		if enemy.is_player_unit == unit.is_player_unit:
 			continue
 		
@@ -68,7 +74,7 @@ func get_path_to_closest_enemy(unit_a : UnitController) -> Array[Vector2i]:
 		var current_pos = path[-1]
 
 		for neighbour in get_neighbours(current_pos):
-			if tiles.has(neighbour) and tiles[neighbour].is_player_unit != unit_a.is_player_unit:
+			if tiles.has(neighbour) and is_instance_valid(tiles[neighbour]) and tiles[neighbour].is_player_unit != unit_a.is_player_unit:
 				return path
 
 			if not visited.has(neighbour) and not tiles.has(neighbour):
@@ -78,3 +84,11 @@ func get_path_to_closest_enemy(unit_a : UnitController) -> Array[Vector2i]:
 				queue.append(new_path)
 
 	return [unit_a.grid_pos]
+
+func get_first_empty_tile_on_left_side() -> Vector2i:
+	for x in range(int(grid_size.x / 2.0)):
+		for y in range(grid_size.y):
+			var grid_pos = Vector2i(x, y)
+			if not tiles.has(grid_pos):
+				return grid_pos
+	return Vector2i(-1, -1) # return an invalid position if no empty tile is found

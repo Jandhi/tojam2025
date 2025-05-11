@@ -1,7 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cgt08rla3nihh"]
+[gd_scene load_steps=19 format=3 uid="uid://cgt08rla3nihh"]
 
 [ext_resource type="Script" uid="uid://b2clr4a6id4r5" path="res://combat/unit_controller.gd" id="1_taype"]
-[ext_resource type="Texture2D" uid="uid://38g686lmp2t5" path="res://spritesheet.png" id="3_oxlip"]
+[ext_resource type="PackedScene" uid="uid://bbdbsnjgohx5a" path="res://combat/arrow.tscn" id="2_oxlip"]
+[ext_resource type="Texture2D" uid="uid://bs66iawicr2ui" path="res://textures/ranged_attack.webp" id="3_2p3g0"]
+[ext_resource type="Texture2D" uid="uid://38g686lmp2t5" path="res://textures/spritesheet.png" id="3_oxlip"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bov5i"]
 atlas = ExtResource("3_oxlip")
@@ -33,6 +35,18 @@ region = Rect2(500, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kkbxc"]
 atlas = ExtResource("3_oxlip")
+region = Rect2(1000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wp5in"]
+atlas = ExtResource("3_2p3g0")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wahl"]
+atlas = ExtResource("3_2p3g0")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bimkf"]
+atlas = ExtResource("3_2p3g0")
 region = Rect2(1000, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2p3g0"]
@@ -86,6 +100,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_wp5in")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wahl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bimkf")
+}],
+"loop": true,
+"name": &"ranged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2p3g0")
 }, {
 "duration": 1.0,
@@ -100,15 +128,16 @@ animations = [{
 script = ExtResource("1_taype")
 animated_sprite = NodePath("Sprite")
 hover_box = NodePath("Control")
+arrow_prefab = ExtResource("2_oxlip")
 healthbar = NodePath("Healthbar")
 healthbar_white = NodePath("Healthbar/HealthbarWhite")
 healthbar_red = NodePath("Healthbar/HealthbarRed")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -47)
+position = Vector2(0, -47)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_167gt")
-animation = &"run"
+animation = &"ranged"
 autoplay = "idle"
 
 [node name="Control" type="Control" parent="."]
