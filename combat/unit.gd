@@ -8,6 +8,14 @@ class_name Unit extends Resource
 @export var tags : Array[String] = []
 @export var preferences : Array[PlacementPreference] = []
 @export var is_female : bool
+@export var cost : int
+
+enum Currency {
+	Gold,
+	Pacts
+}
+
+@export var cost_currency : Currency = Currency.Gold
 
 @export_group("Stats")
 @export var max_health : int
