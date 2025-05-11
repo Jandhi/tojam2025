@@ -1,19 +1,34 @@
-[gd_scene load_steps=22 format=3 uid="uid://cy4g0em52ya2g"]
+[gd_scene load_steps=25 format=3 uid="uid://cy4g0em52ya2g"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_6g1ra"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_0jptd"]
+[ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="3_0jptd"]
 [ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="3_c1lrv"]
 [ext_resource type="Texture2D" uid="uid://dopwxib2itp4p" path="res://textures/units/shirtless.png" id="4_j5k13"]
 
+[sub_resource type="Resource" id="Resource_c1lrv"]
+script = ExtResource("3_0jptd")
+tag = "woman"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
+
+[sub_resource type="Resource" id="Resource_0jptd"]
+script = ExtResource("3_0jptd")
+tag = "witch"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
+
 [sub_resource type="Resource" id="Resource_6g1ra"]
 script = ExtResource("3_c1lrv")
-unit_type = "Brotherhood Warrior"
+unit_type = "Brotherhood"
 name_origin = "german_male"
-evil_last_name = false
+evil_last_name = true
 has_last_name = true
 tags = Array[String](["man", "heathen"])
-preferences = Array[ExtResource("2_0jptd")]([])
+preferences = Array[ExtResource("2_0jptd")]([SubResource("Resource_c1lrv"), SubResource("Resource_0jptd")])
 is_female = false
+cost = 2
+cost_currency = 0
 max_health = 24
 armour = 0.0
 resist = 25.0
@@ -25,7 +40,7 @@ reach = 1
 ranged_damage = 7
 ranged_is_magic = false
 ranged_attack_cooldown = 5
-attack_range = 3
+attack_range = 0
 metadata/_custom_type_script = "uid://b5eww7paeebiu"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ef11t"]

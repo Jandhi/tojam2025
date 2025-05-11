@@ -1,0 +1,119 @@
+[gd_scene load_steps=13 format=3 uid="uid://gp3sjcej3pcb"]
+
+[ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_c7qku"]
+[ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_4iqeh"]
+[ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="3_4iqeh"]
+[ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="3_x0lto"]
+[ext_resource type="Texture2D" uid="uid://5klgpqfijm4f" path="res://textures/units/troll.png" id="5_x0lto"]
+
+[sub_resource type="Resource" id="Resource_psn84"]
+script = ExtResource("3_4iqeh")
+tag = "lilian"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
+
+[sub_resource type="Resource" id="Resource_kwn8c"]
+script = ExtResource("3_x0lto")
+unit_type = "Troll"
+name_origin = "troll"
+evil_last_name = false
+has_last_name = false
+tags = Array[String](["fae", "smelly"])
+preferences = Array[ExtResource("2_4iqeh")]([SubResource("Resource_psn84")])
+is_female = false
+cost = 4
+cost_currency = 1
+max_health = 48
+armour = 25.0
+resist = 0.0
+movement_cooldown = 8
+melee_damage = 12
+melee_is_magic = false
+melee_attack_cooldown = 25
+reach = 0
+ranged_damage = 0
+ranged_is_magic = false
+ranged_attack_cooldown = 0
+attack_range = 0
+metadata/_custom_type_script = "uid://b5eww7paeebiu"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f05ry"]
+atlas = ExtResource("5_x0lto")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5ip2"]
+atlas = ExtResource("5_x0lto")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmree"]
+atlas = ExtResource("5_x0lto")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50t1s"]
+atlas = ExtResource("5_x0lto")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vps45"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f05ry")
+}],
+"loop": true,
+"name": &"flinch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5ip2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmree")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50t1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmree")
+}],
+"loop": true,
+"name": &"melee",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmree")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50t1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmree")
+}],
+"loop": true,
+"name": &"ranged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmree")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmree")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Unit" instance=ExtResource("1_c7qku")]
+unit = SubResource("Resource_kwn8c")
+
+[node name="Sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_vps45")
+animation = &"run"

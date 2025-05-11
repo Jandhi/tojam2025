@@ -1,19 +1,28 @@
-[gd_scene load_steps=22 format=3 uid="uid://dfrn3mg45xyue"]
+[gd_scene load_steps=24 format=3 uid="uid://dfrn3mg45xyue"]
 
-[ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_ecsul"]
-[ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_kcrl1"]
-[ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="3_mj4t5"]
-[ext_resource type="Texture2D" uid="uid://c8mdgxaonahki" path="res://textures/units/bloodsisters.png" id="4_ecsul"]
+[ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_dd7xl"]
+[ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_sx2ns"]
+[ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="3_fth05"]
+[ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="3_sx2ns"]
+[ext_resource type="Texture2D" uid="uid://c8mdgxaonahki" path="res://textures/units/bloodsisters.png" id="4_t5cyw"]
+
+[sub_resource type="Resource" id="Resource_fth05"]
+script = ExtResource("3_sx2ns")
+tag = "man"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
 
 [sub_resource type="Resource" id="Resource_ecsul"]
-script = ExtResource("3_mj4t5")
+script = ExtResource("3_fth05")
 unit_type = "Blood Sister"
 name_origin = "fae_female"
 evil_last_name = true
 has_last_name = true
 tags = Array[String](["fae", "woman"])
-preferences = Array[ExtResource("2_kcrl1")]([])
+preferences = Array[ExtResource("2_sx2ns")]([SubResource("Resource_fth05")])
 is_female = true
+cost = 2
+cost_currency = 1
 max_health = 16
 armour = 0.0
 resist = 50.0
@@ -29,63 +38,63 @@ attack_range = 0
 metadata/_custom_type_script = "uid://b5eww7paeebiu"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kcrl1"]
-atlas = ExtResource("4_ecsul")
+atlas = ExtResource("4_t5cyw")
 region = Rect2(5000, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mj4t5"]
-atlas = ExtResource("4_ecsul")
+atlas = ExtResource("4_t5cyw")
 region = Rect2(0, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7a4bw"]
-atlas = ExtResource("4_ecsul")
+atlas = ExtResource("4_t5cyw")
 region = Rect2(500, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gs13c"]
-atlas = ExtResource("4_ecsul")
+atlas = ExtResource("4_t5cyw")
 region = Rect2(1000, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7n02g"]
-atlas = ExtResource("4_ecsul")
+atlas = ExtResource("4_t5cyw")
 region = Rect2(1500, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a8yap"]
-atlas = ExtResource("4_ecsul")
+atlas = ExtResource("4_t5cyw")
 region = Rect2(2000, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_arri8"]
-atlas = ExtResource("4_ecsul")
+atlas = ExtResource("4_t5cyw")
 region = Rect2(2500, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eirpe"]
-atlas = ExtResource("4_ecsul")
+atlas = ExtResource("4_t5cyw")
 region = Rect2(3000, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_583up"]
-atlas = ExtResource("4_ecsul")
+atlas = ExtResource("4_t5cyw")
 region = Rect2(3500, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yaw5m"]
-atlas = ExtResource("4_ecsul")
+atlas = ExtResource("4_t5cyw")
 region = Rect2(4000, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b5ifd"]
-atlas = ExtResource("4_ecsul")
+atlas = ExtResource("4_t5cyw")
 region = Rect2(4500, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_olal3"]
-atlas = ExtResource("4_ecsul")
+atlas = ExtResource("4_t5cyw")
 region = Rect2(5500, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_76dhj"]
-atlas = ExtResource("4_ecsul")
+atlas = ExtResource("4_t5cyw")
 region = Rect2(6000, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jyv7e"]
-atlas = ExtResource("4_ecsul")
+atlas = ExtResource("4_t5cyw")
 region = Rect2(6500, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1kgeq"]
-atlas = ExtResource("4_ecsul")
+atlas = ExtResource("4_t5cyw")
 region = Rect2(7000, 0, 500, 500)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kcrl1"]
@@ -161,11 +170,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Unit" instance=ExtResource("1_ecsul")]
+[node name="Unit" instance=ExtResource("1_dd7xl")]
 unit = SubResource("Resource_ecsul")
 
 [node name="Sprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_kcrl1")
-animation = &"idle"
-frame = 2
-frame_progress = 0.999204
+animation = &"run"

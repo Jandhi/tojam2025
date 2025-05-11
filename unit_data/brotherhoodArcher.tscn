@@ -1,0 +1,185 @@
+[gd_scene load_steps=26 format=3 uid="uid://ckk2i5cutdey7"]
+
+[ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_e5p61"]
+[ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_e4gp1"]
+[ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="3_detrj"]
+[ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="4_s6wie"]
+[ext_resource type="Texture2D" uid="uid://dopwxib2itp4p" path="res://textures/units/shirtless.png" id="5_24ivs"]
+[ext_resource type="Texture2D" uid="uid://0agv6bnmk3ts" path="res://textures/units/brotherhoodArrowAndSword.png" id="5_e4gp1"]
+
+[sub_resource type="Resource" id="Resource_c1lrv"]
+script = ExtResource("3_detrj")
+tag = "woman"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
+
+[sub_resource type="Resource" id="Resource_0jptd"]
+script = ExtResource("3_detrj")
+tag = "witch"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
+
+[sub_resource type="Resource" id="Resource_e5p61"]
+script = ExtResource("4_s6wie")
+unit_type = "Brotherhood Archer"
+name_origin = "german_male"
+evil_last_name = true
+has_last_name = true
+tags = Array[String](["man", "heathen"])
+preferences = Array[ExtResource("2_e4gp1")]([SubResource("Resource_c1lrv"), SubResource("Resource_0jptd")])
+is_female = false
+cost = 2
+cost_currency = 0
+max_health = 24
+armour = 0.0
+resist = 25.0
+movement_cooldown = 4
+melee_damage = 3
+melee_is_magic = false
+melee_attack_cooldown = 10
+reach = 1
+ranged_damage = 7
+ranged_is_magic = false
+ranged_attack_cooldown = 15
+attack_range = 6
+metadata/_custom_type_script = "uid://b5eww7paeebiu"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_detrj"]
+atlas = ExtResource("5_e4gp1")
+region = Rect2(7000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6wie"]
+atlas = ExtResource("5_e4gp1")
+region = Rect2(1500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24ivs"]
+atlas = ExtResource("5_e4gp1")
+region = Rect2(2000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kngsm"]
+atlas = ExtResource("5_e4gp1")
+region = Rect2(2500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ma4w1"]
+atlas = ExtResource("5_e4gp1")
+region = Rect2(3000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kp712"]
+atlas = ExtResource("5_24ivs")
+region = Rect2(3000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tlkg"]
+atlas = ExtResource("5_24ivs")
+region = Rect2(2500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhpq4"]
+atlas = ExtResource("5_24ivs")
+region = Rect2(2000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob0gm"]
+atlas = ExtResource("5_24ivs")
+region = Rect2(3500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvh6v"]
+atlas = ExtResource("5_24ivs")
+region = Rect2(4000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wr71f"]
+atlas = ExtResource("5_24ivs")
+region = Rect2(4500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fa06x"]
+atlas = ExtResource("5_e4gp1")
+region = Rect2(9500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kynye"]
+atlas = ExtResource("5_e4gp1")
+region = Rect2(10000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks8v8"]
+atlas = ExtResource("5_e4gp1")
+region = Rect2(10500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r82uo"]
+atlas = ExtResource("5_e4gp1")
+region = Rect2(11000, 0, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vtx08"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_detrj")
+}],
+"loop": true,
+"name": &"flinch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6wie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24ivs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kngsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma4w1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kp712")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tlkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhpq4")
+}],
+"loop": true,
+"name": &"melee",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ob0gm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvh6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wr71f")
+}],
+"loop": true,
+"name": &"ranged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fa06x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kynye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks8v8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r82uo")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Unit" instance=ExtResource("1_e5p61")]
+unit = SubResource("Resource_e5p61")
+
+[node name="Sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_vtx08")
+animation = &"run"

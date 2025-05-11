@@ -1,9 +1,16 @@
-[gd_scene load_steps=22 format=3 uid="uid://cerjr2ys5ika6"]
+[gd_scene load_steps=24 format=3 uid="uid://cerjr2ys5ika6"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_7y2n3"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_eu114"]
+[ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="3_eu114"]
 [ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="3_rwbax"]
 [ext_resource type="Texture2D" uid="uid://c0rl5e6nwegpq" path="res://textures/units/churchmen_2.png" id="4_7y2n3"]
+
+[sub_resource type="Resource" id="Resource_rwbax"]
+script = ExtResource("3_eu114")
+tag = "heathen"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
 
 [sub_resource type="Resource" id="Resource_7y2n3"]
 script = ExtResource("3_rwbax")
@@ -12,8 +19,10 @@ name_origin = "italian_male"
 evil_last_name = false
 has_last_name = true
 tags = Array[String](["man", "lilian", "mercenary"])
-preferences = Array[ExtResource("2_eu114")]([])
+preferences = Array[ExtResource("2_eu114")]([SubResource("Resource_rwbax")])
 is_female = false
+cost = 2
+cost_currency = 0
 max_health = 20
 armour = 25.0
 resist = 25.0
