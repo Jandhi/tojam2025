@@ -58,6 +58,7 @@ func add_unit_to_enemy(unit : UnitController):
 	unit.reparent(grid)
 	unit.teleport(grid.get_random_enemy_tile())
 
+	setup_unit(unit)
 	grid.tiles[unit.grid_pos] = unit
 	grid.units.append(unit)
 
