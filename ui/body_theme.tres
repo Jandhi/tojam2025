@@ -1,8 +1,8 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://bwwn0jlif1hgw"]
 
-[ext_resource type="FontFile" uid="uid://cg7uj5v1se8cl" path="res://fonts/EBGaramond-VariableFont_wght.ttf" id="1_vf4fk"]
+[ext_resource type="FontFile" uid="uid://hvowrr05pxr3" path="res://fonts/PTSerif-Regular.ttf" id="1_vf4fk"]
 
 [resource]
 default_font = ExtResource("1_vf4fk")
-default_font_size = 24
+default_font_size = 18
 RichTextLabel/colors/default_color = Color(0.905882, 0.909804, 0.996078, 1)

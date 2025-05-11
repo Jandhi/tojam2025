@@ -33,6 +33,9 @@ func load_audio():
 		"mumble3" : load("res://audio/mumble/mumble3.mp3"),
 		"mumble4" : load("res://audio/mumble/mumble4.mp3"),
 		"mumble5" : load("res://audio/mumble/mumble5.mp3"),
+
+		"buy" : load("res://audio/Cash register 2.wav"),
+		"loot" : load("res://audio/Cash register 3.wav"),
 	}
 
 	multi_sounds = {

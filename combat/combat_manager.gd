@@ -5,11 +5,18 @@ class_name CombatManager extends Node
 @export var unit_display : UnitDisplay
 @export var dialogue_manager : DialogueManager
 @export var shop_panel : ShopPanel
+@export var roster : Grid
+@export var main_menu : Control
+@export var gold_label : RichTextLabel
+@export var pacts_label : RichTextLabel
 
 var player_leader : UnitController
 var player_units : Array[UnitController] = []
 var enemy_units : Array[UnitController] = []
 var all_units : Array[UnitController] = []
+var battle_number : int = 0
+var pacts : int = 0
+var gold : int = 0
 
 var combat_is_playing : bool = false
 
@@ -18,6 +25,8 @@ var allowed_distance_from_leader : int = 2
 const TICK_LENGTH = 0.5
 
 func _ready() -> void:
+	set_gold(0)
+	set_pacts(0)
 	AudioManager.play("menu_theme")
 
 	selected_circle.visible = false
@@ -31,9 +40,59 @@ func _ready() -> void:
 		dialogue_manager.bored(unit)
 	)
 
+func set_gold(amount: int):
+	gold = amount
+	gold_label.text = str(gold)
+
+func set_pacts(amount: int):
+	pacts = amount
+	pacts_label.text = str(pacts)
+
+func enter_game():
+
+	var tween = get_tree().create_tween()
+	tween.tween_property(main_menu, "position", main_menu.position + Vector2(0, -1080), 1.0)\
+		.set_ease(Tween.EASE_IN)\
+		.set_trans(Tween.TRANS_SPRING)
+
+	await tween.finished
+	show_roster()
+	main_menu.queue_free()
+
+	var popup = PopupUI.show_popup(get_tree().root, "[center]Welcome to the game!\nYou can move your units around the grid. Units want to be within 2 tiles of the mistress to start! This range will increase every 3 battles.\n Let's start with some shopping. I'll give you 3 gold and 3 pacts to start.", "I understand")
+	popup.popup_closed.connect(func():
+		AudioManager.play("loot")
+		shop_panel.enter_shop()
+
+		set_gold(0)
+		set_pacts(0)
+
+		var inner_popup = PopupUI.show_popup(get_tree().root, "[center]Units will cost Gold or Pacts. Units have preferences they want to abide by, else they lose morale and fight less effectively. Good luck!", "I understand")
+		inner_popup.popup_closed.connect(func():
+			pass
+		)
+	)
+
+func get_reward_for_battle():
+	AudioManager.play("loot")
+	set_pacts(pacts + (battle_number % 2) * int((battle_number + 1) / 2.0))
+	set_gold(gold + 2 + int(battle_number / 2.0))
+	if(battle_number % 3 == 2):
+		allowed_distance_from_leader += 1
+
+func hide_roster():
+	var tween = get_tree().create_tween()
+	tween.tween_property(roster, "position", Vector2(-400, 640), 1.0)\
+		.set_ease(Tween.EASE_IN)\
+		.set_trans(Tween.TRANS_SPRING)
+
+func show_roster():
+	var tween = get_tree().create_tween()
+	tween.tween_property(roster, "position", Vector2(65, 640), 0.5)\
+		.set_ease(Tween.EASE_OUT)\
+		.set_trans(Tween.TRANS_SPRING)
+
 func play_combat():
-	shop_panel.exit_shop()
-	AudioManager.play("battle_theme", 0.0, 1.0)
 
 	if combat_is_playing:
 		return
@@ -42,6 +101,10 @@ func play_combat():
 		DialogueManager.instance.minions_are_too_far_from_commander(player_leader)
 		return
 
+	shop_panel.exit_shop()
+	hide_roster()
+	AudioManager.play("battle_theme", 0.0, 1.0)
+	
 	var victory = true
 	combat_is_playing = true
 
@@ -83,10 +146,6 @@ func play_combat():
 		AudioManager.play("victory", 0.0, 1.0, true)
 		finished_battle()
 
-		await get_tree().create_timer(2.0).timeout
-		AudioManager.play("shop_theme")
-		shop_panel.enter_shop()
-
 	else:
 		print("Defeat!")
 		AudioManager.play("loss", 0.0, 1.0, true)
@@ -106,6 +165,12 @@ func finished_battle():
 				unit.teleport(grid_pos)
 
 		unit.is_moveable = true
+
+	await get_tree().create_timer(2.0).timeout
+	get_reward_for_battle()
+	AudioManager.play("shop_theme")
+	shop_panel.enter_shop()
+	show_roster()
 
 
 func setup_units():

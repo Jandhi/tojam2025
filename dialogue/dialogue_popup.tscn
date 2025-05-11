@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cl3g7x27e5sbe"]
+[gd_scene load_steps=4 format=3 uid="uid://cl3g7x27e5sbe"]
 
 [ext_resource type="Script" uid="uid://dgntbtdwyd5gy" path="res://dialogue/dialogue_popup.gd" id="1_ecb0l"]
+[ext_resource type="Texture2D" uid="uid://bi7s8wmf745pe" path="res://textures/dialogue.png" id="2_1amx0"]
 [ext_resource type="Theme" uid="uid://b2yaipa16p558" path="res://dialogue/dialogue_theme.tres" id="2_ln0an"]
 
 [node name="DialoguePopup" type="Control" node_paths=PackedStringArray("text")]
@@ -17,20 +18,28 @@ grow_vertical = 2
 script = ExtResource("1_ecb0l")
 text = NodePath("ColorRect/VBoxContainer/RichTextLabel")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 z_index = -1
-layout_mode = 0
-offset_left = -150.0
-offset_top = -27.0
-offset_right = 150.0
-offset_bottom = 20.0
-color = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -244.0
+offset_top = -59.5
+offset_right = 244.0
+offset_bottom = 59.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1amx0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -46.0
 grow_horizontal = 2
 grow_vertical = 2
 

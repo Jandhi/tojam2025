@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c48jlc14stkh4"]
+[gd_scene load_steps=22 format=3 uid="uid://bb0qcufwwvcii"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_oxfdl"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_incal"]
@@ -163,6 +163,7 @@ animations = [{
 
 [node name="Unit" instance=ExtResource("1_oxfdl")]
 unit = SubResource("Resource_incal")
+is_player_commander = true
 
 [node name="Sprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_on1hc")

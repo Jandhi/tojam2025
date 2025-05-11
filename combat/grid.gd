@@ -6,9 +6,6 @@ var tiles : Dictionary[Vector2i, UnitController] = {}
 @export var cell_size : Vector2 = Vector2(64, 64)
 @export var combat_manager : CombatManager
 
-func _ready():
-	queue_redraw()
-
 func add_units():
 	for unit in units:
 		if unit.is_player_unit:
@@ -17,12 +14,6 @@ func add_units():
 			combat_manager.enemy_units.append(unit)
 		combat_manager.all_units.append(unit)
 
-func _draw():
-	for x in range(grid_size.x):
-		for y in range(grid_size.y):
-			var cell_pos = Vector2(x * cell_size.x, y * cell_size.y) - Vector2(cell_size.x / 2, cell_size.y / 2)
-			var cell_rect = Rect2(cell_pos, cell_size)
-			draw_rect(cell_rect, Color(1, 1, 1, 0.2), false)
 
 func grid_to_world(grid_pos: Vector2i) -> Vector2:
 	return Vector2(grid_pos.x * cell_size.x, grid_pos.y * cell_size.y)

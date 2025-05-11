@@ -1,0 +1,157 @@
+[gd_scene load_steps=22 format=3 uid="uid://kxneyhwtkc74"]
+
+[ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_475v4"]
+[ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_2bo4b"]
+[ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="3_woell"]
+[ext_resource type="Texture2D" uid="uid://dopwxib2itp4p" path="res://textures/units/shirtless.png" id="4_2b51m"]
+[ext_resource type="Texture2D" uid="uid://bs66iawicr2ui" path="res://textures/ranged_attack.webp" id="5_hqu8h"]
+[ext_resource type="Texture2D" uid="uid://38g686lmp2t5" path="res://textures/spritesheet.png" id="6_jl5yo"]
+
+[sub_resource type="Resource" id="Resource_f4l1s"]
+script = ExtResource("3_woell")
+unit_type = ""
+name_origin = ""
+evil_last_name = false
+has_last_name = false
+tags = Array[String]([])
+preferences = Array[ExtResource("2_2bo4b")]([])
+is_female = false
+max_health = 0
+armour = 0.0
+resist = 0.0
+movement_cooldown = 0
+melee_damage = 0
+melee_is_magic = false
+melee_attack_cooldown = 0
+reach = 0
+ranged_damage = 0
+ranged_is_magic = false
+ranged_attack_cooldown = 0
+attack_range = 0
+metadata/_custom_type_script = "uid://b5eww7paeebiu"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7hjt"]
+atlas = ExtResource("4_2b51m")
+region = Rect2(5000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxy0o"]
+atlas = ExtResource("4_2b51m")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apjfg"]
+atlas = ExtResource("4_2b51m")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hi64"]
+atlas = ExtResource("4_2b51m")
+region = Rect2(1000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljxnn"]
+atlas = ExtResource("4_2b51m")
+region = Rect2(1500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5765v"]
+atlas = ExtResource("4_2b51m")
+region = Rect2(2000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xm2u7"]
+atlas = ExtResource("4_2b51m")
+region = Rect2(2500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myr1d"]
+atlas = ExtResource("4_2b51m")
+region = Rect2(3000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wp5in"]
+atlas = ExtResource("5_hqu8h")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wahl"]
+atlas = ExtResource("5_hqu8h")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bimkf"]
+atlas = ExtResource("5_hqu8h")
+region = Rect2(1000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2p3g0"]
+atlas = ExtResource("6_jl5yo")
+region = Rect2(4000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxlip"]
+atlas = ExtResource("6_jl5yo")
+region = Rect2(4500, 0, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ko713"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7hjt")
+}],
+"loop": true,
+"name": &"flinch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxy0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apjfg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hi64")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljxnn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5765v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xm2u7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myr1d")
+}],
+"loop": true,
+"name": &"melee",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wp5in")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wahl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bimkf")
+}],
+"loop": true,
+"name": &"ranged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2p3g0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxlip")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Unit" instance=ExtResource("1_475v4")]
+unit = SubResource("Resource_f4l1s")
+
+[node name="Sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_ko713")
+animation = &"flinch"

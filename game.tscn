@@ -1,50 +1,21 @@
-[gd_scene load_steps=24 format=3 uid="uid://trqe16na7c6n"]
+[gd_scene load_steps=22 format=3 uid="uid://trqe16na7c6n"]
 
 [ext_resource type="Script" uid="uid://bsor0m08akrft" path="res://combat/grid.gd" id="1_80nbo"]
 [ext_resource type="PackedScene" uid="uid://dj81viqtup7xf" path="res://ui/unit_display.tscn" id="1_eow3j"]
 [ext_resource type="PackedScene" uid="uid://bgps3sqfy72l3" path="res://common/audio/audio_player_bank.tscn" id="1_lc2xo"]
-[ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="2_e2o6t"]
 [ext_resource type="Texture2D" uid="uid://cnvdxqw4fuxeh" path="res://textures/background1_v1.png" id="2_iotsf"]
-[ext_resource type="Resource" uid="uid://cf7s8u0wiech5" path="res://unit_data/test_unit.tres" id="3_feb5d"]
 [ext_resource type="Script" uid="uid://b7g2367t5hxt7" path="res://combat/combat_manager.gd" id="4_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://gf56hfundv6c" path="res://textures/selected_circle.webp" id="5_7jktm"]
-[ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="5_mfdv2"]
-[ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="6_iotsf"]
 [ext_resource type="Script" uid="uid://b60f4cmajugr7" path="res://selected_circle.gd" id="6_ryrav"]
-[ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="7_80cx4"]
 [ext_resource type="Script" uid="uid://c1xsiv7lgwjs8" path="res://dialogue/dialogue_manager.gd" id="8_j5wjh"]
-[ext_resource type="PackedScene" uid="uid://b7k708ng3cnho" path="res://unit_data/night_court_archer.tscn" id="9_7sc4i"]
 [ext_resource type="PackedScene" uid="uid://cl3g7x27e5sbe" path="res://dialogue/dialogue_popup.tscn" id="9_vef74"]
 [ext_resource type="PackedScene" uid="uid://b3xkk7i87uv02" path="res://ui/shop_panel.tscn" id="14_215e1"]
-
-[sub_resource type="Resource" id="Resource_e8heu"]
-script = ExtResource("7_80cx4")
-unit_type = "Test Unit"
-name_origin = "german_male"
-evil_last_name = true
-has_last_name = true
-tags = Array[String](["human"])
-preferences = Array[ExtResource("5_mfdv2")]([])
-is_female = true
-max_health = 10
-armour = 0.0
-resist = 0.0
-movement_cooldown = 1
-melee_damage = 1
-melee_is_magic = false
-melee_attack_cooldown = 3
-reach = 1
-ranged_damage = 3
-ranged_is_magic = false
-ranged_attack_cooldown = 5
-attack_range = 5
-metadata/_custom_type_script = "uid://b5eww7paeebiu"
-
-[sub_resource type="Resource" id="Resource_mfdv2"]
-script = ExtResource("6_iotsf")
-tag = "elf"
-wants_to_be_next_to = false
-metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
+[ext_resource type="PackedScene" uid="uid://bb0qcufwwvcii" path="res://unit_data/mistressOfRuin.tscn" id="16_80cx4"]
+[ext_resource type="Texture2D" uid="uid://bkdvu0ituty8c" path="res://textures/roster.png" id="17_e8heu"]
+[ext_resource type="Theme" uid="uid://co5py1prs3hsj" path="res://ui/title_theme.tres" id="18_rvswv"]
+[ext_resource type="Texture2D" uid="uid://dt6ytjdtaj3r" path="res://textures/gold_icon.png" id="19_boyg6"]
+[ext_resource type="Theme" uid="uid://bwwn0jlif1hgw" path="res://ui/body_theme.tres" id="20_e36ub"]
+[ext_resource type="Texture2D" uid="uid://c65vbv2i572mo" path="res://textures/pact_icon.png" id="21_hb5m1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ryrav"]
 atlas = ExtResource("5_7jktm")
@@ -92,28 +63,12 @@ grow_vertical = 2
 
 [node name="AudioPlayerBank" parent="." instance=ExtResource("1_lc2xo")]
 
-[node name="UI" type="Control" parent="."]
-visible = false
+[node name="UnitDisplay" parent="." instance=ExtResource("1_eow3j")]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 300.0
-grow_horizontal = 2
-
-[node name="Panel" type="ColorRect" parent="UI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="UnitDisplay" parent="UI/Panel" instance=ExtResource("1_eow3j")]
-layout_mode = 1
-offset_top = 23.0
-offset_right = 1026.0
-offset_bottom = -21.0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 989.0
+offset_bottom = -844.0
 
 [node name="ColorRect" type="TextureRect" parent="."]
 z_index = -5
@@ -133,49 +88,8 @@ cell_size = Vector2(82, 55)
 combat_manager = NodePath("../CombatManager")
 metadata/_custom_type_script = "uid://bsor0m08akrft"
 
-[node name="Unit" parent="MainGrid" node_paths=PackedStringArray("grid", "roster") instance=ExtResource("2_e2o6t")]
-modulate = Color(0.671618, 0.507209, 3.85046e-07, 1)
-position = Vector2(138, 143)
-unit_name = "Johann"
-unit = SubResource("Resource_e8heu")
-is_player_commander = true
-grid = NodePath("..")
-roster = NodePath("../../Roster")
-
-[node name="Unit2" parent="MainGrid" node_paths=PackedStringArray("grid", "roster") instance=ExtResource("2_e2o6t")]
-position = Vector2(563, 35)
-unit_name = "Jaqueline"
-unit = ExtResource("3_feb5d")
-is_player_unit = false
-grid = NodePath("..")
-roster = NodePath("../../Roster")
-
-[node name="Unit3" parent="MainGrid" node_paths=PackedStringArray("grid", "roster") instance=ExtResource("2_e2o6t")]
-position = Vector2(218, 235)
-unit_name = "Kevin"
-unit = ExtResource("3_feb5d")
-preferences = Array[ExtResource("5_mfdv2")]([SubResource("Resource_mfdv2")])
-grid = NodePath("..")
-roster = NodePath("../../Roster")
-
-[node name="Unit4" parent="MainGrid" node_paths=PackedStringArray("grid", "roster") instance=ExtResource("2_e2o6t")]
-position = Vector2(149, 311)
-unit_name = "Morg"
-unit = ExtResource("3_feb5d")
-tags = Array[String](["elf"])
-grid = NodePath("..")
-roster = NodePath("../../Roster")
-
-[node name="Unit5" parent="MainGrid" node_paths=PackedStringArray("grid", "roster") instance=ExtResource("2_e2o6t")]
-position = Vector2(732, 253)
-unit_name = "Helga"
-unit = ExtResource("3_feb5d")
-is_player_unit = false
-grid = NodePath("..")
-roster = NodePath("../../Roster")
-
-[node name="Unit6" parent="MainGrid" node_paths=PackedStringArray("grid", "roster") instance=ExtResource("9_7sc4i")]
-position = Vector2(245, 269)
+[node name="Unit" parent="MainGrid" node_paths=PackedStringArray("grid", "roster") instance=ExtResource("16_80cx4")]
+position = Vector2(89, 580)
 grid = NodePath("..")
 roster = NodePath("../../Roster")
 
@@ -187,13 +101,17 @@ offset_right = 230.0
 offset_bottom = 479.0
 text = "start combat"
 
-[node name="CombatManager" type="Node" parent="." node_paths=PackedStringArray("grid", "selected_circle", "unit_display", "dialogue_manager", "shop_panel")]
+[node name="CombatManager" type="Node" parent="." node_paths=PackedStringArray("grid", "selected_circle", "unit_display", "dialogue_manager", "shop_panel", "roster", "main_menu", "gold_label", "pacts_label")]
 script = ExtResource("4_fc0e3")
 grid = NodePath("../MainGrid")
 selected_circle = NodePath("../SelectedCircle")
-unit_display = NodePath("../UI/Panel/UnitDisplay")
+unit_display = NodePath("../UnitDisplay")
 dialogue_manager = NodePath("../DialogueManager")
 shop_panel = NodePath("../ShopPanel")
+roster = NodePath("../Roster")
+main_menu = NodePath("../MainMenu")
+gold_label = NodePath("../Control/HBoxContainer/RichTextLabel")
+pacts_label = NodePath("../Control/HBoxContainer/RichTextLabel2")
 metadata/_custom_type_script = "uid://b7g2367t5hxt7"
 
 [node name="SelectedCircle" type="AnimatedSprite2D" parent="."]
@@ -205,12 +123,6 @@ animation = &"rotation"
 autoplay = "rotation"
 offset = Vector2(0, -220)
 script = ExtResource("6_ryrav")
-
-[node name="Roster" type="Node2D" parent="."]
-position = Vector2(39, 703)
-script = ExtResource("1_80nbo")
-grid_size = Vector2i(5, 5)
-metadata/_custom_type_script = "uid://bsor0m08akrft"
 
 [node name="DialogueManager" type="Node" parent="."]
 script = ExtResource("8_j5wjh")
@@ -227,5 +139,97 @@ offset_right = 248.0
 offset_bottom = 387.0
 text = "go shomping"
 
+[node name="Roster" type="Node2D" parent="."]
+position = Vector2(-500, 639)
+script = ExtResource("1_80nbo")
+grid_size = Vector2i(5, 5)
+cell_size = Vector2(82, 55)
+metadata/_custom_type_script = "uid://bsor0m08akrft"
+
+[node name="Image" type="Sprite2D" parent="Roster"]
+z_index = -5
+position = Vector2(167, 73)
+texture = ExtResource("17_e8heu")
+
+[node name="MainMenu" type="RichTextLabel" parent="."]
+z_index = 100
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("18_rvswv")
+theme_override_font_sizes/normal_font_size = 240
+bbcode_enabled = true
+text = "[center]March of the Mistress"
+
+[node name="Button" type="Button" parent="MainMenu"]
+layout_mode = 0
+offset_left = 692.0
+offset_top = 502.0
+offset_right = 1366.0
+offset_bottom = 633.0
+text = "Lead your Minions"
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 1607.0
+offset_top = 35.0
+offset_right = 1896.0
+offset_bottom = 97.0
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -10.0
+offset_right = 297.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("19_boyg6")
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("20_e36ub")
+theme_override_font_sizes/normal_font_size = 80
+text = "3"
+
+[node name="TextureRect2" type="TextureRect" parent="Control/HBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("21_hb5m1")
+stretch_mode = 4
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("20_e36ub")
+theme_override_font_sizes/normal_font_size = 80
+text = "3"
+
 [connection signal="pressed" from="Button" to="CombatManager" method="play_combat"]
 [connection signal="pressed" from="Button2" to="ShopPanel" method="enter_shop"]
+[connection signal="pressed" from="MainMenu/Button" to="CombatManager" method="enter_game"]

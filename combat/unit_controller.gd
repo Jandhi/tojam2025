@@ -82,10 +82,7 @@ func force_reset_positions():
 	healthbar.position = base_healthbar_position
 
 func dropped():
-	if unit.is_female:
-		AudioManager.play("grunt", 0.2, 1.0, false, 0.4)
-	else:
-		AudioManager.play("grunt", 0.2, 1.0, false, -0.1)
+	
 
 	if pickup_tween != null:
 		pickup_tween.stop()
@@ -102,16 +99,23 @@ func dropped():
 	if not is_in_roster and grid.distance_to_commander(grid_pos) > grid.combat_manager.allowed_distance_from_leader:
 		too_far_from_commander.emit()
 
-	check_preferences()
+	var complains = check_preferences()
 
 	for neighbour in grid.get_neighbours(grid_pos):
 		if not grid.tiles.has(neighbour):
 			continue
 
 		grid.tiles[neighbour].check_preferences()
+	
+	if not complains:
+		if unit.is_female:
+			AudioManager.play("grunt", 0.2, 1.0, false, 0.4)
+		else:
+			AudioManager.play("grunt", 0.2, 1.0, false, -0.1)
 
-func check_preferences():
+func check_preferences() -> bool:
 	var preferences_list = []
+	var complains = false
 	
 	for preference in preferences:
 		preferences_list.append(preference)
@@ -127,6 +131,7 @@ func check_preferences():
 			morale_modifier -= 1
 
 			if complaint == "":
+				complains = true
 				complaint = preference.get_complaint()
 
 	if complaint != "" and talk_cooldown <= 0:
@@ -139,6 +144,8 @@ func check_preferences():
 	# Update morale on screen
 	if is_hovered:
 		hovered.emit()
+
+	return complains
 
 func set_unit(new_unit: Unit):
 	self.unit = new_unit
