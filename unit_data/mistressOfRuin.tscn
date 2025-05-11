@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bb0qcufwwvcii"]
+[gd_scene load_steps=22 format=3 uid="uid://c48jlc14stkh4"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_oxfdl"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_incal"]
@@ -11,7 +11,7 @@ unit_type = "Mistress of Ruin"
 name_origin = "italian_female"
 evil_last_name = false
 has_last_name = false
-tags = Array[String](["woman", "lilian", "witch"])
+tags = Array[String](["woman", "ruin", "witch", "mistress"])
 preferences = Array[ExtResource("2_incal")]([])
 is_female = true
 max_health = 60
@@ -161,7 +161,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Unit" instance=ExtResource("1_oxfdl")]
+[node name="Unit2" instance=ExtResource("1_oxfdl")]
 unit = SubResource("Resource_incal")
 is_player_commander = true
 

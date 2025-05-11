@@ -1,9 +1,16 @@
-[gd_scene load_steps=22 format=3 uid="uid://biiuttv0g1veu"]
+[gd_scene load_steps=24 format=3 uid="uid://biiuttv0g1veu"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_olpdp"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_0ugls"]
+[ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="3_0ugls"]
 [ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="3_kf68d"]
 [ext_resource type="Texture2D" uid="uid://cmjcq6tac37ja" path="res://textures/units/sellswordm.png" id="4_olpdp"]
+
+[sub_resource type="Resource" id="Resource_kf68d"]
+script = ExtResource("3_0ugls")
+tag = "smelly"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
 
 [sub_resource type="Resource" id="Resource_olpdp"]
 script = ExtResource("3_kf68d")
@@ -12,7 +19,7 @@ name_origin = "arab_male"
 evil_last_name = false
 has_last_name = false
 tags = Array[String](["man", "farisian"])
-preferences = Array[ExtResource("2_0ugls")]([])
+preferences = Array[ExtResource("2_0ugls")]([SubResource("Resource_kf68d")])
 is_female = false
 max_health = 20
 armour = 25.0

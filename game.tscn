@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://c1xsiv7lgwjs8" path="res://dialogue/dialogue_manager.gd" id="8_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://cl3g7x27e5sbe" path="res://dialogue/dialogue_popup.tscn" id="9_vef74"]
 [ext_resource type="PackedScene" uid="uid://b3xkk7i87uv02" path="res://ui/shop_panel.tscn" id="14_215e1"]
-[ext_resource type="PackedScene" uid="uid://bb0qcufwwvcii" path="res://unit_data/mistressOfRuin.tscn" id="16_80cx4"]
+[ext_resource type="PackedScene" uid="uid://c48jlc14stkh4" path="res://unit_data/mistressOfRuin.tscn" id="16_80cx4"]
 [ext_resource type="Texture2D" uid="uid://bkdvu0ituty8c" path="res://textures/roster.png" id="17_e8heu"]
 [ext_resource type="Theme" uid="uid://co5py1prs3hsj" path="res://ui/title_theme.tres" id="18_rvswv"]
 [ext_resource type="Texture2D" uid="uid://dt6ytjdtaj3r" path="res://textures/gold_icon.png" id="19_boyg6"]

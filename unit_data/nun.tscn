@@ -1,9 +1,16 @@
-[gd_scene load_steps=22 format=3 uid="uid://lwwarok0xaf7"]
+[gd_scene load_steps=24 format=3 uid="uid://lwwarok0xaf7"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_qdabd"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_7n3ur"]
+[ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="3_7n3ur"]
 [ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="3_gouo7"]
 [ext_resource type="Texture2D" uid="uid://b1kdxvboj6csb" path="res://textures/units/nun.png" id="4_qdabd"]
+
+[sub_resource type="Resource" id="Resource_7n3ur"]
+script = ExtResource("3_7n3ur")
+tag = "ruin"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
 
 [sub_resource type="Resource" id="Resource_qdabd"]
 script = ExtResource("3_gouo7")
@@ -12,7 +19,7 @@ name_origin = "italian_female"
 evil_last_name = false
 has_last_name = true
 tags = Array[String](["woman", "lilian", "witch"])
-preferences = Array[ExtResource("2_7n3ur")]([])
+preferences = Array[ExtResource("2_7n3ur")]([SubResource("Resource_7n3ur")])
 is_female = true
 max_health = 20
 armour = 0.0
