@@ -21,6 +21,8 @@ has_last_name = true
 tags = Array[String](["fae", "woman"])
 preferences = Array[ExtResource("2_sx2ns")]([SubResource("Resource_fth05")])
 is_female = true
+cost = 2
+cost_currency = 1
 max_health = 16
 armour = 0.0
 resist = 50.0
@@ -173,6 +175,4 @@ unit = SubResource("Resource_ecsul")
 
 [node name="Sprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_kcrl1")
-animation = &"idle"
-frame = 2
-frame_progress = 0.999204
+animation = &"run"

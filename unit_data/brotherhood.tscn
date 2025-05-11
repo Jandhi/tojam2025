@@ -20,13 +20,15 @@ metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
 
 [sub_resource type="Resource" id="Resource_6g1ra"]
 script = ExtResource("3_c1lrv")
-unit_type = "Brotherhood Warrior"
+unit_type = "Brotherhood"
 name_origin = "german_male"
-evil_last_name = false
+evil_last_name = true
 has_last_name = true
 tags = Array[String](["man", "heathen"])
 preferences = Array[ExtResource("2_0jptd")]([SubResource("Resource_c1lrv"), SubResource("Resource_0jptd")])
 is_female = false
+cost = 2
+cost_currency = 0
 max_health = 24
 armour = 0.0
 resist = 25.0
@@ -38,7 +40,7 @@ reach = 1
 ranged_damage = 7
 ranged_is_magic = false
 ranged_attack_cooldown = 5
-attack_range = 3
+attack_range = 0
 metadata/_custom_type_script = "uid://b5eww7paeebiu"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ef11t"]

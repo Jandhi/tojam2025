@@ -1,0 +1,185 @@
+[gd_scene load_steps=26 format=3 uid="uid://mdawv28w3rmh"]
+
+[ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_rltas"]
+[ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_ko4fy"]
+[ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="3_lfnjg"]
+[ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="4_vofqr"]
+[ext_resource type="Texture2D" uid="uid://cthv7ssjpn16" path="res://textures/units/selllswordF_arrowAndSword.png" id="5_ko4fy"]
+[ext_resource type="Texture2D" uid="uid://dm77l7sk57twb" path="res://textures/units/sellswordf.png" id="5_o2he2"]
+
+[sub_resource type="Resource" id="Resource_ifvro"]
+script = ExtResource("3_lfnjg")
+tag = "heretic"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
+
+[sub_resource type="Resource" id="Resource_fiynm"]
+script = ExtResource("3_lfnjg")
+tag = "smelly"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
+
+[sub_resource type="Resource" id="Resource_rltas"]
+script = ExtResource("4_vofqr")
+unit_type = "Battle Sister Archer"
+name_origin = "arab_female"
+evil_last_name = false
+has_last_name = false
+tags = Array[String](["woman", "farisian"])
+preferences = Array[ExtResource("2_ko4fy")]([SubResource("Resource_ifvro"), SubResource("Resource_fiynm")])
+is_female = true
+cost = 2
+cost_currency = 0
+max_health = 20
+armour = 25.0
+resist = 25.0
+movement_cooldown = 4
+melee_damage = 2
+melee_is_magic = false
+melee_attack_cooldown = 8
+reach = 0
+ranged_damage = 6
+ranged_is_magic = false
+ranged_attack_cooldown = 15
+attack_range = 10
+metadata/_custom_type_script = "uid://b5eww7paeebiu"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfnjg"]
+atlas = ExtResource("5_ko4fy")
+region = Rect2(7500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vofqr"]
+atlas = ExtResource("5_ko4fy")
+region = Rect2(1500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2he2"]
+atlas = ExtResource("5_ko4fy")
+region = Rect2(2000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifvro"]
+atlas = ExtResource("5_ko4fy")
+region = Rect2(2500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fiynm"]
+atlas = ExtResource("5_ko4fy")
+region = Rect2(3000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_folgh"]
+atlas = ExtResource("5_ko4fy")
+region = Rect2(3500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kiiw"]
+atlas = ExtResource("5_ko4fy")
+region = Rect2(4000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7r0dp"]
+atlas = ExtResource("5_ko4fy")
+region = Rect2(4500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swb8y"]
+atlas = ExtResource("5_o2he2")
+region = Rect2(3500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7c6cs"]
+atlas = ExtResource("5_o2he2")
+region = Rect2(4000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ee4mx"]
+atlas = ExtResource("5_o2he2")
+region = Rect2(4500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0mmr"]
+atlas = ExtResource("5_ko4fy")
+region = Rect2(10000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hn2cl"]
+atlas = ExtResource("5_ko4fy")
+region = Rect2(10500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsi6q"]
+atlas = ExtResource("5_ko4fy")
+region = Rect2(11000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1het7"]
+atlas = ExtResource("5_ko4fy")
+region = Rect2(11500, 0, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5nwen"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfnjg")
+}],
+"loop": true,
+"name": &"flinch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vofqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2he2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifvro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fiynm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_folgh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kiiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7r0dp")
+}],
+"loop": true,
+"name": &"melee",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swb8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7c6cs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ee4mx")
+}],
+"loop": true,
+"name": &"ranged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0mmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hn2cl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsi6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1het7")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Unit" instance=ExtResource("1_rltas")]
+unit = SubResource("Resource_rltas")
+
+[node name="Sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_5nwen")
+animation = &"run"

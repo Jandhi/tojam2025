@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_34bd2"]
 [ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="3_mfheo"]
 [ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="3_rh4hk"]
-[ext_resource type="Texture2D" path="res://textures/units/sellswordM_arowwAndSword.png" id="4_34bd2"]
+[ext_resource type="Texture2D" uid="uid://b5si8487d633v" path="res://textures/units/sellswordM_arowwAndSword.png" id="4_34bd2"]
 [ext_resource type="Texture2D" uid="uid://cmjcq6tac37ja" path="res://textures/units/sellswordm.png" id="4_rh4hk"]
 
 [sub_resource type="Resource" id="Resource_1tsbo"]
@@ -22,6 +22,8 @@ has_last_name = false
 tags = Array[String](["man", "farisian"])
 preferences = Array[ExtResource("2_34bd2")]([SubResource("Resource_1tsbo")])
 is_female = false
+cost = 2
+cost_currency = 0
 max_health = 16
 armour = 25.0
 resist = 25.0

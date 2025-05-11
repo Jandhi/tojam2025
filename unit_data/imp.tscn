@@ -1,0 +1,117 @@
+[gd_scene load_steps=12 format=3 uid="uid://dqt7ejuf3w7n2"]
+
+[ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_s43qh"]
+[ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_fveqv"]
+[ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="3_g4ctk"]
+[ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="4_c4mrb"]
+[ext_resource type="Texture2D" uid="uid://b7uowyjbg5jte" path="res://textures/units/imp.png" id="5_s43qh"]
+
+[sub_resource type="Resource" id="Resource_fkyha"]
+script = ExtResource("3_g4ctk")
+tag = "lilian"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
+
+[sub_resource type="Resource" id="Resource_68tsi"]
+script = ExtResource("3_g4ctk")
+tag = "mistress"
+wants_to_be_next_to = true
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
+
+[sub_resource type="Resource" id="Resource_278ku"]
+script = ExtResource("4_c4mrb")
+unit_type = "Imp"
+name_origin = "imp"
+evil_last_name = true
+has_last_name = true
+tags = Array[String](["man", "witch", "ruin"])
+preferences = Array[ExtResource("2_fveqv")]([SubResource("Resource_fkyha"), SubResource("Resource_68tsi")])
+is_female = false
+cost = 1
+cost_currency = 1
+max_health = 8
+armour = 0.0
+resist = 50.0
+movement_cooldown = 3
+melee_damage = 2
+melee_is_magic = false
+melee_attack_cooldown = 5
+reach = 0
+ranged_damage = 3
+ranged_is_magic = true
+ranged_attack_cooldown = 8
+attack_range = 4
+metadata/_custom_type_script = "uid://b5eww7paeebiu"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fveqv"]
+atlas = ExtResource("5_s43qh")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4ctk"]
+atlas = ExtResource("5_s43qh")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c4mrb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fveqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4ctk")
+}],
+"loop": true,
+"name": &"flinch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fveqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4ctk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fveqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4ctk")
+}],
+"loop": true,
+"name": &"melee",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fveqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4ctk")
+}],
+"loop": true,
+"name": &"ranged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fveqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4ctk")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Unit" instance=ExtResource("1_s43qh")]
+unit = SubResource("Resource_278ku")
+
+[node name="Sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_c4mrb")
+animation = &"melee"

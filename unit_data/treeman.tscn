@@ -1,0 +1,137 @@
+[gd_scene load_steps=18 format=3 uid="uid://bx4v4dw0fjq3d"]
+
+[ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_cso2g"]
+[ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_xn8fe"]
+[ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="3_5joib"]
+[ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="4_2wcbv"]
+[ext_resource type="Texture2D" uid="uid://cvamdileckgya" path="res://textures/units/treeman.png" id="5_cso2g"]
+
+[sub_resource type="Resource" id="Resource_psn84"]
+script = ExtResource("3_5joib")
+tag = "lilian"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
+
+[sub_resource type="Resource" id="Resource_xn8fe"]
+script = ExtResource("4_2wcbv")
+unit_type = "Treeman"
+name_origin = "tree"
+evil_last_name = false
+has_last_name = false
+tags = Array[String](["fae", "smelly"])
+preferences = Array[ExtResource("2_xn8fe")]([SubResource("Resource_psn84")])
+is_female = false
+cost = 4
+cost_currency = 1
+max_health = 32
+armour = 50.0
+resist = 25.0
+movement_cooldown = 12
+melee_damage = 16
+melee_is_magic = true
+melee_attack_cooldown = 35
+reach = 0
+ranged_damage = 0
+ranged_is_magic = false
+ranged_attack_cooldown = 0
+attack_range = 0
+metadata/_custom_type_script = "uid://b5eww7paeebiu"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5joib"]
+atlas = ExtResource("5_cso2g")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wcbv"]
+atlas = ExtResource("5_cso2g")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2rox"]
+atlas = ExtResource("5_cso2g")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7j3jh"]
+atlas = ExtResource("5_cso2g")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuj2o"]
+atlas = ExtResource("5_cso2g")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_171f8"]
+atlas = ExtResource("5_cso2g")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qk5vn"]
+atlas = ExtResource("5_cso2g")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5olhi"]
+atlas = ExtResource("5_cso2g")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8pxr"]
+atlas = ExtResource("5_cso2g")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kyliv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5joib")
+}],
+"loop": true,
+"name": &"flinch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wcbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2rox")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7j3jh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuj2o")
+}],
+"loop": true,
+"name": &"melee",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_171f8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qk5vn")
+}],
+"loop": true,
+"name": &"ranged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5olhi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8pxr")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Unit" instance=ExtResource("1_cso2g")]
+unit = SubResource("Resource_xn8fe")
+
+[node name="Sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_kyliv")
+animation = &"run"
+autoplay = ""
