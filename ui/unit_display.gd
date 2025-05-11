@@ -21,12 +21,17 @@ func set_unit(unit : UnitController):
 
 	unit_name.text = "[b]" + unit.unit_name
 	unit_type.text = "[i]" + unit.unit.unit_type
-	stats.text = "Health: " + str(unit.health) + "/" + str(unit.unit.max_health) + "\n"
+	stats.text = "Health: " + str(unit.health) + "/" + str(unit.unit.max_health) + ", "
+	stats.text += "Melee Damage: " + str(unit.unit.melee_damage) + ", "
+	if unit.unit.attack_range > 0:
+		stats.text += "Ranged Damage: " + str(unit.unit.ranged_damage) + " with range " + str(unit.unit.attack_range) + ", "
 	
 	if unit.unit.armour > 0:
-		stats.text += "Armour: " + str(unit.unit.armour) + "\n"
+		stats.text += "Armour: " + str(unit.unit.armour) + ", "
 	if unit.unit.resist > 0:
-		stats.text += "Resist: " + str(unit.unit.resist) + "\n"
+		stats.text += "Resist: " + str(unit.unit.resist) + ", "
+
+	stats.text += "Morale: " + str(unit.morale) + "/10" + "\n"
 
 	traits.text = ""
 
@@ -42,5 +47,3 @@ func set_unit(unit : UnitController):
 
 	for preference in unit.preferences:
 		traits.text += preference.get_description() + "\n"
-
-	traits.text += ("Morale: " + str(unit.morale) + "/10" + "\n")

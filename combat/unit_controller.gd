@@ -299,7 +299,7 @@ func tick():
 		animated_sprite.play("idle")
 		return
 
-	if enemy.grid_pos.distance_to(grid_pos) <= unit.reach and not enemy.just_moved:
+	if enemy.grid_pos.distance_to(grid_pos) <= max(1, unit.reach) and not enemy.just_moved:
 		melee_attack(enemy)
 		return
 
@@ -337,6 +337,8 @@ func move_to(new_grid_pos: Vector2i):
 	tween.tween_property(self, "position", grid.grid_to_world(grid_pos), CombatManager.TICK_LENGTH)
 
 func melee_attack(target: UnitController):
+	AudioManager.play("arrow")
+	print("melee")
 	animated_sprite.play("melee")
 	cooldown = unit.melee_attack_cooldown
 

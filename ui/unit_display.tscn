@@ -8,8 +8,8 @@
 [node name="UnitDisplay" type="TextureRect" node_paths=PackedStringArray("unit_name", "unit_type", "stats", "traits")]
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 440.0
-offset_bottom = -780.0
+offset_right = 986.0
+offset_bottom = -735.0
 grow_vertical = 2
 texture = ExtResource("1_t7fc8")
 script = ExtResource("1_5vian")
@@ -32,11 +32,11 @@ grow_vertical = 2
 size_flags_horizontal = 3
 
 [node name="Name" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 theme = ExtResource("3_5735e")
 bbcode_enabled = true
 text = "[b]Name"
-fit_content = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -47,9 +47,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme = ExtResource("4_h2aqj")
+theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
 text = "[i]Unit Type"
 
@@ -57,6 +58,7 @@ text = "[i]Unit Type"
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("4_h2aqj")
+theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
 text = "This is a test"
 
@@ -69,5 +71,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("4_h2aqj")
+theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
 text = "These are our traits"

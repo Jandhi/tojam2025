@@ -99,7 +99,7 @@ func enter_game():
 	show_roster()
 	main_menu.queue_free()
 
-	var popup = PopupUI.show_popup(get_tree().root, "[center]Welcome to the game!\nYou can move your units around the grid. Units want to be within 2 tiles of the mistress to start! This range will increase every 3 battles.\n Let's start with some shopping. I'll give you 3 gold and 3 pacts to start.", "I understand")
+	var popup = PopupUI.show_popup(get_tree().root, "[center]Welcome to the game!\nYou can move your units around the grid. Units want to be within 2 tiles of the mistress to start! This range will increase every 3 battles.\n\n Let's start with some shopping. I'll give you 3 gold and 2 pacts to start.", "I understand")
 	popup.popup_closed.connect(func():
 		AudioManager.play("loot")
 		shop_panel.enter_shop()
@@ -107,7 +107,7 @@ func enter_game():
 		set_gold(3)
 		set_pacts(2)
 
-		var inner_popup = PopupUI.show_popup(get_tree().root, "[center]Units will cost Gold or Pacts. Units have preferences they want to abide by, else they lose morale and fight less effectively. Good luck!", "I understand")
+		var inner_popup = PopupUI.show_popup(get_tree().root, "[center]Units will cost Gold or Pacts.\n\nUnits have preferences they want to abide by, else they lose morale and fight less effectively. Good luck!", "I understand")
 		inner_popup.popup_closed.connect(func():
 			pass
 		)
