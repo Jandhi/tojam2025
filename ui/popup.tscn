@@ -1,25 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://do3yutgscf43d"]
+[gd_scene load_steps=5 format=3 uid="uid://do3yutgscf43d"]
 
 [ext_resource type="Script" uid="uid://b18vt14o2sp2w" path="res://ui/popup.gd" id="1_07doy"]
 [ext_resource type="Texture2D" uid="uid://oh6x871mwobv" path="res://textures/general_popup.png" id="1_vl531"]
 [ext_resource type="Theme" uid="uid://bwwn0jlif1hgw" path="res://ui/body_theme.tres" id="2_cvmww"]
-[ext_resource type="FontFile" uid="uid://c5euy1idyacph" path="res://fonts/UnifrakturMaguntia-Regular.ttf" id="3_xs31l"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xs31l"]
-bg_color = Color(0.999987, 0.133255, 0.40911, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_07doy"]
-bg_color = Color(0.843137, 0, 0.32549, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s0int"]
-bg_color = Color(0.527829, 0, 0.19191, 1)
-
-[sub_resource type="Theme" id="Theme_s0int"]
-default_font = ExtResource("3_xs31l")
-Button/font_sizes/font_size = 24
-Button/styles/hover = SubResource("StyleBoxFlat_xs31l")
-Button/styles/normal = SubResource("StyleBoxFlat_07doy")
-Button/styles/pressed = SubResource("StyleBoxFlat_s0int")
+[ext_resource type="Theme" uid="uid://1n7j8gxwmskn" path="res://ui/button_theme.tres" id="4_07doy"]
 
 [node name="Popup" type="Control" node_paths=PackedStringArray("text", "close_button")]
 z_index = 100
@@ -64,7 +48,7 @@ offset_left = 212.0
 offset_top = 291.0
 offset_right = 472.0
 offset_bottom = 370.0
-theme = SubResource("Theme_s0int")
+theme = ExtResource("4_07doy")
 text = "This is the button text"
 
 [connection signal="pressed" from="TextureRect/Button" to="." method="_on_button_pressed"]

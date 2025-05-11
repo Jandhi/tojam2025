@@ -163,7 +163,8 @@ grow_vertical = 2
 theme = ExtResource("18_rvswv")
 theme_override_font_sizes/normal_font_size = 240
 bbcode_enabled = true
-text = "[center]March of the Mistress"
+text = "[center]Dreadful
+Company"
 
 [node name="Button" type="Button" parent="MainMenu"]
 layout_mode = 0

@@ -14,4 +14,5 @@ func fly_to(damage : int, is_magic : bool, target:  UnitController) -> void:
 	await tween.finished
 
 	target.take_damage(damage, is_magic)
+	AudioManager.play("arrow", 0.1, 1.0)
 	queue_free()

@@ -36,11 +36,23 @@ func load_audio():
 
 		"buy" : load("res://audio/Cash register 2.wav"),
 		"loot" : load("res://audio/Cash register 3.wav"),
+
+        "arrow1" : load("res://audio/arrows/Arrow Impact flesh (human) 1.wav"),
+        "arrow2" : load("res://audio/arrows/Arrow Impact flesh (human) 2.wav"),
+        "arrow3" : load("res://audio/arrows/Arrow Impact flesh (human) 3.wav"),
+        "arrow4" : load("res://audio/arrows/Arrow Impact flesh (human) 4.wav"),
+        "arrow5" : load("res://audio/arrows/Arrow Impact flesh (human) 5.wav"),
+        "arrow6" : load("res://audio/arrows/Arrow Impact flesh (human) 6.wav"),
+        "arrow7" : load("res://audio/arrows/Arrow Impact flesh (human) 7.wav"),
+        "arrow8" : load("res://audio/arrows/Arrow Impact flesh (human) 8.wav"),
+        "arrow9" : load("res://audio/arrows/Arrow Impact flesh (human) 9.wav"),
+        "arrow10" : load("res://audio/arrows/Arrow Impact flesh (human) 10.wav"),
 	}
 
 	multi_sounds = {
 		"grunt" : ["grunt1", "grunt2", "grunt3", "grunt4", "grunt5"],
 		"mumble" : ["mumble1", "mumble2", "mumble3", "mumble4", "mumble5"],
+        "arrow" : ["arrow1", "arrow2", "arrow3", "arrow4", "arrow5", "arrow6", "arrow7", "arrow8", "arrow9", "arrow10"],
 	}
 
 	group_by_sound = {

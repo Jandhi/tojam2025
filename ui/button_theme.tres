@@ -1,0 +1,19 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://1n7j8gxwmskn"]
+
+[ext_resource type="FontFile" uid="uid://c5euy1idyacph" path="res://fonts/UnifrakturMaguntia-Regular.ttf" id="1_0b7qo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xs31l"]
+bg_color = Color(0.999987, 0.133255, 0.40911, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_07doy"]
+bg_color = Color(0.843137, 0, 0.32549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s0int"]
+bg_color = Color(0.527829, 0, 0.19191, 1)
+
+[resource]
+default_font = ExtResource("1_0b7qo")
+Button/font_sizes/font_size = 24
+Button/styles/hover = SubResource("StyleBoxFlat_xs31l")
+Button/styles/normal = SubResource("StyleBoxFlat_07doy")
+Button/styles/pressed = SubResource("StyleBoxFlat_s0int")
