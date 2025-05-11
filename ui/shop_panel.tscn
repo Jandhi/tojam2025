@@ -5,9 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://c5dy4ebqkmkj4" path="res://ui/unit_sale.tscn" id="3_8cue6"]
 [ext_resource type="Theme" uid="uid://1n7j8gxwmskn" path="res://ui/button_theme.tres" id="3_jgj1k"]
 
-[node name="ShopPanel" type="Sprite2D"]
+[node name="ShopPanel" type="Sprite2D" node_paths=PackedStringArray("unit_sales")]
 texture = ExtResource("1_nn7w2")
 script = ExtResource("2_m7ocl")
+unit_sales = [NodePath("Control/Control2"), NodePath("Control/Control3"), NodePath("Control/Control4")]
 
 [node name="Control" type="HBoxContainer" parent="."]
 anchors_preset = 15
@@ -15,7 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -269.0
 offset_top = 159.0
-offset_right = -497.0
+offset_right = -379.0
 offset_bottom = -637.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -23,10 +24,18 @@ grow_vertical = 2
 [node name="Control2" parent="Control" instance=ExtResource("3_8cue6")]
 layout_mode = 2
 
+[node name="Control3" parent="Control" instance=ExtResource("3_8cue6")]
+layout_mode = 2
+
+[node name="Control4" parent="Control" instance=ExtResource("3_8cue6")]
+layout_mode = 2
+
 [node name="Button" type="Button" parent="."]
-offset_left = -102.0
-offset_top = 465.0
-offset_right = 103.0
-offset_bottom = 525.0
+offset_left = -46.0
+offset_top = 463.0
+offset_right = 105.0
+offset_bottom = 523.0
 theme = ExtResource("3_jgj1k")
 text = "Exit Shoppe"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

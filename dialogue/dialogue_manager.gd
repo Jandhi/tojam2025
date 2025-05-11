@@ -46,6 +46,13 @@ var cant_place_on_right_side_dialogues = [
 	"That's not my side of the battlefield!",
 ]
 
+var cannot_afford_dialogue = [
+	"I can't afford that!",
+	"It's too expensive!",
+	"In this economy!?",
+	"That's too much!",
+]
+
 func _ready() -> void:
 	instance = self
 	
@@ -73,6 +80,9 @@ func bored(unit) -> void:
 
 func minions_are_too_far_from_commander(unit) -> void:
 	show_dialogue(units_are_too_far_from_commander_dialogues.pick_random(), unit, true)
+
+func cannot_afford(unit) -> void:
+	show_dialogue(cannot_afford_dialogue.pick_random(), unit)
 
 func too_far_from_commander(unit) -> void:
 	show_dialogue(too_far_from_commander_dialogues.pick_random(), unit)

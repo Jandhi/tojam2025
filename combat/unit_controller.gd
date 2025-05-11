@@ -60,12 +60,13 @@ func _ready():
 		unhovered.emit()
 	)
 
-	grid_pos = grid.world_to_grid(self.position)
-	original_grid_position = grid_pos
-	grid.tiles[grid_pos] = self
-	grid.units.append(self)
-	position = grid.grid_to_world(grid_pos)
-	z_index = grid_pos.y
+	if grid != null:
+		grid_pos = grid.world_to_grid(self.position)
+		original_grid_position = grid_pos
+		grid.tiles[grid_pos] = self
+		grid.units.append(self)
+		position = grid.grid_to_world(grid_pos)
+		z_index = grid_pos.y
 
 	set_unit(unit)
 
@@ -371,9 +372,11 @@ func ranged_attack(target: UnitController):
 
 func take_damage(amount : int, is_magic : bool):
 	if is_magic:
-		amount = int(amount * (1 - unit.resist))
+		amount = int(amount * (1 - unit.resist / 100.0))
 	else:
-		amount = int(amount * (1 - unit.armour))
+		amount = int(amount * (1 - unit.armour / 100.0))
+
+	print("Taking damage: ", amount)
 
 	health -= amount
 	health = clamp(health, 0, unit.max_health)

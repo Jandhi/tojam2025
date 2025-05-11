@@ -22,7 +22,7 @@ var combat_is_playing : bool = false
 
 var allowed_distance_from_leader : int = 2
 
-const TICK_LENGTH = 0.5
+const TICK_LENGTH = 0.1
 
 func _ready() -> void:
 	set_gold(0)
@@ -39,6 +39,45 @@ func _ready() -> void:
 		var unit = player_units.pick_random()
 		dialogue_manager.bored(unit)
 	)
+
+func spawn_enemies():
+	for i in range(battle_number + 1):
+		var unit = UnitManager.spawn_unit()
+		grid.add_child(unit)
+		add_unit_to_enemy(unit)
+
+func add_unit_to_enemy(unit : UnitController):
+	enemy_units.append(unit)
+	all_units.append(unit)
+	unit.grid = grid
+	unit.is_player_unit = false
+	unit.roster = roster
+	unit.is_in_roster = false
+	unit.is_in_store = false
+	unit.is_moveable = false
+	unit.reparent(grid)
+	unit.teleport(grid.get_random_enemy_tile())
+
+	grid.tiles[unit.grid_pos] = unit
+	grid.units.append(unit)
+
+func add_unit_to_player(unit : UnitController):
+	player_units.append(unit)
+	all_units.append(unit)
+	unit.grid = grid
+	unit.roster = roster
+	unit.is_in_roster = false
+	unit.is_in_store = false
+	unit.is_moveable = true
+	unit.reparent(grid)
+	unit.teleport(grid.get_random_player_tile())
+	unit.original_grid_position = unit.grid_pos
+
+	grid.tiles[unit.grid_pos] = unit
+	grid.units.append(unit)
+
+func cannot_afford():
+	dialogue_manager.cannot_afford(player_leader)
 
 func set_gold(amount: int):
 	gold = amount
@@ -101,6 +140,7 @@ func play_combat():
 		DialogueManager.instance.minions_are_too_far_from_commander(player_leader)
 		return
 
+	spawn_enemies()
 	shop_panel.exit_shop()
 	hide_roster()
 	AudioManager.play("battle_theme", 0.0, 1.0)
@@ -171,6 +211,7 @@ func finished_battle():
 	AudioManager.play("shop_theme")
 	shop_panel.enter_shop()
 	show_roster()
+	battle_number += 1
 
 
 func setup_units():

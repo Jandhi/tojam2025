@@ -27,8 +27,6 @@ var units = [
 func spawn_unit() -> UnitController:
 	var unit_scene = units[randi() % units.size()]
 	var unit = unit_scene.instantiate()
-	unit.name = unit_scene.name
-	unit.is_player_unit = true
 	unit.grid_pos = Vector2i(0, 0)
 	unit.set_process(true)
 	unit.set_process_input(true)

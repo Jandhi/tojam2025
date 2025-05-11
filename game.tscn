@@ -93,14 +93,6 @@ position = Vector2(89, 580)
 grid = NodePath("..")
 roster = NodePath("../../Roster")
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 424.0
-offset_right = 230.0
-offset_bottom = 479.0
-text = "start combat"
-
 [node name="CombatManager" type="Node" parent="." node_paths=PackedStringArray("grid", "selected_circle", "unit_display", "dialogue_manager", "shop_panel", "roster", "main_menu", "gold_label", "pacts_label")]
 script = ExtResource("4_fc0e3")
 grid = NodePath("../MainGrid")
@@ -128,16 +120,9 @@ script = ExtResource("6_ryrav")
 script = ExtResource("8_j5wjh")
 dialogue_popup = ExtResource("9_vef74")
 
-[node name="ShopPanel" parent="." instance=ExtResource("14_215e1")]
+[node name="ShopPanel" parent="." node_paths=PackedStringArray("combat_manager") instance=ExtResource("14_215e1")]
 position = Vector2(1555, 540)
-
-[node name="Button2" type="Button" parent="."]
-layout_mode = 0
-offset_left = 82.0
-offset_top = 332.0
-offset_right = 248.0
-offset_bottom = 387.0
-text = "go shomping"
+combat_manager = NodePath("../CombatManager")
 
 [node name="Roster" type="Node2D" parent="."]
 position = Vector2(-500, 639)
@@ -231,6 +216,4 @@ theme = ExtResource("20_e36ub")
 theme_override_font_sizes/normal_font_size = 80
 text = "3"
 
-[connection signal="pressed" from="Button" to="CombatManager" method="play_combat"]
-[connection signal="pressed" from="Button2" to="ShopPanel" method="enter_shop"]
 [connection signal="pressed" from="MainMenu/Button" to="CombatManager" method="enter_game"]

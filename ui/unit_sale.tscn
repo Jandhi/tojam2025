@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dt6ytjdtaj3r" path="res://textures/gold_icon.png" id="2_pp7xs"]
 [ext_resource type="Theme" uid="uid://1n7j8gxwmskn" path="res://ui/button_theme.tres" id="3_1cnco"]
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" node_paths=PackedStringArray("unit_anchor", "cost", "currency_display", "unit_name")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,20 +14,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("1_byebf")
-
-[node name="Unit Host" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
+unit_anchor = NodePath("Unit Host")
+cost = NodePath("Control2/Control/RichTextLabel")
+currency_display = NodePath("Control2/Control/TextureRect")
+unit_name = NodePath("RichTextLabel")
 
 [node name="Control2" type="Control" parent="."]
 layout_mode = 1
@@ -81,3 +71,30 @@ offset_right = 83.0
 offset_bottom = 30.0
 theme = ExtResource("3_1cnco")
 text = "Purchase"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme = ExtResource("1_r4h3a")
+bbcode_enabled = true
+text = "Test"
+fit_content = true
+
+[node name="Unit Host" type="Control" parent="."]
+z_index = 10
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="Control2/Button" to="." method="_on_button_pressed"]

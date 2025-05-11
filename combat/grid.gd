@@ -14,6 +14,17 @@ func add_units():
 			combat_manager.enemy_units.append(unit)
 		combat_manager.all_units.append(unit)
 
+func get_random_enemy_tile() -> Vector2i:
+	var grid_pos = Vector2i(randi() % grid_size.x / 2 + grid_size.x / 2, randi() % grid_size.y)
+	while tiles.has(grid_pos):
+		grid_pos = Vector2i(randi() % grid_size.x / 2 + grid_size.x / 2, randi() % grid_size.y)
+	return grid_pos
+
+func get_random_player_tile() -> Vector2i:
+	var grid_pos = Vector2i(randi() % (grid_size.x / 2), randi() % grid_size.y)
+	while tiles.has(grid_pos):
+		grid_pos = Vector2i(randi() % (grid_size.x / 2), randi() % grid_size.y)
+	return grid_pos
 
 func grid_to_world(grid_pos: Vector2i) -> Vector2:
 	return Vector2(grid_pos.x * cell_size.x, grid_pos.y * cell_size.y)
