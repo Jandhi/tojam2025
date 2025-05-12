@@ -197,6 +197,8 @@ func play_combat():
 func finished_battle():
 	for unit in player_units:
 		unit.heal(unit.unit.max_health)
+		unit.visible = true
+		unit.modulate = Color(1, 1, 1, 1)
 
 		if not unit.is_in_roster:
 			var grid_pos = unit.original_grid_position
