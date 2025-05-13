@@ -45,13 +45,13 @@ func set_unit(unit : UnitController):
 
 	var morale_descriptor = ""
 
-	match unit.morale:
+	match unit.morale + unit.morale_modifier:
 		0:
-			morale_descriptor = "[shaking]Fuming[/shaking] (will desert at end of battle)"
+			morale_descriptor = "[shake]Fuming[/shake] (will desert at end of battle)"
 		1:
 			morale_descriptor = "Angry"
 		2:
-			morale_descriptor = "Fine"
+			morale_descriptor = "Happy"
 
 	morale.text = color_text_pink(bold_text("Morale:")) + " " + morale_descriptor 
 

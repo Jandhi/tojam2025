@@ -95,15 +95,13 @@ func show_dialogue(text : String, unit, forced : bool = false) -> void:
 		return
 
 	unit.talk_cooldown += 5.0
-	var position = unit.global_position
-
 	time_since_last_popup = 0.0
-	position += Vector2(0, -100) # vertical offset
 
 	var current_dialogue = dialogue_popup.instantiate() as DialoguePopup
-	add_child(current_dialogue)
+	unit.healthbar.add_child(current_dialogue)
 	current_dialogue.set_text(text)
-	current_dialogue.position = position
+	current_dialogue.global_position = unit.healthbar.global_position + Vector2(30, -20)
+	var position = current_dialogue.position
 
 	var tween = get_tree().create_tween().set_parallel()
 	# fade in
