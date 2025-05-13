@@ -22,7 +22,7 @@ var combat_is_playing : bool = false
 
 var allowed_distance_from_leader : int = 2
 
-const TICK_LENGTH = 0.1
+const TICK_LENGTH = 0.2
 
 func _ready() -> void:
 	set_gold(0)
@@ -244,6 +244,9 @@ func setup_unit(unit: UnitController):
 		player_leader = unit
 
 func hover_unit(unit: UnitController):
+	if not is_instance_valid(unit):
+		return
+
 	selected_circle.reparent(unit)
 	selected_circle.global_position = unit.global_position
 	selected_circle.visible = true
@@ -253,7 +256,10 @@ func hover_unit(unit: UnitController):
 		if other == unit:
 			continue
 		
-		other.is_hovered = false
+		if other.is_hovered and not other.is_clicked:
+			other.is_hovered = false
+			other.dropped()
+		
 
 
 func unhover_unit(_unit: UnitController):

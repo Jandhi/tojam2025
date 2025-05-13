@@ -195,7 +195,7 @@ var evil_last_name_prefox : Array[String] = [
 	"Vile",
 	"Evil",
 	"Ebony",
-	"Doom,"
+	"Doom"
 ]
 
 var evil_last_name_suffix : Array[String] = [

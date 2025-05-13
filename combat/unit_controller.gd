@@ -36,9 +36,8 @@ var is_in_store : bool = false
 var was_dragged : bool = false
 var movement_tween : Tween = null
 var pickup_tween : Tween = null
+var morale : int = 2
 var morale_modifier : int = 0
-var morale : int = 10
-var level : int = 1
 var base_animated_sprite_position : Vector2 = Vector2(0, 0)
 var base_healthbar_position : Vector2 = Vector2(0, 0)
 var original_grid_position : Vector2i = Vector2i(0, 0)
@@ -83,8 +82,6 @@ func force_reset_positions():
 	healthbar.position = base_healthbar_position
 
 func dropped():
-	
-
 	if pickup_tween != null:
 		pickup_tween.stop()
 	pickup_tween = get_tree().create_tween().set_parallel()
@@ -115,6 +112,9 @@ func dropped():
 			AudioManager.play("grunt", 0.2, 1.0, false, -0.1)
 
 func check_preferences() -> bool:
+	if self.is_in_roster:
+		return false
+
 	var preferences_list = []
 	var complains = false
 	
@@ -129,7 +129,7 @@ func check_preferences() -> bool:
 
 	for preference in preferences_list:
 		if not preference.evaluate_fulfilled(self, grid, grid.combat_manager):
-			morale_modifier -= 1
+			morale_modifier = -1
 
 			if complaint == "":
 				complains = true
@@ -177,11 +177,11 @@ func _input(event: InputEvent) -> void:
 				.set_trans(Tween.TRANS_QUAD)\
 				.set_ease(Tween.EASE_OUT)
 
-		if event.is_released():
-			is_clicked = false
-
+		if event.is_released() and is_clicked:
 			if is_hovered:
 				dropped()
+			
+			is_clicked = false
 	
 	if event is InputEventMouseMotion and is_clicked:
 		var new_location = grid.world_to_grid(event.position - grid.position + Vector2(30, 50))
@@ -203,7 +203,6 @@ func _input(event: InputEvent) -> void:
 			if movement_tween != null:
 				movement_tween.stop()
 
-
 			if is_in_roster:
 				roster.tiles.erase(grid_pos)
 				grid_pos = new_location
@@ -215,6 +214,7 @@ func _input(event: InputEvent) -> void:
 				was_dragged = true
 			else:
 				var old_location = grid_pos
+				morale_modifier = 1
 				grid.tiles.erase(grid_pos)
 				grid_pos = new_location
 				original_grid_position = grid_pos

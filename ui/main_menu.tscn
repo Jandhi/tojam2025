@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://752o4rpi161n"]
+
+[ext_resource type="Theme" uid="uid://co5py1prs3hsj" path="res://ui/title_theme.tres" id="1_t7e0r"]
+[ext_resource type="Script" uid="uid://bbwnxjfj0lkby" path="res://ui/main_menu.gd" id="2_0dkrt"]
+
+[node name="MainMenu" type="VBoxContainer"]
+z_index = 100
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_t7e0r")
+script = ExtResource("2_0dkrt")
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.8
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 280
+bbcode_enabled = true
+text = "[center]Dreadful Company"
+fit_content = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -401.5
+offset_right = 401.5
+offset_bottom = 76.0
+grow_horizontal = 2
+text = "Lead your Minions"
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

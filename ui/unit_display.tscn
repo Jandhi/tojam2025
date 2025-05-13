@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dj81viqtup7xf"]
+[gd_scene load_steps=7 format=3 uid="uid://dj81viqtup7xf"]
 
 [ext_resource type="Script" uid="uid://c2pjdjxfuwp4j" path="res://ui/unit_display.gd" id="1_5vian"]
 [ext_resource type="Texture2D" uid="uid://crxk3ae7bax3g" path="res://textures/unit_info_panel.png" id="1_t7fc8"]
 [ext_resource type="Theme" uid="uid://co5py1prs3hsj" path="res://ui/title_theme.tres" id="3_5735e"]
 [ext_resource type="Theme" uid="uid://bwwn0jlif1hgw" path="res://ui/body_theme.tres" id="4_h2aqj"]
+[ext_resource type="Script" uid="uid://posdeqfhvmxm" path="res://ui/scale_down_text_to_fit.gd" id="4_t7fc8"]
+[ext_resource type="Script" uid="uid://c6xcnxb3oxyqj" path="res://ui/matrix_effect.gd" id="6_2elju"]
 
-[node name="UnitDisplay" type="TextureRect" node_paths=PackedStringArray("unit_name", "unit_type", "stats", "traits")]
+[node name="UnitDisplay" type="TextureRect" node_paths=PackedStringArray("unit_name", "unit_type", "stats", "traits", "morale")]
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 986.0
@@ -13,10 +15,11 @@ offset_bottom = -735.0
 grow_vertical = 2
 texture = ExtResource("1_t7fc8")
 script = ExtResource("1_5vian")
-unit_name = NodePath("VBoxContainer/Name")
-unit_type = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/RichTextLabel")
-stats = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/RichTextLabel2")
-traits = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/RichTextLabel")
+unit_name = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/Name")
+unit_type = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/UnitTypeLabel")
+stats = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/StatsLabel")
+traits = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/TraitLabel")
+morale = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/MoraleLabel")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -31,13 +34,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 
-[node name="Name" type="RichTextLabel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 55)
-layout_mode = 2
-theme = ExtResource("3_5735e")
-bbcode_enabled = true
-text = "[b]Name"
-
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -46,15 +42,24 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Name" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 55)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_5735e")
+bbcode_enabled = true
+text = "[b]Name"
+scroll_active = false
+script = ExtResource("4_t7fc8")
+
+[node name="UnitTypeLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme = ExtResource("4_h2aqj")
-theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
 text = "[i]Unit Type"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="StatsLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("4_h2aqj")
@@ -66,7 +71,15 @@ text = "This is a test"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="MoraleLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("4_h2aqj")
+bbcode_enabled = true
+text = "test"
+fit_content = true
+custom_effects = [ExtResource("6_2elju")]
+
+[node name="TraitLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

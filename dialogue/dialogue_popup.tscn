@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cl3g7x27e5sbe"]
+[gd_scene load_steps=5 format=3 uid="uid://cl3g7x27e5sbe"]
 
 [ext_resource type="Script" uid="uid://dgntbtdwyd5gy" path="res://dialogue/dialogue_popup.gd" id="1_ecb0l"]
 [ext_resource type="Texture2D" uid="uid://bi7s8wmf745pe" path="res://textures/dialogue.png" id="2_1amx0"]
 [ext_resource type="Theme" uid="uid://b2yaipa16p558" path="res://dialogue/dialogue_theme.tres" id="2_ln0an"]
+[ext_resource type="Script" uid="uid://posdeqfhvmxm" path="res://ui/scale_down_text_to_fit.gd" id="4_exhok"]
 
 [node name="DialoguePopup" type="Control" node_paths=PackedStringArray("text")]
 self_modulate = Color(0.748312, 0.429674, 0.575438, 1)
@@ -48,12 +49,14 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(450, 40)
 layout_mode = 2
+size_flags_horizontal = 4
 theme = ExtResource("2_ln0an")
 bbcode_enabled = true
 text = "[center]I am afraid of [shake]Ghosts[/shake]"
-fit_content = true
 autowrap_mode = 0
+script = ExtResource("4_exhok")
 
 [node name="Control2" type="Control" parent="ColorRect/VBoxContainer"]
 layout_mode = 2

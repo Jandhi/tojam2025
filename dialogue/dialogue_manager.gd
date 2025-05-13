@@ -72,11 +72,11 @@ func bored(unit) -> void:
 	if tag in random_dialogue_by_tag:
 		var dialogue = random_dialogue_by_tag[tag].pick_random()
 		show_dialogue(dialogue, unit)
-
-	if unit.unit.is_female:
-		AudioManager.play("mumble", 0.2, 1.0, false, 0.4)
-	else:
-		AudioManager.play("mumble", 0.2, 1.0, false, -0.1)
+		
+		if unit.unit.is_female:
+			AudioManager.play("mumble", 0.2, 1.0, false, 0.4)
+		else:
+			AudioManager.play("mumble", 0.2, 1.0, false, -0.1)
 
 func minions_are_too_far_from_commander(unit) -> void:
 	show_dialogue(units_are_too_far_from_commander_dialogues.pick_random(), unit, true)
