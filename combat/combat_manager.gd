@@ -143,9 +143,9 @@ func play_combat():
 		DialogueManager.instance.minions_are_too_far_from_commander(player_leader)
 		return
 
+	await shop_panel.exit_shop()
 	grid.hide_placeable_tiles()
 	spawn_enemies()
-	shop_panel.exit_shop()
 	hide_roster()
 	AudioManager.play("battle_theme", 0.0, 1.0)
 	
@@ -264,7 +264,6 @@ func setup_unit(unit: UnitController):
 		player_leader = unit
 
 func hover_unit(unit: UnitController):
-	print(unit.unit_name + " hovered")
 	if not is_instance_valid(unit):
 		return
 
