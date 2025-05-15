@@ -112,6 +112,9 @@ func dropped():
 		else:
 			AudioManager.play("grunt", 0.2, 1.0, false, -0.1)
 
+	if is_player_commander:
+		grid.set_placeable_tiles()
+
 func check_preferences() -> bool:
 	if self.is_in_roster:
 		return false

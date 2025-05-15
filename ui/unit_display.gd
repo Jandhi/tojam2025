@@ -49,7 +49,7 @@ func set_unit(unit : UnitController):
 
 	var morale_descriptor = ""
 
-	match unit.morale + unit.morale_modifier:
+	match clamp(unit.morale + unit.morale_modifier, 0, 2):
 		0:
 			morale_descriptor = "[shake]Fuming[/shake] (will desert at end of battle)"
 			mood_indicator.texture = preload("res://textures/icons/angry.png")

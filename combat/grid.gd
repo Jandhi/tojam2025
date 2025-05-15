@@ -2,6 +2,8 @@ class_name Grid extends Node2D
 
 var units : Array[UnitController] = []
 var tiles : Dictionary[Vector2i, UnitController] = {}
+var placeable_tile_prefab : PackedScene = preload("res://ui/placeable_tile.tscn")
+var placeable_tiles : Array = []
 @export var grid_size : Vector2i = Vector2i(10, 10)
 @export var cell_size : Vector2 = Vector2(64, 64)
 @export var combat_manager : CombatManager
@@ -94,3 +96,24 @@ func get_first_empty_tile_on_left_side() -> Vector2i:
 			if not tiles.has(grid_pos):
 				return grid_pos
 	return Vector2i(-1, -1) # return an invalid position if no empty tile is found
+
+func set_placeable_tiles():
+	for tile in placeable_tiles:
+		tile.queue_free()
+	placeable_tiles.clear()
+
+	for x in range(grid_size.x):
+		for y in range(grid_size.y):
+			var grid_pos = Vector2i(x, y)
+			
+			if distance_to_commander(grid_pos) <= combat_manager.allowed_distance_from_leader:
+				var placeable_tile = placeable_tile_prefab.instantiate()
+				placeable_tile.size = cell_size
+				placeable_tile.global_position = grid_to_world(grid_pos) - Vector2(cell_size.x / 2, cell_size.y / 2)
+				placeable_tiles.append(placeable_tile)
+				add_child(placeable_tile)
+
+func hide_placeable_tiles():
+	for tile in placeable_tiles:
+		tile.queue_free()
+	placeable_tiles.clear()
