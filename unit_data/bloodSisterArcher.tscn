@@ -26,16 +26,16 @@ cost = 2
 cost_currency = 1
 max_health = 16
 armour = 0.0
-resist = 50.0
-movement_cooldown = 3
-melee_damage = 3
+resist = 75.0
+movement_cooldown = 2
+melee_damage = 4
 melee_is_magic = false
-melee_attack_cooldown = 5
+melee_attack_cooldown = 6
 reach = 0
-ranged_damage = 5
+ranged_damage = 7
 ranged_is_magic = false
-ranged_attack_cooldown = 15
-attack_range = 7
+ranged_attack_cooldown = 5
+attack_range = 6
 metadata/_custom_type_script = "uid://b5eww7paeebiu"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7q5bb"]

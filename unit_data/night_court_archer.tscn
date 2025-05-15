@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b7k708ng3cnho"]
+[gd_scene load_steps=22 format=3 uid="uid://d3bwdc31wvth6"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_7yb5w"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_ack5v"]
@@ -163,7 +163,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Unit" instance=ExtResource("1_7yb5w")]
+[node name="Unit2" instance=ExtResource("1_7yb5w")]
 unit = SubResource("Resource_tyrac")
 
 [node name="Sprite" parent="." index="0"]
