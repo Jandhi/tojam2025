@@ -469,3 +469,6 @@ func leave(combat_manager: CombatManager):
 	tween.tween_property(self, "position", self.position + Vector2(0, -100), 0.1)
 	await tween.finished
 	self.queue_free()
+
+func swap_colors():
+	animated_sprite.material.set("shader_param/replace_0", Color.from_string("#74e3ff", Color.WHITE))

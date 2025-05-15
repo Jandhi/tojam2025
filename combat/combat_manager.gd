@@ -43,6 +43,7 @@ func _ready() -> void:
 func spawn_enemies():
 	for i in range(battle_number + 1):
 		var unit = UnitManager.spawn_unit()
+		unit.swap_colors()
 		grid.add_child(unit)
 		add_unit_to_enemy(unit)
 
@@ -103,6 +104,7 @@ func enter_game():
 	popup.popup_closed.connect(func():
 		AudioManager.play("loot")
 		shop_panel.enter_shop()
+		spawn_enemies()
 
 		grid.set_placeable_tiles()
 		set_gold(3)
@@ -145,7 +147,7 @@ func play_combat():
 
 	await shop_panel.exit_shop()
 	grid.hide_placeable_tiles()
-	spawn_enemies()
+	
 	hide_roster()
 	AudioManager.play("battle_theme", 0.0, 1.0)
 	
@@ -232,6 +234,7 @@ func finished_battle():
 	await get_tree().create_timer(2.0).timeout
 	get_reward_for_battle()
 	AudioManager.play("shop_theme")
+	spawn_enemies()
 	shop_panel.enter_shop()
 	show_roster()
 	battle_number += 1
