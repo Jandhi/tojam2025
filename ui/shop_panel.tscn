@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c6lsqpu0yr1j1" path="res://textures/shop_panel.png" id="1_nn7w2"]
 [ext_resource type="Script" uid="uid://cxo87x6gvmljr" path="res://ui/shop_panel.gd" id="2_m7ocl"]
 [ext_resource type="PackedScene" uid="uid://c5dy4ebqkmkj4" path="res://ui/unit_sale.tscn" id="3_8cue6"]
-[ext_resource type="Theme" uid="uid://1n7j8gxwmskn" path="res://ui/button_theme.tres" id="3_jgj1k"]
+[ext_resource type="FontFile" uid="uid://c5euy1idyacph" path="res://fonts/UnifrakturMaguntia-Regular.ttf" id="4_8cue6"]
 
 [node name="ShopPanel" type="Sprite2D" node_paths=PackedStringArray("unit_sales")]
 texture = ExtResource("1_nn7w2")
@@ -31,11 +31,13 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Button" type="Button" parent="."]
-offset_left = -46.0
-offset_top = 463.0
-offset_right = 105.0
-offset_bottom = 523.0
-theme = ExtResource("3_jgj1k")
-text = "Exit Shoppe"
+custom_minimum_size = Vector2(200, 60)
+offset_left = -65.0
+offset_top = 472.0
+offset_right = 135.0
+offset_bottom = 532.0
+theme_override_fonts/font = ExtResource("4_8cue6")
+theme_override_font_sizes/font_size = 36
+text = "To Battle"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
