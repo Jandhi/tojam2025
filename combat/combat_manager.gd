@@ -196,6 +196,10 @@ func play_combat():
 
 func finished_battle():
 	for unit in player_units:
+		unit.morale += unit.morale_modifier
+
+		
+
 		unit.heal(unit.unit.max_health)
 		unit.visible = true
 		unit.modulate = Color(1, 1, 1, 1)
@@ -209,6 +213,13 @@ func finished_battle():
 
 		unit.is_moveable = true
 
+	for unit in player_units:
+		if unit.morale == 0:
+			unit.leave(self)
+			continue
+	
+		unit.check_preferences()
+	
 	await get_tree().create_timer(2.0).timeout
 	get_reward_for_battle()
 	AudioManager.play("shop_theme")

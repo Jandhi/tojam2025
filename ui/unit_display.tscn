@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dj81viqtup7xf"]
+[gd_scene load_steps=8 format=3 uid="uid://dj81viqtup7xf"]
 
 [ext_resource type="Script" uid="uid://c2pjdjxfuwp4j" path="res://ui/unit_display.gd" id="1_5vian"]
 [ext_resource type="Texture2D" uid="uid://crxk3ae7bax3g" path="res://textures/unit_info_panel.png" id="1_t7fc8"]
@@ -6,8 +6,9 @@
 [ext_resource type="Theme" uid="uid://bwwn0jlif1hgw" path="res://ui/body_theme.tres" id="4_h2aqj"]
 [ext_resource type="Script" uid="uid://posdeqfhvmxm" path="res://ui/scale_down_text_to_fit.gd" id="4_t7fc8"]
 [ext_resource type="Script" uid="uid://c6xcnxb3oxyqj" path="res://ui/matrix_effect.gd" id="6_2elju"]
+[ext_resource type="Texture2D" uid="uid://bxth8y0mshqge" path="res://textures/icons/happy.png" id="7_b14m5"]
 
-[node name="UnitDisplay" type="TextureRect" node_paths=PackedStringArray("unit_name", "unit_type", "stats", "traits", "morale")]
+[node name="UnitDisplay" type="TextureRect" node_paths=PackedStringArray("unit_name", "unit_type", "stats", "traits", "morale", "mood_indicator")]
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 986.0
@@ -20,6 +21,7 @@ unit_type = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/UnitTypeLabel")
 stats = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/StatsLabel")
 traits = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/TraitLabel")
 morale = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/MoraleLabel")
+mood_indicator = NodePath("MoodIndicator")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -41,9 +43,10 @@ size_flags_vertical = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.1
 
 [node name="Name" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(400, 55)
+custom_minimum_size = Vector2(370, 55)
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("3_5735e")
@@ -87,3 +90,11 @@ theme = ExtResource("4_h2aqj")
 theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
 text = "These are our traits"
+
+[node name="MoodIndicator" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 45.0
+offset_right = 516.0
+offset_bottom = 125.0
+texture = ExtResource("7_b14m5")

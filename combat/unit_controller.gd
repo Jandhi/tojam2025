@@ -18,6 +18,7 @@ signal attempted_to_place_on_right_side
 @export var animated_sprite : AnimatedSprite2D
 @export var hover_box : Control
 @export var arrow_prefab : PackedScene
+@export var smoke : AnimatedSprite2D
 
 @export_group("Healthbar")
 @export var healthbar : Control
@@ -130,6 +131,7 @@ func check_preferences() -> bool:
 	for preference in preferences_list:
 		if not preference.evaluate_fulfilled(self, grid, grid.combat_manager):
 			morale_modifier = -1
+			
 
 			if complaint == "":
 				complains = true
@@ -145,6 +147,8 @@ func check_preferences() -> bool:
 	# Update morale on screen
 	if is_hovered:
 		hovered.emit()
+
+	smoke.visible = morale + morale_modifier <= 0
 
 	return complains
 
@@ -445,3 +449,20 @@ func appear(new_grid_pos: Vector2i):
 	z_index = grid_pos.y
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "modulate:a", 1, 0.1)
+
+func leave(combat_manager: CombatManager):
+	if is_in_roster:
+		roster.tiles.erase(grid_pos)
+		grid.units.erase(self)
+	else:
+		grid.tiles.erase(grid_pos)
+		grid.units.erase(self)
+	
+	combat_manager.all_units.erase(self)
+	combat_manager.player_units.erase(self)
+
+	var tween = get_tree().create_tween().parallel()
+	tween.tween_property(self, "modulate:a", 0, 0.1)
+	tween.tween_property(self, "position", self.position + Vector2(0, -100), 0.1)
+	await tween.finished
+	self.queue_free()

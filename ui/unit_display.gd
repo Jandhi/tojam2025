@@ -5,6 +5,9 @@ class_name UnitDisplay extends Control
 @export var stats : RichTextLabel
 @export var traits : RichTextLabel
 @export var morale : RichTextLabel
+@export var mood_indicator : TextureRect
+
+var base_mood_indicator_pos : Vector2
 
 var italic_font = preload("res://fonts/PTSerif-Italic.ttf")
 var bold_font = preload("res://fonts/PTSerif-Bold.ttf")
@@ -14,6 +17,7 @@ var hidden_tags = [
 ]
 
 func _ready() -> void:
+	base_mood_indicator_pos = mood_indicator.position
 	set_unit(null)
 
 func set_unit(unit : UnitController):
@@ -48,10 +52,13 @@ func set_unit(unit : UnitController):
 	match unit.morale + unit.morale_modifier:
 		0:
 			morale_descriptor = "[shake]Fuming[/shake] (will desert at end of battle)"
+			mood_indicator.texture = preload("res://textures/icons/angry.png")
 		1:
 			morale_descriptor = "Angry"
+			mood_indicator.texture = preload("res://textures/icons/nuetral.png")
 		2:
-			morale_descriptor = "Happy"
+			morale_descriptor = "Elated"
+			mood_indicator.texture = preload("res://textures/icons/happy.png")
 
 	morale.text = color_text_pink(bold_text("Morale:")) + " " + morale_descriptor 
 
