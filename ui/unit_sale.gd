@@ -2,6 +2,7 @@ class_name UnitSale extends Control
 
 signal purchase_clicked
 signal unit_added(unit : UnitController)
+signal unit_removed(unit : UnitController)
 
 var gold_currency = preload("res://textures/gold_icon.png")
 var pact_currency = preload("res://textures/pact_icon.png")
@@ -38,3 +39,7 @@ func add_unit():
 
 func _on_button_pressed():
 	purchase_clicked.emit()
+
+func refresh():
+	unit.queue_free()
+	add_unit()

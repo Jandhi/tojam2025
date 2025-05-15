@@ -94,7 +94,7 @@ func show_dialogue(text : String, unit, forced : bool = false) -> void:
 	if time_since_last_popup < min_time_between_popups and not forced:
 		return
 
-	unit.talk_cooldown += 5.0
+	unit.talk_cooldown += 3.0
 	time_since_last_popup = 0.0
 
 	var current_dialogue = dialogue_popup.instantiate() as DialoguePopup

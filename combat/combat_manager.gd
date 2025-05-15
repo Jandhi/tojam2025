@@ -104,6 +104,7 @@ func enter_game():
 		AudioManager.play("loot")
 		shop_panel.enter_shop()
 
+		grid.set_placeable_tiles()
 		set_gold(3)
 		set_pacts(2)
 
@@ -119,6 +120,7 @@ func get_reward_for_battle():
 	set_gold(gold + 2 + int(battle_number / 2.0))
 	if(battle_number % 3 == 2):
 		allowed_distance_from_leader += 1
+		grid.set_placeable_tiles()
 
 func hide_roster():
 	var tween = get_tree().create_tween()
@@ -137,12 +139,13 @@ func play_combat():
 	if combat_is_playing:
 		return
 
-	if player_units.any(func(unit): return grid.distance_to_commander(unit.grid_pos) > allowed_distance_from_leader):
+	if player_units.any(func(unit): return not unit.is_in_roster and grid.distance_to_commander(unit.grid_pos) > allowed_distance_from_leader):
 		DialogueManager.instance.minions_are_too_far_from_commander(player_leader)
 		return
 
+	await shop_panel.exit_shop()
+	grid.hide_placeable_tiles()
 	spawn_enemies()
-	shop_panel.exit_shop()
 	hide_roster()
 	AudioManager.play("battle_theme", 0.0, 1.0)
 	
@@ -152,7 +155,7 @@ func play_combat():
 	for unit in player_units:
 		unit.force_reset_positions()
 		unit.is_moveable = false
-		unit.morale += unit.morale_modifier
+		unit.morale = clamp(unit.morale +  unit.morale_modifier, 0, 2)
 		unit.morale_modifier = 0
 	
 	while true:
@@ -190,11 +193,17 @@ func play_combat():
 	else:
 		print("Defeat!")
 		AudioManager.play("loss", 0.0, 1.0, true)
+		
+		var game_over = load("res://ui/game_over.tscn").instantiate()
+		game_over.set_days(battle_number)
+		get_parent().add_child(game_over)
 
 	combat_is_playing = false
 	
 
 func finished_battle():
+	grid.set_placeable_tiles()
+
 	for unit in player_units:
 		unit.morale += unit.morale_modifier
 
