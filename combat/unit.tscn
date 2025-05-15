@@ -165,8 +165,8 @@ healthbar_white = NodePath("Healthbar/HealthbarWhite")
 healthbar_red = NodePath("Healthbar/HealthbarRed")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -47)
-scale = Vector2(0.2, 0.2)
+position = Vector2(0, -71)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_167gt")
 animation = &"ranged"
 autoplay = "idle"
@@ -187,9 +187,9 @@ grow_vertical = 2
 
 [node name="Healthbar" type="ColorRect" parent="."]
 offset_left = -26.0
-offset_top = -83.0
+offset_top = -114.0
 offset_right = 26.0
-offset_bottom = -77.0
+offset_bottom = -108.0
 color = Color(0, 0, 0, 1)
 
 [node name="HealthbarWhite" type="ColorRect" parent="Healthbar"]
