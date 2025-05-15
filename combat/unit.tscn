@@ -1,14 +1,40 @@
-[gd_scene load_steps=24 format=3 uid="uid://cgt08rla3nihh"]
+[gd_scene load_steps=28 format=3 uid="uid://cgt08rla3nihh"]
 
 [ext_resource type="Script" uid="uid://b2clr4a6id4r5" path="res://combat/unit_controller.gd" id="1_taype"]
 [ext_resource type="PackedScene" uid="uid://bbdbsnjgohx5a" path="res://combat/arrow.tscn" id="2_oxlip"]
 [ext_resource type="Texture2D" uid="uid://bs66iawicr2ui" path="res://textures/ranged_attack.webp" id="3_2p3g0"]
 [ext_resource type="Texture2D" uid="uid://38g686lmp2t5" path="res://textures/spritesheet.png" id="3_oxlip"]
+[ext_resource type="Shader" uid="uid://3mixcnx32ey3" path="res://shaders/color_swap_and_deformation.gdshader" id="3_vd5gr"]
+[ext_resource type="Texture2D" uid="uid://o4mxlof2xo3" path="res://textures/units/zombie.png" id="5_axs0o"]
 [ext_resource type="Texture2D" uid="uid://jge80yv8uopv" path="res://textures/angrySpritesheet.png" id="5_fo1f0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_axs0o"]
+resource_local_to_scene = true
+shader = ExtResource("3_vd5gr")
+shader_parameter/original_0 = Color(0.839216, 0, 0.317647, 1)
+shader_parameter/original_1 = Color(0, 0, 0, 1)
+shader_parameter/original_2 = Color(0, 0, 0, 1)
+shader_parameter/original_3 = Color(0, 0, 0, 1)
+shader_parameter/original_4 = Color(0, 0, 0, 1)
+shader_parameter/replace_0 = Color(0.273377, 0.490282, 1, 1)
+shader_parameter/replace_1 = Color(0, 0, 0, 1)
+shader_parameter/replace_2 = Color(0, 0, 0, 1)
+shader_parameter/replace_3 = Color(0, 0, 0, 1)
+shader_parameter/replace_4 = Color(0, 0, 0, 1)
+shader_parameter/deformation = Vector2(0, 0)
+shader_parameter/sideWaysDeformationFactor = 5.0
+shader_parameter/knockbackFactor = 0.4
+shader_parameter/white = false
+shader_parameter/alpha = 1.0
+shader_parameter/darken = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bov5i"]
 atlas = ExtResource("3_oxlip")
 region = Rect2(1500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11my0"]
+atlas = ExtResource("5_axs0o")
+region = Rect2(0, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fo1f0"]
 atlas = ExtResource("3_oxlip")
@@ -69,6 +95,9 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11my0")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fo1f0")
 }, {
@@ -165,10 +194,11 @@ healthbar_white = NodePath("Healthbar/HealthbarWhite")
 healthbar_red = NodePath("Healthbar/HealthbarRed")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_axs0o")
 position = Vector2(0, -71)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_167gt")
-animation = &"ranged"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="Control" type="Control" parent="."]
