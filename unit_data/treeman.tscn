@@ -1,17 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://bx4v4dw0fjq3d"]
+[gd_scene load_steps=21 format=3 uid="uid://bx4v4dw0fjq3d"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_cso2g"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_xn8fe"]
-[ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="3_5joib"]
 [ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="4_2wcbv"]
 [ext_resource type="Texture2D" uid="uid://cvamdileckgya" path="res://textures/units/Treeman.png" id="5_cso2g"]
 [ext_resource type="Shader" uid="uid://3mixcnx32ey3" path="res://shaders/color_swap_and_deformation.gdshader" id="5_xn8fe"]
-
-[sub_resource type="Resource" id="Resource_psn84"]
-script = ExtResource("3_5joib")
-tag = "lilian"
-wants_to_be_next_to = false
-metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
 
 [sub_resource type="Resource" id="Resource_xn8fe"]
 script = ExtResource("4_2wcbv")
@@ -20,7 +13,7 @@ name_origin = "tree"
 evil_last_name = false
 has_last_name = false
 tags = Array[String](["fae"])
-preferences = Array[ExtResource("2_xn8fe")]([SubResource("Resource_psn84")])
+preferences = Array[ExtResource("2_xn8fe")]([])
 is_female = false
 cost = 4
 cost_currency = 1

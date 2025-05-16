@@ -1,10 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://ckk2i5cutdey7"]
+[gd_scene load_steps=28 format=3 uid="uid://ckk2i5cutdey7"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_e5p61"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_e4gp1"]
 [ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="3_detrj"]
 [ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="4_s6wie"]
 [ext_resource type="Texture2D" uid="uid://dopwxib2itp4p" path="res://textures/units/shirtless.png" id="5_24ivs"]
+[ext_resource type="Shader" uid="uid://3mixcnx32ey3" path="res://shaders/color_swap_and_deformation.gdshader" id="5_detrj"]
 [ext_resource type="Texture2D" uid="uid://0agv6bnmk3ts" path="res://textures/units/brotherhoodArrowAndSword.png" id="5_e4gp1"]
 
 [sub_resource type="Resource" id="Resource_c1lrv"]
@@ -15,7 +16,7 @@ metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
 
 [sub_resource type="Resource" id="Resource_0jptd"]
 script = ExtResource("3_detrj")
-tag = "witch"
+tag = "undead"
 wants_to_be_next_to = false
 metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
 
@@ -25,7 +26,7 @@ unit_type = "Brotherhood Archer"
 name_origin = "german_male"
 evil_last_name = true
 has_last_name = true
-tags = Array[String](["man", "heathen"])
+tags = Array[String](["heathen", "man"])
 preferences = Array[ExtResource("2_e4gp1")]([SubResource("Resource_c1lrv"), SubResource("Resource_0jptd")])
 is_female = false
 cost = 2
@@ -43,6 +44,26 @@ ranged_is_magic = false
 ranged_attack_cooldown = 8
 attack_range = 6
 metadata/_custom_type_script = "uid://b5eww7paeebiu"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s6wie"]
+resource_local_to_scene = true
+shader = ExtResource("5_detrj")
+shader_parameter/original_0 = Color(0.839216, 0, 0.317647, 1)
+shader_parameter/original_1 = Color(0, 0, 0, 1)
+shader_parameter/original_2 = Color(0, 0, 0, 1)
+shader_parameter/original_3 = Color(0, 0, 0, 1)
+shader_parameter/original_4 = Color(0, 0, 0, 1)
+shader_parameter/replace_0 = Color(0.839216, 0, 0.317647, 1)
+shader_parameter/replace_1 = Color(0, 0, 0, 1)
+shader_parameter/replace_2 = Color(0, 0, 0, 1)
+shader_parameter/replace_3 = Color(0, 0, 0, 1)
+shader_parameter/replace_4 = Color(0, 0, 0, 1)
+shader_parameter/deformation = Vector2(0, 0)
+shader_parameter/sideWaysDeformationFactor = 5.0
+shader_parameter/knockbackFactor = 0.4
+shader_parameter/white = false
+shader_parameter/alpha = 1.0
+shader_parameter/darken = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_detrj"]
 atlas = ExtResource("5_e4gp1")
@@ -181,5 +202,6 @@ animations = [{
 unit = SubResource("Resource_e5p61")
 
 [node name="Sprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_s6wie")
 sprite_frames = SubResource("SpriteFrames_vtx08")
 animation = &"run"

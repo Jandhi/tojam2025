@@ -1,19 +1,32 @@
-[gd_scene load_steps=24 format=3 uid="uid://s2kf1sbp7fq5"]
+[gd_scene load_steps=27 format=3 uid="uid://s2kf1sbp7fq5"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_eik5l"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_eaymd"]
+[ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="3_hdxeq"]
 [ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="4_gjhjh"]
 [ext_resource type="Texture2D" uid="uid://1i8l1fe0cbww" path="res://textures/units/Succubus.png" id="5_fhsh6"]
 [ext_resource type="Shader" uid="uid://3mixcnx32ey3" path="res://shaders/color_swap_and_deformation.gdshader" id="5_qvt1o"]
 
+[sub_resource type="Resource" id="Resource_eik5l"]
+script = ExtResource("3_hdxeq")
+tag = "smelly"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
+
+[sub_resource type="Resource" id="Resource_eaymd"]
+script = ExtResource("3_hdxeq")
+tag = "undead"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
+
 [sub_resource type="Resource" id="Resource_fhsh6"]
 script = ExtResource("4_gjhjh")
 unit_type = "Succubus"
-name_origin = "succubus"
+name_origin = "succ"
 evil_last_name = true
 has_last_name = true
-tags = Array[String](["demon", "woman", "witch"])
-preferences = Array[ExtResource("2_eaymd")]([])
+tags = Array[String](["demon", "witch", "woman"])
+preferences = Array[ExtResource("2_eaymd")]([SubResource("Resource_eik5l"), SubResource("Resource_eaymd")])
 is_female = true
 cost = 2
 cost_currency = 1

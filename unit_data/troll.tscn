@@ -9,7 +9,7 @@
 
 [sub_resource type="Resource" id="Resource_psn84"]
 script = ExtResource("3_4iqeh")
-tag = "lilian"
+tag = "church"
 wants_to_be_next_to = false
 metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
 

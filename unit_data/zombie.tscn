@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://ej20l3teg4l6"]
+[gd_scene load_steps=24 format=3 uid="uid://ej20l3teg4l6"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_5n7g5"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_d24tt"]
 [ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="3_gq6pt"]
+[ext_resource type="Shader" uid="uid://3mixcnx32ey3" path="res://shaders/color_swap_and_deformation.gdshader" id="4_gq6pt"]
 [ext_resource type="Texture2D" uid="uid://o4mxlof2xo3" path="res://textures/units/zombie.png" id="4_l543l"]
 
 [sub_resource type="Resource" id="Resource_ltekw"]
@@ -29,6 +30,26 @@ ranged_is_magic = false
 ranged_attack_cooldown = 0
 attack_range = 0
 metadata/_custom_type_script = "uid://b5eww7paeebiu"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l543l"]
+resource_local_to_scene = true
+shader = ExtResource("4_gq6pt")
+shader_parameter/original_0 = Color(0.839216, 0, 0.317647, 1)
+shader_parameter/original_1 = Color(0, 0, 0, 1)
+shader_parameter/original_2 = Color(0, 0, 0, 1)
+shader_parameter/original_3 = Color(0, 0, 0, 1)
+shader_parameter/original_4 = Color(0, 0, 0, 1)
+shader_parameter/replace_0 = Color(0.839216, 0, 0.317647, 1)
+shader_parameter/replace_1 = Color(0, 0, 0, 1)
+shader_parameter/replace_2 = Color(0, 0, 0, 1)
+shader_parameter/replace_3 = Color(0, 0, 0, 1)
+shader_parameter/replace_4 = Color(0, 0, 0, 1)
+shader_parameter/deformation = Vector2(0, 0)
+shader_parameter/sideWaysDeformationFactor = 5.0
+shader_parameter/knockbackFactor = 0.4
+shader_parameter/white = false
+shader_parameter/alpha = 1.0
+shader_parameter/darken = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3byfv"]
 atlas = ExtResource("4_l543l")
@@ -167,5 +188,6 @@ animations = [{
 unit = SubResource("Resource_ltekw")
 
 [node name="Sprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_l543l")
 sprite_frames = SubResource("SpriteFrames_1mj8g")
 animation = &"flinch"

@@ -91,18 +91,19 @@ var wants_to_be_next_to_complaints : Dictionary = {
 
 var descriptions : Dictionary = {
 	"elf": "Elfphobe: Does not want to be next to elves.",
-	"fae": "Hater of Fae: Does not want to be next to fae.",
+	"fae": "Superstitious: Does not want to be next to fae.",
 	"man": "Disdain of Men: Does not want to be next to men.",
 	"woman": "Misognyist: Does not want to be next to women.",
 	"demon": "Fear of Hell: Does not want to be next to demons.",
 	"undead": "Fear of Death: Does not want to be next to undead.",
-	"lilian": "Anti-clerical: Does not want to be next to lilians.",
+	"church": "Anti-clerical: Does not want to be next to subjects of the church.",
 	"farisian": "Crusader: Does not want to be next to farisians.",
 	"heathen": "Nature Hater: Does not want to be next to heathens.",
 	"heretic": "Doctrinal: Does not want to be next to heretics.",
-	"witch": "Arcanaphobia: Does not want to be next to witches.",
+	"witch": "Suffer Not: Does not want to be next to witches.",
 	"mistress": "Obsessive: Wants to be next to the Mistress.",
-	"ruin": "Wholesome: Does not want to be next to members of the cult of ruin.",
+	"mercenary": "Honourable: Does not want to be next to mercenaries.",
+	"cult": "Wholesome: Does not want to be next to members of the cult.",
 	"smelly": "Grooming Standard: Does not want to be next to smelly units.",
 }
 

@@ -1,10 +1,17 @@
-[gd_scene load_steps=24 format=3 uid="uid://djaioh0yhm6d5"]
+[gd_scene load_steps=26 format=3 uid="uid://djaioh0yhm6d5"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_1ncno"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_vojd6"]
+[ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="3_udr1t"]
 [ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="3_vck7h"]
 [ext_resource type="Texture2D" uid="uid://wpe8hwo6drsw" path="res://textures/units/hedgewitch.png" id="4_1ncno"]
 [ext_resource type="Shader" uid="uid://3mixcnx32ey3" path="res://shaders/color_swap_and_deformation.gdshader" id="4_vojd6"]
+
+[sub_resource type="Resource" id="Resource_do60p"]
+script = ExtResource("3_udr1t")
+tag = "church"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
 
 [sub_resource type="Resource" id="Resource_1ncno"]
 script = ExtResource("3_vck7h")
@@ -12,8 +19,8 @@ unit_type = "Hedgewitch"
 name_origin = "german_female"
 evil_last_name = false
 has_last_name = true
-tags = Array[String](["woman", "witch", "heathen"])
-preferences = Array[ExtResource("2_vojd6")]([])
+tags = Array[String](["heathen", "witch", "woman"])
+preferences = Array[ExtResource("2_vojd6")]([SubResource("Resource_do60p")])
 is_female = true
 cost = 2
 cost_currency = 1

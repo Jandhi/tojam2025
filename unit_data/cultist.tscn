@@ -9,7 +9,7 @@
 
 [sub_resource type="Resource" id="Resource_fkyha"]
 script = ExtResource("3_278ku")
-tag = "lilian"
+tag = "church"
 wants_to_be_next_to = false
 metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
 
@@ -25,7 +25,7 @@ unit_type = "Cultist"
 name_origin = "german_male"
 evil_last_name = true
 has_last_name = true
-tags = Array[String](["man", "witch", "ruin"])
+tags = Array[String](["cult", "witch", "man"])
 preferences = Array[ExtResource("2_278ku")]([SubResource("Resource_fkyha"), SubResource("Resource_68tsi")])
 is_female = false
 cost = 1
