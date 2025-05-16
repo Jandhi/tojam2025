@@ -1,10 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://lwwarok0xaf7"]
+[gd_scene load_steps=26 format=3 uid="uid://lwwarok0xaf7"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_qdabd"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_7n3ur"]
 [ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="3_7n3ur"]
 [ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="3_gouo7"]
 [ext_resource type="Texture2D" uid="uid://b1kdxvboj6csb" path="res://textures/units/nun.png" id="4_qdabd"]
+[ext_resource type="Shader" uid="uid://3mixcnx32ey3" path="res://shaders/color_swap_and_deformation.gdshader" id="5_gouo7"]
 
 [sub_resource type="Resource" id="Resource_7n3ur"]
 script = ExtResource("3_7n3ur")
@@ -36,6 +37,26 @@ ranged_is_magic = true
 ranged_attack_cooldown = 8
 attack_range = 4
 metadata/_custom_type_script = "uid://b5eww7paeebiu"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7mh6j"]
+resource_local_to_scene = true
+shader = ExtResource("5_gouo7")
+shader_parameter/original_0 = Color(0.839216, 0, 0.317647, 1)
+shader_parameter/original_1 = Color(0, 0, 0, 1)
+shader_parameter/original_2 = Color(0, 0, 0, 1)
+shader_parameter/original_3 = Color(0, 0, 0, 1)
+shader_parameter/original_4 = Color(0, 0, 0, 1)
+shader_parameter/replace_0 = Color(0.839216, 0, 0.317647, 1)
+shader_parameter/replace_1 = Color(0, 0, 0, 1)
+shader_parameter/replace_2 = Color(0, 0, 0, 1)
+shader_parameter/replace_3 = Color(0, 0, 0, 1)
+shader_parameter/replace_4 = Color(0, 0, 0, 1)
+shader_parameter/deformation = Vector2(0, 0)
+shader_parameter/sideWaysDeformationFactor = 5.0
+shader_parameter/knockbackFactor = 0.4
+shader_parameter/white = false
+shader_parameter/alpha = 1.0
+shader_parameter/darken = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7n3ur"]
 atlas = ExtResource("4_qdabd")
@@ -174,5 +195,6 @@ animations = [{
 unit = SubResource("Resource_qdabd")
 
 [node name="Sprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_7mh6j")
 sprite_frames = SubResource("SpriteFrames_7n3ur")
 animation = &"flinch"
