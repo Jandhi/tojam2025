@@ -1,10 +1,23 @@
-[gd_scene load_steps=24 format=3 uid="uid://ktk007ulanjm"]
+[gd_scene load_steps=27 format=3 uid="uid://ktk007ulanjm"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_3n6mn"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_a8ywm"]
+[ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="3_7qd8d"]
 [ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="4_02g11"]
 [ext_resource type="Shader" uid="uid://3mixcnx32ey3" path="res://shaders/color_swap_and_deformation.gdshader" id="4_3n6mn"]
 [ext_resource type="Texture2D" uid="uid://b20crlqh8ihfb" path="res://textures/units/magicSkeleton.png" id="5_a8ywm"]
+
+[sub_resource type="Resource" id="Resource_a8ywm"]
+script = ExtResource("3_7qd8d")
+tag = "fae"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
+
+[sub_resource type="Resource" id="Resource_02g11"]
+script = ExtResource("3_7qd8d")
+tag = "heathen"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
 
 [sub_resource type="Resource" id="Resource_7qd8d"]
 script = ExtResource("4_02g11")
@@ -13,7 +26,7 @@ name_origin = "french_female"
 evil_last_name = true
 has_last_name = true
 tags = Array[String](["undead", "witch"])
-preferences = Array[ExtResource("2_a8ywm")]([])
+preferences = Array[ExtResource("2_a8ywm")]([SubResource("Resource_a8ywm"), SubResource("Resource_02g11")])
 is_female = true
 cost = 1
 cost_currency = 1

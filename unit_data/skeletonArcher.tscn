@@ -1,10 +1,23 @@
-[gd_scene load_steps=24 format=3 uid="uid://dv46x8n4nom8s"]
+[gd_scene load_steps=27 format=3 uid="uid://dv46x8n4nom8s"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_pen7j"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_b6nix"]
 [ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="3_lvhmc"]
+[ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="3_sp478"]
 [ext_resource type="Shader" uid="uid://3mixcnx32ey3" path="res://shaders/color_swap_and_deformation.gdshader" id="4_b6nix"]
 [ext_resource type="Texture2D" uid="uid://cmpbu38m38ihj" path="res://textures/units/Skeleton.png" id="5_lvhmc"]
+
+[sub_resource type="Resource" id="Resource_iprfm"]
+script = ExtResource("3_sp478")
+tag = "demon"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
+
+[sub_resource type="Resource" id="Resource_lvhmc"]
+script = ExtResource("3_sp478")
+tag = "witch"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
 
 [sub_resource type="Resource" id="Resource_b6nix"]
 script = ExtResource("3_lvhmc")
@@ -12,8 +25,8 @@ unit_type = "Skeleton"
 name_origin = "german_male"
 evil_last_name = true
 has_last_name = true
-tags = Array[String](["undead", "smelly"])
-preferences = Array[ExtResource("2_b6nix")]([])
+tags = Array[String](["undead"])
+preferences = Array[ExtResource("2_b6nix")]([SubResource("Resource_iprfm"), SubResource("Resource_lvhmc")])
 is_female = false
 cost = 1
 cost_currency = 0

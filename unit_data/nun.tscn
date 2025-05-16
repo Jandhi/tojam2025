@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://lwwarok0xaf7"]
+[gd_scene load_steps=27 format=3 uid="uid://lwwarok0xaf7"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_qdabd"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_7n3ur"]
@@ -9,7 +9,13 @@
 
 [sub_resource type="Resource" id="Resource_7n3ur"]
 script = ExtResource("3_7n3ur")
-tag = "ruin"
+tag = "cult"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
+
+[sub_resource type="Resource" id="Resource_gouo7"]
+script = ExtResource("3_7n3ur")
+tag = "demon"
 wants_to_be_next_to = false
 metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
 
@@ -20,7 +26,7 @@ name_origin = "italian_female"
 evil_last_name = false
 has_last_name = true
 tags = Array[String](["woman", "lilian", "witch"])
-preferences = Array[ExtResource("2_7n3ur")]([SubResource("Resource_7n3ur")])
+preferences = Array[ExtResource("2_7n3ur")]([SubResource("Resource_7n3ur"), SubResource("Resource_gouo7")])
 is_female = true
 cost = 4
 cost_currency = 0

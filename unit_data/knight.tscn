@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://1i6j0bq8qdeg"]
+[gd_scene load_steps=28 format=3 uid="uid://1i6j0bq8qdeg"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_2b4qd"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_5msn6"]
@@ -9,7 +9,19 @@
 
 [sub_resource type="Resource" id="Resource_rwbax"]
 script = ExtResource("3_p64yd")
-tag = "heathen"
+tag = "mercenary"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
+
+[sub_resource type="Resource" id="Resource_5msn6"]
+script = ExtResource("3_p64yd")
+tag = "fae"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
+
+[sub_resource type="Resource" id="Resource_p64yd"]
+script = ExtResource("3_p64yd")
+tag = "witch"
 wants_to_be_next_to = false
 metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
 
@@ -19,8 +31,8 @@ unit_type = "Knight"
 name_origin = "french_male"
 evil_last_name = false
 has_last_name = true
-tags = Array[String](["man", "lilian"])
-preferences = Array[ExtResource("2_5msn6")]([SubResource("Resource_rwbax")])
+tags = Array[String](["knight", "man"])
+preferences = Array[ExtResource("2_5msn6")]([SubResource("Resource_rwbax"), SubResource("Resource_5msn6"), SubResource("Resource_p64yd")])
 is_female = false
 cost = 4
 cost_currency = 0

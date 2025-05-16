@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://c48jlc14stkh4"]
+[gd_scene load_steps=24 format=3 uid="uid://c48jlc14stkh4"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_oxfdl"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_incal"]
 [ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="3_g548s"]
+[ext_resource type="Shader" uid="uid://3mixcnx32ey3" path="res://shaders/color_swap_and_deformation.gdshader" id="4_incal"]
 [ext_resource type="Texture2D" uid="uid://bja4hhes8yud4" path="res://textures/units/Mistress.png" id="4_oxfdl"]
 
 [sub_resource type="Resource" id="Resource_incal"]
@@ -11,7 +12,7 @@ unit_type = "Mistress of Ruin"
 name_origin = "italian_female"
 evil_last_name = false
 has_last_name = false
-tags = Array[String](["woman", "ruin", "witch", "mistress"])
+tags = Array[String](["cult", "witch", "woman", "mistress"])
 preferences = Array[ExtResource("2_incal")]([])
 is_female = true
 cost = 0
@@ -29,6 +30,26 @@ ranged_is_magic = true
 ranged_attack_cooldown = 30
 attack_range = 30
 metadata/_custom_type_script = "uid://b5eww7paeebiu"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g548s"]
+resource_local_to_scene = true
+shader = ExtResource("4_incal")
+shader_parameter/original_0 = Color(0.839216, 0, 0.317647, 1)
+shader_parameter/original_1 = Color(0, 0, 0, 1)
+shader_parameter/original_2 = Color(0, 0, 0, 1)
+shader_parameter/original_3 = Color(0, 0, 0, 1)
+shader_parameter/original_4 = Color(0, 0, 0, 1)
+shader_parameter/replace_0 = Color(0.839216, 0, 0.317647, 1)
+shader_parameter/replace_1 = Color(0, 0, 0, 1)
+shader_parameter/replace_2 = Color(0, 0, 0, 1)
+shader_parameter/replace_3 = Color(0, 0, 0, 1)
+shader_parameter/replace_4 = Color(0, 0, 0, 1)
+shader_parameter/deformation = Vector2(0, 0)
+shader_parameter/sideWaysDeformationFactor = 5.0
+shader_parameter/knockbackFactor = 0.4
+shader_parameter/white = false
+shader_parameter/alpha = 1.0
+shader_parameter/darken = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g548s"]
 atlas = ExtResource("4_oxfdl")
@@ -168,5 +189,5 @@ unit = SubResource("Resource_incal")
 is_player_commander = true
 
 [node name="Sprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_g548s")
 sprite_frames = SubResource("SpriteFrames_on1hc")
-animation = &"idle"

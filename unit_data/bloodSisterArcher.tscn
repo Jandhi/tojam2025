@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cn0xsdxhamok7"]
+[gd_scene load_steps=29 format=3 uid="uid://cn0xsdxhamok7"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_w6fls"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_txph3"]
@@ -14,6 +14,18 @@ tag = "man"
 wants_to_be_next_to = false
 metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
 
+[sub_resource type="Resource" id="Resource_7q5bb"]
+script = ExtResource("3_7q5bb")
+tag = "witch"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
+
+[sub_resource type="Resource" id="Resource_4sjmx"]
+script = ExtResource("3_7q5bb")
+tag = "church"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
+
 [sub_resource type="Resource" id="Resource_w6fls"]
 script = ExtResource("4_4sjmx")
 unit_type = "Blood Sister Archer"
@@ -21,7 +33,7 @@ name_origin = "fae_female"
 evil_last_name = true
 has_last_name = true
 tags = Array[String](["fae", "woman"])
-preferences = Array[ExtResource("2_txph3")]([SubResource("Resource_fth05")])
+preferences = Array[ExtResource("2_txph3")]([SubResource("Resource_fth05"), SubResource("Resource_7q5bb"), SubResource("Resource_4sjmx")])
 is_female = true
 cost = 2
 cost_currency = 1

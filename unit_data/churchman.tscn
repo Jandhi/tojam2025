@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cerjr2ys5ika6"]
+[gd_scene load_steps=27 format=3 uid="uid://cerjr2ys5ika6"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_7y2n3"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_eu114"]
@@ -13,14 +13,20 @@ tag = "heathen"
 wants_to_be_next_to = false
 metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
 
+[sub_resource type="Resource" id="Resource_1d4am"]
+script = ExtResource("3_eu114")
+tag = "demon"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
+
 [sub_resource type="Resource" id="Resource_7y2n3"]
 script = ExtResource("3_rwbax")
 unit_type = "Churchman"
 name_origin = "italian_male"
 evil_last_name = false
 has_last_name = true
-tags = Array[String](["man", "lilian", "mercenary"])
-preferences = Array[ExtResource("2_eu114")]([SubResource("Resource_rwbax")])
+tags = Array[String](["church", "mercenary", "man"])
+preferences = Array[ExtResource("2_eu114")]([SubResource("Resource_rwbax"), SubResource("Resource_1d4am")])
 is_female = false
 cost = 2
 cost_currency = 0

@@ -10,7 +10,7 @@
 
 [sub_resource type="Resource" id="Resource_ifvro"]
 script = ExtResource("3_lfnjg")
-tag = "heretic"
+tag = "cult"
 wants_to_be_next_to = false
 metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
 
@@ -26,7 +26,7 @@ unit_type = "Battle Sister Archer"
 name_origin = "arab_female"
 evil_last_name = false
 has_last_name = true
-tags = Array[String](["woman", "farisian"])
+tags = Array[String](["church", "woman"])
 preferences = Array[ExtResource("2_ko4fy")]([SubResource("Resource_ifvro"), SubResource("Resource_fiynm")])
 is_female = true
 cost = 2

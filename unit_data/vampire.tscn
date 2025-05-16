@@ -1,10 +1,23 @@
-[gd_scene load_steps=24 format=3 uid="uid://dn4ddr3ayq5dc"]
+[gd_scene load_steps=27 format=3 uid="uid://dn4ddr3ayq5dc"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_kbhv2"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_eyubf"]
+[ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="3_eyubf"]
 [ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="3_iqdi2"]
 [ext_resource type="Shader" uid="uid://3mixcnx32ey3" path="res://shaders/color_swap_and_deformation.gdshader" id="4_gv1a0"]
 [ext_resource type="Texture2D" uid="uid://t2jx73njy3ve" path="res://textures/units/Vampire.png" id="5_kbhv2"]
+
+[sub_resource type="Resource" id="Resource_iqdi2"]
+script = ExtResource("3_eyubf")
+tag = "woman"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
+
+[sub_resource type="Resource" id="Resource_gv1a0"]
+script = ExtResource("3_eyubf")
+tag = "fae"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
 
 [sub_resource type="Resource" id="Resource_eyubf"]
 script = ExtResource("3_iqdi2")
@@ -13,7 +26,7 @@ name_origin = "german_male"
 evil_last_name = true
 has_last_name = true
 tags = Array[String](["undead", "man"])
-preferences = Array[ExtResource("2_eyubf")]([])
+preferences = Array[ExtResource("2_eyubf")]([SubResource("Resource_iqdi2"), SubResource("Resource_gv1a0")])
 is_female = false
 cost = 8
 cost_currency = 0

@@ -7,16 +7,16 @@
 [ext_resource type="Shader" uid="uid://3mixcnx32ey3" path="res://shaders/color_swap_and_deformation.gdshader" id="5_fveqv"]
 [ext_resource type="Texture2D" uid="uid://b7uowyjbg5jte" path="res://textures/units/Imp.png" id="5_s43qh"]
 
-[sub_resource type="Resource" id="Resource_fkyha"]
+[sub_resource type="Resource" id="Resource_fveqv"]
 script = ExtResource("3_g4ctk")
-tag = "lilian"
+tag = "church"
 wants_to_be_next_to = false
 metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
 
-[sub_resource type="Resource" id="Resource_68tsi"]
+[sub_resource type="Resource" id="Resource_g4ctk"]
 script = ExtResource("3_g4ctk")
-tag = "mistress"
-wants_to_be_next_to = true
+tag = "fae"
+wants_to_be_next_to = false
 metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
 
 [sub_resource type="Resource" id="Resource_278ku"]
@@ -25,8 +25,8 @@ unit_type = "Imp"
 name_origin = "imp"
 evil_last_name = true
 has_last_name = true
-tags = Array[String](["man", "witch", "ruin"])
-preferences = Array[ExtResource("2_fveqv")]([SubResource("Resource_fkyha"), SubResource("Resource_68tsi")])
+tags = Array[String](["demon"])
+preferences = Array[ExtResource("2_fveqv")]([SubResource("Resource_fveqv"), SubResource("Resource_g4ctk")])
 is_female = false
 cost = 1
 cost_currency = 1

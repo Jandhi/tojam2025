@@ -1,10 +1,23 @@
-[gd_scene load_steps=24 format=3 uid="uid://d3bwdc31wvth6"]
+[gd_scene load_steps=27 format=3 uid="uid://d3bwdc31wvth6"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_7yb5w"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_ack5v"]
 [ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="3_o5tby"]
+[ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="3_tyrac"]
 [ext_resource type="Shader" uid="uid://3mixcnx32ey3" path="res://shaders/color_swap_and_deformation.gdshader" id="4_o5tby"]
 [ext_resource type="Texture2D" uid="uid://dnr047vu0a8lk" path="res://textures/units/fae.png" id="5_o5tby"]
+
+[sub_resource type="Resource" id="Resource_30ogh"]
+script = ExtResource("3_tyrac")
+tag = "man"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
+
+[sub_resource type="Resource" id="Resource_kp712"]
+script = ExtResource("3_tyrac")
+tag = "undead"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
 
 [sub_resource type="Resource" id="Resource_tyrac"]
 script = ExtResource("3_o5tby")
@@ -13,7 +26,7 @@ name_origin = "fae_male"
 evil_last_name = true
 has_last_name = true
 tags = Array[String](["fae"])
-preferences = Array[ExtResource("2_ack5v")]([])
+preferences = Array[ExtResource("2_ack5v")]([SubResource("Resource_30ogh"), SubResource("Resource_kp712")])
 is_female = false
 cost = 1
 cost_currency = 1
