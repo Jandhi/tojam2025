@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://djaioh0yhm6d5"]
+[gd_scene load_steps=24 format=3 uid="uid://djaioh0yhm6d5"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_1ncno"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_vojd6"]
 [ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="3_vck7h"]
 [ext_resource type="Texture2D" uid="uid://wpe8hwo6drsw" path="res://textures/units/hedgewitch.png" id="4_1ncno"]
+[ext_resource type="Shader" uid="uid://3mixcnx32ey3" path="res://shaders/color_swap_and_deformation.gdshader" id="4_vojd6"]
 
 [sub_resource type="Resource" id="Resource_1ncno"]
 script = ExtResource("3_vck7h")
@@ -29,6 +30,26 @@ ranged_is_magic = true
 ranged_attack_cooldown = 10
 attack_range = 12
 metadata/_custom_type_script = "uid://b5eww7paeebiu"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vck7h"]
+resource_local_to_scene = true
+shader = ExtResource("4_vojd6")
+shader_parameter/original_0 = Color(0.839216, 0, 0.317647, 1)
+shader_parameter/original_1 = Color(0, 0, 0, 1)
+shader_parameter/original_2 = Color(0, 0, 0, 1)
+shader_parameter/original_3 = Color(0, 0, 0, 1)
+shader_parameter/original_4 = Color(0, 0, 0, 1)
+shader_parameter/replace_0 = Color(0.839216, 0, 0.317647, 1)
+shader_parameter/replace_1 = Color(0, 0, 0, 1)
+shader_parameter/replace_2 = Color(0, 0, 0, 1)
+shader_parameter/replace_3 = Color(0, 0, 0, 1)
+shader_parameter/replace_4 = Color(0, 0, 0, 1)
+shader_parameter/deformation = Vector2(0, 0)
+shader_parameter/sideWaysDeformationFactor = 5.0
+shader_parameter/knockbackFactor = 0.4
+shader_parameter/white = false
+shader_parameter/alpha = 1.0
+shader_parameter/darken = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vojd6"]
 atlas = ExtResource("4_1ncno")
@@ -167,5 +188,5 @@ animations = [{
 unit = SubResource("Resource_1ncno")
 
 [node name="Sprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_vck7h")
 sprite_frames = SubResource("SpriteFrames_vojd6")
-animation = &"idle"

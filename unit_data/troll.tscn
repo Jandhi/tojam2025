@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://gp3sjcej3pcb"]
+[gd_scene load_steps=23 format=3 uid="uid://gp3sjcej3pcb"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_c7qku"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_4iqeh"]
 [ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="3_4iqeh"]
 [ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="3_x0lto"]
-[ext_resource type="Texture2D" uid="uid://5klgpqfijm4f" path="res://textures/units/troll.png" id="5_x0lto"]
+[ext_resource type="Shader" uid="uid://3mixcnx32ey3" path="res://shaders/color_swap_and_deformation.gdshader" id="5_psn84"]
+[ext_resource type="Texture2D" uid="uid://5klgpqfijm4f" path="res://textures/units/Troll.png" id="5_x0lto"]
 
 [sub_resource type="Resource" id="Resource_psn84"]
 script = ExtResource("3_4iqeh")
@@ -23,8 +24,8 @@ preferences = Array[ExtResource("2_4iqeh")]([SubResource("Resource_psn84")])
 is_female = false
 cost = 4
 cost_currency = 1
-max_health = 40
-armour = 75.0
+max_health = 60
+armour = 50.0
 resist = 0.0
 movement_cooldown = 4
 melee_damage = 16
@@ -37,13 +38,49 @@ ranged_attack_cooldown = 0
 attack_range = 0
 metadata/_custom_type_script = "uid://b5eww7paeebiu"
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kwn8c"]
+resource_local_to_scene = true
+shader = ExtResource("5_psn84")
+shader_parameter/original_0 = Color(0.839216, 0, 0.317647, 1)
+shader_parameter/original_1 = Color(0, 0, 0, 1)
+shader_parameter/original_2 = Color(0, 0, 0, 1)
+shader_parameter/original_3 = Color(0, 0, 0, 1)
+shader_parameter/original_4 = Color(0, 0, 0, 1)
+shader_parameter/replace_0 = Color(0.839216, 0, 0.317647, 1)
+shader_parameter/replace_1 = Color(0, 0, 0, 1)
+shader_parameter/replace_2 = Color(0, 0, 0, 1)
+shader_parameter/replace_3 = Color(0, 0, 0, 1)
+shader_parameter/replace_4 = Color(0, 0, 0, 1)
+shader_parameter/deformation = Vector2(0, 0)
+shader_parameter/sideWaysDeformationFactor = 5.0
+shader_parameter/knockbackFactor = 0.4
+shader_parameter/white = false
+shader_parameter/alpha = 1.0
+shader_parameter/darken = 0.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_f05ry"]
 atlas = ExtResource("5_x0lto")
-region = Rect2(500, 0, 500, 500)
+region = Rect2(4500, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u5ip2"]
 atlas = ExtResource("5_x0lto")
 region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vps45"]
+atlas = ExtResource("5_x0lto")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jv2o8"]
+atlas = ExtResource("5_x0lto")
+region = Rect2(3000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fr1at"]
+atlas = ExtResource("5_x0lto")
+region = Rect2(3500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phlm2"]
+atlas = ExtResource("5_x0lto")
+region = Rect2(4000, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tmree"]
 atlas = ExtResource("5_x0lto")
@@ -52,6 +89,22 @@ region = Rect2(0, 0, 500, 500)
 [sub_resource type="AtlasTexture" id="AtlasTexture_50t1s"]
 atlas = ExtResource("5_x0lto")
 region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwqsy"]
+atlas = ExtResource("5_x0lto")
+region = Rect2(1000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcpas"]
+atlas = ExtResource("5_x0lto")
+region = Rect2(1500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygpgc"]
+atlas = ExtResource("5_x0lto")
+region = Rect2(2000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p658c"]
+atlas = ExtResource("5_x0lto")
+region = Rect2(2500, 0, 500, 500)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vps45"]
 animations = [{
@@ -66,6 +119,9 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_u5ip2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vps45")
 }],
 "loop": true,
 "name": &"idle",
@@ -73,13 +129,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tmree")
+"texture": SubResource("AtlasTexture_jv2o8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_50t1s")
+"texture": SubResource("AtlasTexture_fr1at")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tmree")
+"texture": SubResource("AtlasTexture_phlm2")
 }],
 "loop": true,
 "name": &"melee",
@@ -101,10 +157,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tmree")
+"texture": SubResource("AtlasTexture_pwqsy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tmree")
+"texture": SubResource("AtlasTexture_qcpas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygpgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p658c")
 }],
 "loop": true,
 "name": &"run",
@@ -115,5 +177,8 @@ animations = [{
 unit = SubResource("Resource_kwn8c")
 
 [node name="Sprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_kwn8c")
 sprite_frames = SubResource("SpriteFrames_vps45")
 animation = &"run"
+frame = 2
+frame_progress = 0.466475

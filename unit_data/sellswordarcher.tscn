@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://blxc68wivx650"]
+[gd_scene load_steps=27 format=3 uid="uid://blxc68wivx650"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_bydh7"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_34bd2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="3_rh4hk"]
 [ext_resource type="Texture2D" uid="uid://b5si8487d633v" path="res://textures/units/sellswordM_arowwAndSword.png" id="4_34bd2"]
 [ext_resource type="Texture2D" uid="uid://cmjcq6tac37ja" path="res://textures/units/sellswordm.png" id="4_rh4hk"]
+[ext_resource type="Shader" uid="uid://3mixcnx32ey3" path="res://shaders/color_swap_and_deformation.gdshader" id="5_rh4hk"]
 
 [sub_resource type="Resource" id="Resource_1tsbo"]
 script = ExtResource("3_rh4hk")
@@ -25,10 +26,10 @@ is_female = false
 cost = 2
 cost_currency = 0
 max_health = 16
-armour = 50.0
+armour = 25.0
 resist = 0.0
 movement_cooldown = 2
-melee_damage = 4
+melee_damage = 5
 melee_is_magic = false
 melee_attack_cooldown = 6
 reach = 0
@@ -37,6 +38,26 @@ ranged_is_magic = false
 ranged_attack_cooldown = 6
 attack_range = 8
 metadata/_custom_type_script = "uid://b5eww7paeebiu"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1tsbo"]
+resource_local_to_scene = true
+shader = ExtResource("5_rh4hk")
+shader_parameter/original_0 = Color(0.839216, 0, 0.317647, 1)
+shader_parameter/original_1 = Color(0, 0, 0, 1)
+shader_parameter/original_2 = Color(0, 0, 0, 1)
+shader_parameter/original_3 = Color(0, 0, 0, 1)
+shader_parameter/original_4 = Color(0, 0, 0, 1)
+shader_parameter/replace_0 = Color(0.839216, 0, 0.317647, 1)
+shader_parameter/replace_1 = Color(0, 0, 0, 1)
+shader_parameter/replace_2 = Color(0, 0, 0, 1)
+shader_parameter/replace_3 = Color(0, 0, 0, 1)
+shader_parameter/replace_4 = Color(0, 0, 0, 1)
+shader_parameter/deformation = Vector2(0, 0)
+shader_parameter/sideWaysDeformationFactor = 5.0
+shader_parameter/knockbackFactor = 0.4
+shader_parameter/white = false
+shader_parameter/alpha = 1.0
+shader_parameter/darken = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rh4hk"]
 atlas = ExtResource("4_34bd2")
@@ -175,5 +196,6 @@ animations = [{
 unit = SubResource("Resource_mfheo")
 
 [node name="Sprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_1tsbo")
 sprite_frames = SubResource("SpriteFrames_or6fy")
 animation = &"run"

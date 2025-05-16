@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvamdileckgya"
-path="res://.godot/imported/Treeman.png-c46858853b71294771128c1cff311a6a.ctex"
+uid="uid://1i8l1fe0cbww"
+path="res://.godot/imported/Succubus.png-ef2d050cf46c216575bc71e4ae214886.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/units/Treeman.png"
-dest_files=["res://.godot/imported/Treeman.png-c46858853b71294771128c1cff311a6a.ctex"]
+source_file="res://textures/units/Succubus.png"
+dest_files=["res://.godot/imported/Succubus.png-ef2d050cf46c216575bc71e4ae214886.ctex"]
 
 [params]
 

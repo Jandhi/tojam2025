@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://cifa6yskexjwl"]
+[gd_scene load_steps=27 format=3 uid="uid://cifa6yskexjwl"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_hnb4t"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_278ku"]
 [ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="3_278ku"]
 [ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="3_fkyha"]
 [ext_resource type="Texture2D" uid="uid://lfg6j4jpryxg" path="res://textures/units/cultist.png" id="4_hnb4t"]
+[ext_resource type="Shader" uid="uid://3mixcnx32ey3" path="res://shaders/color_swap_and_deformation.gdshader" id="5_fkyha"]
 
 [sub_resource type="Resource" id="Resource_fkyha"]
 script = ExtResource("3_278ku")
@@ -37,11 +38,31 @@ melee_damage = 3
 melee_is_magic = false
 melee_attack_cooldown = 6
 reach = 0
-ranged_damage = 16
+ranged_damage = 8
 ranged_is_magic = true
-ranged_attack_cooldown = 7
+ranged_attack_cooldown = 8
 attack_range = 4
 metadata/_custom_type_script = "uid://b5eww7paeebiu"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_68tsi"]
+resource_local_to_scene = true
+shader = ExtResource("5_fkyha")
+shader_parameter/original_0 = Color(0.839216, 0, 0.317647, 1)
+shader_parameter/original_1 = Color(0, 0, 0, 1)
+shader_parameter/original_2 = Color(0, 0, 0, 1)
+shader_parameter/original_3 = Color(0, 0, 0, 1)
+shader_parameter/original_4 = Color(0, 0, 0, 1)
+shader_parameter/replace_0 = Color(0.839216, 0, 0.317647, 1)
+shader_parameter/replace_1 = Color(0, 0, 0, 1)
+shader_parameter/replace_2 = Color(0, 0, 0, 1)
+shader_parameter/replace_3 = Color(0, 0, 0, 1)
+shader_parameter/replace_4 = Color(0, 0, 0, 1)
+shader_parameter/deformation = Vector2(0, 0)
+shader_parameter/sideWaysDeformationFactor = 5.0
+shader_parameter/knockbackFactor = 0.4
+shader_parameter/white = false
+shader_parameter/alpha = 1.0
+shader_parameter/darken = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fkyha"]
 atlas = ExtResource("4_hnb4t")
@@ -180,5 +201,6 @@ animations = [{
 unit = SubResource("Resource_278ku")
 
 [node name="Sprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_68tsi")
 sprite_frames = SubResource("SpriteFrames_uk2dp")
 animation = &"run"
