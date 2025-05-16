@@ -1,0 +1,100 @@
+[gd_scene load_steps=15 format=3 uid="uid://dypny3cs58v5w"]
+
+[ext_resource type="Script" uid="uid://sulirrg5bw34" path="res://ui/story.gd" id="1_4m0pv"]
+[ext_resource type="Texture2D" uid="uid://cawwkmobsq3up" path="res://textures/IntroBorder.png" id="1_mq37v"]
+[ext_resource type="Texture2D" uid="uid://cbnn5opsiqhx8" path="res://textures/story1.png" id="2_xlpw4"]
+[ext_resource type="Texture2D" uid="uid://cm7y3hddei8jp" path="res://textures/story4.png" id="3_4m0pv"]
+[ext_resource type="Texture2D" uid="uid://bj53pbwyb008i" path="res://textures/story2.png" id="3_nm4mc"]
+[ext_resource type="FontFile" uid="uid://bp0s4jass1het" path="res://fonts/PTSerif-Italic.ttf" id="3_pl5n3"]
+[ext_resource type="Texture2D" uid="uid://co3owv461n6so" path="res://textures/story3.png" id="4_huafr"]
+[ext_resource type="AudioStream" uid="uid://by4bnn3saff4c" path="res://audio/story/story1a.wav" id="6_ghrro"]
+[ext_resource type="AudioStream" uid="uid://8emi68j5gxsl" path="res://audio/story/story1b.wav" id="7_lfw6x"]
+[ext_resource type="AudioStream" uid="uid://c58ib55bkvm3t" path="res://audio/story/story2.wav" id="8_7kxgk"]
+[ext_resource type="AudioStream" uid="uid://cwewktqf2xef1" path="res://audio/story/story3.wav" id="9_uc7xm"]
+[ext_resource type="AudioStream" uid="uid://cgu2aw2fiee58" path="res://audio/story/story4.wav" id="10_4pmbq"]
+[ext_resource type="Texture2D" uid="uid://c44o1c5fjoi6g" path="res://textures/story1a.png" id="13_lfw6x"]
+
+[sub_resource type="Theme" id="Theme_4b24t"]
+default_font = ExtResource("3_pl5n3")
+default_font_size = 36
+
+[node name="Control" type="Control" node_paths=PackedStringArray("frame", "text", "color_rect", "audio_player")]
+z_index = 200
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4m0pv")
+frame = NodePath("StoryFrame")
+text = NodePath("Border/RichTextLabel")
+color_rect = NodePath("ColorRect")
+audio_player = NodePath("AudioStreamPlayer")
+frame1 = ExtResource("2_xlpw4")
+frame2 = ExtResource("3_nm4mc")
+frame3 = ExtResource("4_huafr")
+frame4 = ExtResource("3_4m0pv")
+audio1a = ExtResource("6_ghrro")
+audio1b = ExtResource("7_lfw6x")
+audio2 = ExtResource("8_7kxgk")
+audio3 = ExtResource("9_uc7xm")
+audio4 = ExtResource("10_4pmbq")
+
+[node name="Border" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_mq37v")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Border"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 149.0
+offset_top = -250.0
+offset_right = -149.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+theme = SubResource("Theme_4b24t")
+bbcode_enabled = true
+text = "[center]Test"
+
+[node name="StoryFrame" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 22.0
+offset_right = 1781.0
+offset_bottom = 822.0
+texture = ExtResource("3_4m0pv")
+stretch_mode = 4
+
+[node name="BackForP1" type="TextureRect" parent="."]
+z_index = -1
+offset_left = 39.0
+offset_top = -23.0
+offset_right = 1883.0
+offset_bottom = 864.0
+scale = Vector2(0.88, 0.88)
+pivot_offset = Vector2(922, 443)
+texture = ExtResource("13_lfw6x")
+stretch_mode = 4
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

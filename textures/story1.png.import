@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvamdileckgya"
-path="res://.godot/imported/treeman.png-96c07a269e21ecb45a95c4b56d8d4fa6.ctex"
+uid="uid://cbnn5opsiqhx8"
+path="res://.godot/imported/story1.png-97fedac0e8cca405ef7ca5c1ee584ea1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/units/treeman.png"
-dest_files=["res://.godot/imported/treeman.png-96c07a269e21ecb45a95c4b56d8d4fa6.ctex"]
+source_file="res://textures/story1.png"
+dest_files=["res://.godot/imported/story1.png-97fedac0e8cca405ef7ca5c1ee584ea1.ctex"]
 
 [params]
 

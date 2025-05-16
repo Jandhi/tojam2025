@@ -108,9 +108,9 @@ func dropped():
 	
 	if not complains:
 		if unit.is_female:
-			AudioManager.play("grunt", 0.2, 1.0, false, 0.4)
+			AudioManager.play("grunt", 0.2, 0.4, false, 0.4)
 		else:
-			AudioManager.play("grunt", 0.2, 1.0, false, -0.1)
+			AudioManager.play("grunt", 0.2, 0.4, false, -0.1)
 
 	if is_player_commander:
 		grid.set_placeable_tiles()
@@ -325,6 +325,7 @@ func tick():
 
 func move_to(new_grid_pos: Vector2i):
 	assert(not grid.tiles.has(new_grid_pos), "New grid position is filled already")
+	AudioManager.play("step", 0.2, 0.3)
 
 	just_moved = true
 	animated_sprite.play("run")
@@ -344,8 +345,7 @@ func move_to(new_grid_pos: Vector2i):
 	tween.tween_property(self, "position", grid.grid_to_world(grid_pos), CombatManager.TICK_LENGTH)
 
 func melee_attack(target: UnitController):
-	AudioManager.play("arrow")
-	print("melee")
+	AudioManager.play("hit")
 	animated_sprite.play("melee")
 	cooldown = unit.melee_attack_cooldown
 
@@ -406,13 +406,19 @@ func take_damage(amount : int, is_magic : bool):
 
 	print("Taking damage: ", amount)
 
+	if unit.is_female:
+		AudioManager.play("grunt", 0.2, 0.4, false, 0.4)
+	else:
+		AudioManager.play("grunt", 0.2, 0.4, false, -0.1)
+
 	health -= amount
 	health = clamp(health, 0, unit.max_health)
 
 	healthbar_red.size.x = (health / float(unit.max_health)) * healthbar.size.x
 	get_tree().create_tween().tween_property(healthbar_white, "size:x", (health / float(unit.max_health)) * healthbar.size.x, CombatManager.TICK_LENGTH * 1/3)
 
-	animated_sprite.play("flinch")
+	if animated_sprite.animation == "idle":
+		animated_sprite.play("flinch")
 
 	if health == 0:
 		get_tree().create_tween().tween_property(self, "modulate:a", 0, CombatManager.TICK_LENGTH * 1/3)

@@ -9,10 +9,10 @@
 [ext_resource type="Script" uid="uid://b60f4cmajugr7" path="res://selected_circle.gd" id="6_ryrav"]
 [ext_resource type="Script" uid="uid://c1xsiv7lgwjs8" path="res://dialogue/dialogue_manager.gd" id="8_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://cl3g7x27e5sbe" path="res://dialogue/dialogue_popup.tscn" id="9_vef74"]
-[ext_resource type="PackedScene" uid="uid://752o4rpi161n" path="res://ui/main_menu.tscn" id="13_80cx4"]
 [ext_resource type="PackedScene" uid="uid://b3xkk7i87uv02" path="res://ui/shop_panel.tscn" id="14_215e1"]
 [ext_resource type="PackedScene" uid="uid://c48jlc14stkh4" path="res://unit_data/mistressOfRuin.tscn" id="16_80cx4"]
 [ext_resource type="Texture2D" uid="uid://bkdvu0ituty8c" path="res://textures/roster.png" id="17_e8heu"]
+[ext_resource type="PackedScene" uid="uid://dypny3cs58v5w" path="res://ui/story.tscn" id="17_rvswv"]
 [ext_resource type="Texture2D" uid="uid://dt6ytjdtaj3r" path="res://textures/gold_icon.png" id="19_boyg6"]
 [ext_resource type="Theme" uid="uid://bwwn0jlif1hgw" path="res://ui/body_theme.tres" id="20_e36ub"]
 [ext_resource type="Texture2D" uid="uid://c65vbv2i572mo" path="res://textures/pact_icon.png" id="21_hb5m1"]
@@ -61,6 +61,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Control2" parent="." node_paths=PackedStringArray("combat_manager") instance=ExtResource("17_rvswv")]
+z_index = 1000
+layout_mode = 1
+combat_manager = NodePath("../CombatManager")
+
 [node name="AudioPlayerBank" parent="." instance=ExtResource("1_lc2xo")]
 
 [node name="UnitDisplay" parent="." instance=ExtResource("1_eow3j")]
@@ -101,7 +106,7 @@ unit_display = NodePath("../UnitDisplay")
 dialogue_manager = NodePath("../DialogueManager")
 shop_panel = NodePath("../ShopPanel")
 roster = NodePath("../Roster")
-main_menu = NodePath("../MainMenu")
+main_menu = NodePath("")
 gold_label = NodePath("../Control/HBoxContainer/RichTextLabel")
 pacts_label = NodePath("../Control/HBoxContainer/RichTextLabel2")
 metadata/_custom_type_script = "uid://b7g2367t5hxt7"
@@ -135,10 +140,6 @@ metadata/_custom_type_script = "uid://bsor0m08akrft"
 z_index = -5
 position = Vector2(167, 73)
 texture = ExtResource("17_e8heu")
-
-[node name="MainMenu" parent="." instance=ExtResource("13_80cx4")]
-layout_mode = 1
-offset_top = 0.0
 
 [node name="Control" type="Control" parent="."]
 z_index = 20
@@ -198,4 +199,4 @@ theme = ExtResource("20_e36ub")
 theme_override_font_sizes/normal_font_size = 80
 text = "3"
 
-[connection signal="enter_game" from="MainMenu" to="CombatManager" method="enter_game"]
+[connection signal="gui_input" from="." to="Control2" method="_on_gui_input"]

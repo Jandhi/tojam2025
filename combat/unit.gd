@@ -136,7 +136,7 @@ var names_by_origin : Dictionary = {
 		"Bloodthirst", "Lifedrinker", "Hatemonger", "Rendflesh", "Meatcrusher",
 		"Vengeance", "Bloodwine", "Warorder", "Battleborn", "Skullcrush"
 	],
-	"succ": [
+	"succubus": [
 		"Lilith", "Lustina", "Lust", "Sexica", "Liliam", "Joy", "Calliope",
 		"Desdemona", "Deirdre", "Delilah", "Cunilina"
 	],

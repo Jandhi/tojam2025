@@ -76,7 +76,7 @@ func _ready():
 
 
 func enter_shop():
-	in_shop = true
+	
 	AudioManager.play("shop_theme")
 
 	var tween = get_tree().create_tween()
@@ -104,6 +104,7 @@ func _on_button_pressed():
 
 
 func start_shopkeeper_loop():
+	in_shop = true
 	await show_dialogue(shopkeeper_enter_dialogues.pick_random())
 
 	while in_shop:
@@ -115,7 +116,7 @@ func show_dialogue(text : String, show_time = 3.0) -> void:
 	if dialogue_tween:
 		dialogue_tween.stop()
 
-	AudioManager.play("shopkeeper")
+	AudioManager.play("merchant", 0.0, 0.4, true, -0.2)
 	dialogue_tween = get_tree().create_tween().set_parallel(false)
 	dialogue_text.text = "[center]" + text
 
