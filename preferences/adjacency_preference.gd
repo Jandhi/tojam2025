@@ -114,6 +114,10 @@ func evaluate_fulfilled(unit : UnitController, grid : Grid, _combatManager : Com
 			continue
 
 		var neighbour_unit : UnitController = grid.tiles[neighbour]
+		
+		if not is_instance_valid(neighbour_unit):
+			continue
+		
 		if neighbour_unit.tags.has(tag):
 			return wants_to_be_next_to
 

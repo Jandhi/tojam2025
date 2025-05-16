@@ -374,6 +374,9 @@ func ranged_attack(target: UnitController):
 		animated_sprite.flip_h = false
 
 	await get_tree().create_timer(CombatManager.TICK_LENGTH * 1/3).timeout
+	
+	if not is_instance_valid(target) or target == null:
+		return
 
 	var arrow = arrow_prefab.instantiate()
 	
@@ -381,6 +384,8 @@ func ranged_attack(target: UnitController):
 	if not is_instance_valid(arrow) or arrow == null:
 		animated_sprite.play("idle")
 		return
+
+
 	
 	add_child(arrow)
 	arrow.fly_to(unit.ranged_damage, unit.ranged_is_magic, target)

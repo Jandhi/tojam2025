@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dt6ytjdtaj3r" path="res://textures/gold_icon.png" id="9_me1pa"]
 
 [node name="ShopPanel" type="Sprite2D" node_paths=PackedStringArray("unit_sales", "dialogue_picture", "dialogue_text")]
-z_index = 10
+z_index = 15
 texture = ExtResource("1_nn7w2")
 script = ExtResource("2_m7ocl")
 unit_sales = [NodePath("Control/Control2"), NodePath("Control/Control3"), NodePath("Control/Control4")]
