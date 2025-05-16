@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqt7ejuf3w7n2"]
+[gd_scene load_steps=25 format=3 uid="uid://dqt7ejuf3w7n2"]
 
 [ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_s43qh"]
 [ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_fveqv"]
 [ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="3_g4ctk"]
 [ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="4_c4mrb"]
-[ext_resource type="Texture2D" uid="uid://b7uowyjbg5jte" path="res://textures/units/imp.png" id="5_s43qh"]
+[ext_resource type="Shader" uid="uid://3mixcnx32ey3" path="res://shaders/color_swap_and_deformation.gdshader" id="5_fveqv"]
+[ext_resource type="Texture2D" uid="uid://b7uowyjbg5jte" path="res://textures/units/Imp.png" id="5_s43qh"]
 
 [sub_resource type="Resource" id="Resource_fkyha"]
 script = ExtResource("3_g4ctk")
@@ -29,36 +30,97 @@ preferences = Array[ExtResource("2_fveqv")]([SubResource("Resource_fkyha"), SubR
 is_female = false
 cost = 1
 cost_currency = 1
-max_health = 8
-armour = 75.0
+max_health = 12
+armour = 25.0
 resist = 0.0
 movement_cooldown = 1
-melee_damage = 3
+melee_damage = 5
 melee_is_magic = true
-melee_attack_cooldown = 3
+melee_attack_cooldown = 2
 reach = 0
 ranged_damage = 4
 ranged_is_magic = true
 ranged_attack_cooldown = 3
-attack_range = 4
+attack_range = 0
 metadata/_custom_type_script = "uid://b5eww7paeebiu"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fveqv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4ctk"]
+resource_local_to_scene = true
+shader = ExtResource("5_fveqv")
+shader_parameter/original_0 = Color(0.839216, 0, 0.317647, 1)
+shader_parameter/original_1 = Color(0, 0, 0, 1)
+shader_parameter/original_2 = Color(0, 0, 0, 1)
+shader_parameter/original_3 = Color(0, 0, 0, 1)
+shader_parameter/original_4 = Color(0, 0, 0, 1)
+shader_parameter/replace_0 = Color(0.839216, 0, 0.317647, 1)
+shader_parameter/replace_1 = Color(0, 0, 0, 1)
+shader_parameter/replace_2 = Color(0, 0, 0, 1)
+shader_parameter/replace_3 = Color(0, 0, 0, 1)
+shader_parameter/replace_4 = Color(0, 0, 0, 1)
+shader_parameter/deformation = Vector2(0, 0)
+shader_parameter/sideWaysDeformationFactor = 5.0
+shader_parameter/knockbackFactor = 0.4
+shader_parameter/white = false
+shader_parameter/alpha = 1.0
+shader_parameter/darken = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4mrb"]
+atlas = ExtResource("5_s43qh")
+region = Rect2(4500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_li2eb"]
 atlas = ExtResource("5_s43qh")
 region = Rect2(0, 0, 500, 500)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g4ctk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_r17qm"]
 atlas = ExtResource("5_s43qh")
 region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ns301"]
+atlas = ExtResource("5_s43qh")
+region = Rect2(3000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwivl"]
+atlas = ExtResource("5_s43qh")
+region = Rect2(3500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbwqy"]
+atlas = ExtResource("5_s43qh")
+region = Rect2(4000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhce5"]
+atlas = ExtResource("5_s43qh")
+region = Rect2(3000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odrnh"]
+atlas = ExtResource("5_s43qh")
+region = Rect2(3500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rifmn"]
+atlas = ExtResource("5_s43qh")
+region = Rect2(4000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhxil"]
+atlas = ExtResource("5_s43qh")
+region = Rect2(1000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4w4p"]
+atlas = ExtResource("5_s43qh")
+region = Rect2(1500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ybsr"]
+atlas = ExtResource("5_s43qh")
+region = Rect2(2000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62n85"]
+atlas = ExtResource("5_s43qh")
+region = Rect2(2500, 0, 500, 500)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c4mrb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fveqv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g4ctk")
+"texture": SubResource("AtlasTexture_c4mrb")
 }],
 "loop": true,
 "name": &"flinch",
@@ -66,10 +128,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fveqv")
+"texture": SubResource("AtlasTexture_li2eb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g4ctk")
+"texture": SubResource("AtlasTexture_r17qm")
 }],
 "loop": true,
 "name": &"idle",
@@ -77,10 +139,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fveqv")
+"texture": SubResource("AtlasTexture_ns301")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g4ctk")
+"texture": SubResource("AtlasTexture_nwivl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbwqy")
 }],
 "loop": true,
 "name": &"melee",
@@ -88,10 +153,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fveqv")
+"texture": SubResource("AtlasTexture_hhce5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g4ctk")
+"texture": SubResource("AtlasTexture_odrnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rifmn")
 }],
 "loop": true,
 "name": &"ranged",
@@ -99,10 +167,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fveqv")
+"texture": SubResource("AtlasTexture_hhxil")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g4ctk")
+"texture": SubResource("AtlasTexture_r4w4p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ybsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62n85")
 }],
 "loop": true,
 "name": &"run",
@@ -113,5 +187,7 @@ animations = [{
 unit = SubResource("Resource_278ku")
 
 [node name="Sprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_g4ctk")
 sprite_frames = SubResource("SpriteFrames_c4mrb")
-animation = &"melee"
+animation = &"run"
+frame_progress = 0.791086

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvamdileckgya"
-path="res://.godot/imported/Treeman.png-c46858853b71294771128c1cff311a6a.ctex"
+uid="uid://t2jx73njy3ve"
+path="res://.godot/imported/Vampire.png-89349cb6cb24c5110e95bd26c114b664.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/units/Treeman.png"
-dest_files=["res://.godot/imported/Treeman.png-c46858853b71294771128c1cff311a6a.ctex"]
+source_file="res://textures/units/Vampire.png"
+dest_files=["res://.godot/imported/Vampire.png-89349cb6cb24c5110e95bd26c114b664.ctex"]
 
 [params]
 

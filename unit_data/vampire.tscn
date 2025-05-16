@@ -1,0 +1,193 @@
+[gd_scene load_steps=24 format=3 uid="uid://dn4ddr3ayq5dc"]
+
+[ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_kbhv2"]
+[ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_eyubf"]
+[ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="3_iqdi2"]
+[ext_resource type="Shader" uid="uid://3mixcnx32ey3" path="res://shaders/color_swap_and_deformation.gdshader" id="4_gv1a0"]
+[ext_resource type="Texture2D" uid="uid://t2jx73njy3ve" path="res://textures/units/Vampire.png" id="5_kbhv2"]
+
+[sub_resource type="Resource" id="Resource_eyubf"]
+script = ExtResource("3_iqdi2")
+unit_type = "Vampire"
+name_origin = "german_male"
+evil_last_name = true
+has_last_name = true
+tags = Array[String](["undead", "man"])
+preferences = Array[ExtResource("2_eyubf")]([])
+is_female = false
+cost = 8
+cost_currency = 0
+max_health = 32
+armour = 50.0
+resist = 0.0
+movement_cooldown = 2
+melee_damage = 8
+melee_is_magic = true
+melee_attack_cooldown = 6
+reach = 1
+ranged_damage = 16
+ranged_is_magic = true
+ranged_attack_cooldown = 8
+attack_range = 4
+metadata/_custom_type_script = "uid://b5eww7paeebiu"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_30ogh"]
+resource_local_to_scene = true
+shader = ExtResource("4_gv1a0")
+shader_parameter/original_0 = Color(0.839216, 0, 0.317647, 1)
+shader_parameter/original_1 = Color(0, 0, 0, 1)
+shader_parameter/original_2 = Color(0, 0, 0, 1)
+shader_parameter/original_3 = Color(0, 0, 0, 1)
+shader_parameter/original_4 = Color(0, 0, 0, 1)
+shader_parameter/replace_0 = Color(0.839216, 0, 0.317647, 1)
+shader_parameter/replace_1 = Color(0, 0, 0, 1)
+shader_parameter/replace_2 = Color(0, 0, 0, 1)
+shader_parameter/replace_3 = Color(0, 0, 0, 1)
+shader_parameter/replace_4 = Color(0, 0, 0, 1)
+shader_parameter/deformation = Vector2(0, 0)
+shader_parameter/sideWaysDeformationFactor = 5.0
+shader_parameter/knockbackFactor = 0.4
+shader_parameter/white = false
+shader_parameter/alpha = 1.0
+shader_parameter/darken = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqdi2"]
+atlas = ExtResource("5_kbhv2")
+region = Rect2(5000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gv1a0"]
+atlas = ExtResource("5_kbhv2")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tj1h"]
+atlas = ExtResource("5_kbhv2")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfw8s"]
+atlas = ExtResource("5_kbhv2")
+region = Rect2(1000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7725v"]
+atlas = ExtResource("5_kbhv2")
+region = Rect2(1500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ir1f"]
+atlas = ExtResource("5_kbhv2")
+region = Rect2(2000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evhga"]
+atlas = ExtResource("5_kbhv2")
+region = Rect2(2500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xgoo"]
+atlas = ExtResource("5_kbhv2")
+region = Rect2(3000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjpik"]
+atlas = ExtResource("5_kbhv2")
+region = Rect2(3500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5j3ss"]
+atlas = ExtResource("5_kbhv2")
+region = Rect2(4000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8nu7"]
+atlas = ExtResource("5_kbhv2")
+region = Rect2(4500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tf2er"]
+atlas = ExtResource("5_kbhv2")
+region = Rect2(5500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhjne"]
+atlas = ExtResource("5_kbhv2")
+region = Rect2(6000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mlr6"]
+atlas = ExtResource("5_kbhv2")
+region = Rect2(6500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrio3"]
+atlas = ExtResource("5_kbhv2")
+region = Rect2(7000, 0, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ia6vm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqdi2")
+}],
+"loop": true,
+"name": &"flinch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gv1a0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tj1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfw8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7725v")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ir1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evhga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xgoo")
+}],
+"loop": true,
+"name": &"melee",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjpik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5j3ss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8nu7")
+}],
+"loop": true,
+"name": &"ranged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tf2er")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhjne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mlr6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrio3")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Unit2" instance=ExtResource("1_kbhv2")]
+unit = SubResource("Resource_eyubf")
+
+[node name="Sprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_30ogh")
+sprite_frames = SubResource("SpriteFrames_ia6vm")
+animation = &"run"

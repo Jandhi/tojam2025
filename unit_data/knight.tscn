@@ -1,0 +1,200 @@
+[gd_scene load_steps=26 format=3 uid="uid://1i6j0bq8qdeg"]
+
+[ext_resource type="PackedScene" uid="uid://cgt08rla3nihh" path="res://combat/unit.tscn" id="1_2b4qd"]
+[ext_resource type="Script" uid="uid://bh6vqbbe72shu" path="res://preferences/preference.gd" id="2_5msn6"]
+[ext_resource type="Script" uid="uid://cw3ohthqkqyn7" path="res://preferences/adjacency_preference.gd" id="3_p64yd"]
+[ext_resource type="Script" uid="uid://b5eww7paeebiu" path="res://combat/unit.gd" id="4_wrv55"]
+[ext_resource type="Shader" uid="uid://3mixcnx32ey3" path="res://shaders/color_swap_and_deformation.gdshader" id="5_5msn6"]
+[ext_resource type="Texture2D" uid="uid://dcv23yhwrid1b" path="res://textures/units/knight.png" id="6_p64yd"]
+
+[sub_resource type="Resource" id="Resource_rwbax"]
+script = ExtResource("3_p64yd")
+tag = "heathen"
+wants_to_be_next_to = false
+metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
+
+[sub_resource type="Resource" id="Resource_wrv55"]
+script = ExtResource("4_wrv55")
+unit_type = "Knight"
+name_origin = "french_male"
+evil_last_name = false
+has_last_name = true
+tags = Array[String](["man", "lilian"])
+preferences = Array[ExtResource("2_5msn6")]([SubResource("Resource_rwbax")])
+is_female = false
+cost = 4
+cost_currency = 0
+max_health = 28
+armour = 75.0
+resist = 0.0
+movement_cooldown = 2
+melee_damage = 12
+melee_is_magic = false
+melee_attack_cooldown = 7
+reach = 0
+ranged_damage = 0
+ranged_is_magic = false
+ranged_attack_cooldown = 0
+attack_range = 0
+metadata/_custom_type_script = "uid://b5eww7paeebiu"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2f1ji"]
+resource_local_to_scene = true
+shader = ExtResource("5_5msn6")
+shader_parameter/original_0 = Color(0.839216, 0, 0.317647, 1)
+shader_parameter/original_1 = Color(0, 0, 0, 1)
+shader_parameter/original_2 = Color(0, 0, 0, 1)
+shader_parameter/original_3 = Color(0, 0, 0, 1)
+shader_parameter/original_4 = Color(0, 0, 0, 1)
+shader_parameter/replace_0 = Color(0.839216, 0, 0.317647, 1)
+shader_parameter/replace_1 = Color(0, 0, 0, 1)
+shader_parameter/replace_2 = Color(0, 0, 0, 1)
+shader_parameter/replace_3 = Color(0, 0, 0, 1)
+shader_parameter/replace_4 = Color(0, 0, 0, 1)
+shader_parameter/deformation = Vector2(0, 0)
+shader_parameter/sideWaysDeformationFactor = 5.0
+shader_parameter/knockbackFactor = 0.4
+shader_parameter/white = false
+shader_parameter/alpha = 1.0
+shader_parameter/darken = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exw21"]
+atlas = ExtResource("6_p64yd")
+region = Rect2(7000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv84u"]
+atlas = ExtResource("6_p64yd")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rss1i"]
+atlas = ExtResource("6_p64yd")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dace1"]
+atlas = ExtResource("6_p64yd")
+region = Rect2(1000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4h1p6"]
+atlas = ExtResource("6_p64yd")
+region = Rect2(1500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2tba"]
+atlas = ExtResource("6_p64yd")
+region = Rect2(4000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0rit"]
+atlas = ExtResource("6_p64yd")
+region = Rect2(4500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i62dm"]
+atlas = ExtResource("6_p64yd")
+region = Rect2(5000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkfg2"]
+atlas = ExtResource("6_p64yd")
+region = Rect2(5500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1oklc"]
+atlas = ExtResource("6_p64yd")
+region = Rect2(6000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2v2c2"]
+atlas = ExtResource("6_p64yd")
+region = Rect2(6500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tw6g4"]
+atlas = ExtResource("6_p64yd")
+region = Rect2(8000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrgcf"]
+atlas = ExtResource("6_p64yd")
+region = Rect2(8500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7ol5"]
+atlas = ExtResource("6_p64yd")
+region = Rect2(9000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2kef"]
+atlas = ExtResource("6_p64yd")
+region = Rect2(9500, 0, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nojiy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exw21")
+}],
+"loop": true,
+"name": &"flinch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bv84u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rss1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dace1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4h1p6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2tba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0rit")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i62dm")
+}],
+"loop": true,
+"name": &"melee",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkfg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1oklc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2v2c2")
+}],
+"loop": true,
+"name": &"ranged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tw6g4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrgcf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7ol5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2kef")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Unit" instance=ExtResource("1_2b4qd")]
+unit = SubResource("Resource_wrv55")
+
+[node name="Sprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_2f1ji")
+sprite_frames = SubResource("SpriteFrames_nojiy")
+animation = &"flinch"
