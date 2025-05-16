@@ -23,8 +23,12 @@ var units = [
 	preload("res://unit_data/zombie.tscn"),
 ]
 
+var gold_units = [
+
+]
+
 func spawn_unit() -> UnitController:
-	var unit_scene = units[randi() % units.size()]
+	var unit_scene = [units, gold_units].pick_random().pick_random()
 	var unit = unit_scene.instantiate()
 	unit.grid_pos = Vector2i(0, 0)
 	unit.set_process(true)
