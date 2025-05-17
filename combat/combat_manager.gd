@@ -9,6 +9,7 @@ class_name CombatManager extends Node
 @export var main_menu : Control
 @export var gold_label : RichTextLabel
 @export var pacts_label : RichTextLabel
+@export var victory_prefab : PackedScene
 
 var player_leader : UnitController
 var player_units : Array[UnitController] = []
@@ -89,7 +90,18 @@ func set_pacts(amount: int):
 	pacts = amount
 	pacts_label.text = str(pacts)
 
-func enter_game():
+func enter_game(skip_tutorial: bool = false):
+
+	if skip_tutorial:
+		await get_tree().create_timer(0.1).timeout
+		AudioManager.play("loot")
+		shop_panel.enter_shop()
+		spawn_enemies()
+
+		grid.set_placeable_tiles()
+		set_gold(3)
+		set_pacts(2)
+		return
 
 	var tween = get_tree().create_tween()
 	tween.tween_property(main_menu, "position", main_menu.position + Vector2(0, -1080), 1.0)\
@@ -100,7 +112,7 @@ func enter_game():
 	show_roster()
 	main_menu.queue_free()
 
-	var popup = PopupUI.show_popup(get_tree().root, "[center]Welcome to the game!\nYou can move your units around the grid. Units want to be within 2 tiles of the mistress to start! This range will increase every 3 battles.\n\n Let's start with some shopping. I'll give you 3 gold and 2 pacts to start.", "I understand")
+	var popup = PopupUI.show_popup(get_tree().root, "[font_size=28]Welcome to the game![/font_size]\n\nYou can drag your units around the grid. Units want to be within 2 tiles of the mistress to start! This range will increase every 4 battles.\n\n Let's start with some shopping. I'll give you 3 gold and 2 pacts to start.", "I understand")
 	popup.popup_closed.connect(func():
 		AudioManager.play("loot")
 		shop_panel.enter_shop()
@@ -110,7 +122,7 @@ func enter_game():
 		set_gold(3)
 		set_pacts(2)
 
-		var inner_popup = PopupUI.show_popup(get_tree().root, "[center]Units will cost Gold or Pacts.\n\nUnits have preferences they want to abide by, else they lose morale and fight less effectively. Good luck!", "I understand")
+		var inner_popup = PopupUI.show_popup(get_tree().root, "Units will cost Gold or Pacts.\n\nUnits also have morale, which decreases if their placement preferences aren't met. You can increase a unit's morale by leaving it in reserve for a battle.\n\nGood luck!", "And death to mankind..")
 		inner_popup.popup_closed.connect(func():
 			pass
 		)
@@ -120,7 +132,7 @@ func get_reward_for_battle():
 	AudioManager.play("loot")
 	set_pacts(pacts + (battle_number % 2) * int((battle_number + 1) / 2.0))
 	set_gold(gold + 2 + int(battle_number / 2.0))
-	if(battle_number % 3 == 2):
+	if(battle_number % 4 == 3):
 		allowed_distance_from_leader += 1
 		grid.set_placeable_tiles()
 
@@ -190,6 +202,10 @@ func play_combat():
 	if victory:
 		print("Victory!")
 		AudioManager.play("victory", 0.0, 1.0, true)
+		var victory_instance = victory_prefab.instantiate()
+		get_parent().add_child(victory_instance)
+		victory_instance.start()
+		await get_tree().create_timer(1.0).timeout
 		finished_battle()
 
 	else:
@@ -204,7 +220,7 @@ func play_combat():
 	
 
 func finished_battle():
-	grid.set_placeable_tiles()
+	
 
 	for unit in player_units:
 		unit.morale += unit.morale_modifier
@@ -224,14 +240,21 @@ func finished_battle():
 
 		unit.is_moveable = true
 
+	
+	
+	grid.set_placeable_tiles()
+	await get_tree().create_timer(2.0).timeout
+
 	for unit in player_units:
 		if unit.morale == 0:
+			unit.spawn_anger()
 			unit.leave(self)
+			dialogue_manager.leave(unit)
 			continue
 	
+	for unit in player_units:
 		unit.check_preferences()
-	
-	await get_tree().create_timer(2.0).timeout
+
 	get_reward_for_battle()
 	AudioManager.play("shop_theme")
 	spawn_enemies()

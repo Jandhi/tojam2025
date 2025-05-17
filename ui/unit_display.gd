@@ -2,7 +2,7 @@ class_name UnitDisplay extends Control
 
 @export var unit_name : ScaleDownTextToFit
 @export var unit_type : RichTextLabel
-@export var stats : RichTextLabel
+@export var stats : StatsLabel
 @export var traits : RichTextLabel
 @export var morale : RichTextLabel
 @export var mood_indicator : TextureRect
@@ -37,15 +37,7 @@ func set_unit(unit : UnitController):
 
 		unit_type.text += italicize_text(", " + tag.capitalize())
 
-	stats.text = "Health: " + str(unit.health) + "/" + str(unit.unit.max_health) + ", "
-	stats.text += "Melee Damage: " + str(unit.unit.melee_damage) + ", "
-	if unit.unit.attack_range > 0:
-		stats.text += "Ranged Damage: " + str(unit.unit.ranged_damage) + " with range " + str(unit.unit.attack_range) + ", "
-	
-	if unit.unit.armour > 0:
-		stats.text += "Armour: " + str(unit.unit.armour) + ", "
-	if unit.unit.resist > 0:
-		stats.text += "Resist: " + str(unit.unit.resist) + ", "
+	stats.set_unit(unit.unit)
 
 	var morale_descriptor = ""
 

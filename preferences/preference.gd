@@ -6,7 +6,7 @@ func evaluate_fulfilled(_unit : UnitController, _grid : Grid, _combatManager : C
 func get_complaint() -> String:
 	return [
 		"Grumble", 
-		"[i]*sigh*",
+		"[i]*sigh*[/i]",
 	].pick_random()
 
 func get_description() -> String:

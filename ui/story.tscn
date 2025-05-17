@@ -18,7 +18,7 @@
 default_font = ExtResource("3_pl5n3")
 default_font_size = 36
 
-[node name="Control" type="Control" node_paths=PackedStringArray("frame", "text", "color_rect", "audio_player")]
+[node name="Control" type="Control" node_paths=PackedStringArray("frame", "text", "color_rect", "audio_player", "click_to_continue")]
 z_index = 200
 layout_mode = 3
 anchors_preset = 15
@@ -28,9 +28,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4m0pv")
 frame = NodePath("StoryFrame")
-text = NodePath("Border/RichTextLabel")
+text = NodePath("Border/VBoxContainer/RichTextLabel")
 color_rect = NodePath("ColorRect")
 audio_player = NodePath("AudioStreamPlayer")
+click_to_continue = NodePath("Border/VBoxContainer/RichTextLabel2")
 frame1 = ExtResource("2_xlpw4")
 frame2 = ExtResource("3_nm4mc")
 frame3 = ExtResource("4_huafr")
@@ -48,7 +49,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_mq37v")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Border"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Border"]
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 1
 anchors_preset = 12
@@ -57,13 +58,25 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 149.0
 offset_top = -250.0
-offset_right = -149.0
+offset_right = -148.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Border/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
 mouse_filter = 1
 theme = SubResource("Theme_4b24t")
 bbcode_enabled = true
 text = "[center]Test"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Border/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+mouse_filter = 1
+theme = SubResource("Theme_4b24t")
+bbcode_enabled = true
+text = "[center](Click to continue)"
 
 [node name="StoryFrame" type="TextureRect" parent="."]
 layout_mode = 0
@@ -76,6 +89,7 @@ stretch_mode = 4
 
 [node name="BackForP1" type="TextureRect" parent="."]
 z_index = -1
+layout_mode = 0
 offset_left = 39.0
 offset_top = -23.0
 offset_right = 1883.0
@@ -86,8 +100,10 @@ texture = ExtResource("13_lfw6x")
 stretch_mode = 4
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Narrative"
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

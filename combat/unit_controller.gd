@@ -19,6 +19,8 @@ signal attempted_to_place_on_right_side
 @export var hover_box : Control
 @export var arrow_prefab : PackedScene
 @export var smoke : AnimatedSprite2D
+@export var blood_prefab : PackedScene
+@export var anger_prefab : PackedScene
 
 @export_group("Healthbar")
 @export var healthbar : Control
@@ -356,6 +358,9 @@ func melee_attack(target: UnitController):
 
 	await get_tree().create_timer(CombatManager.TICK_LENGTH * 2/3).timeout
 
+	if not is_instance_valid(target) or target == null:
+		return
+
 	target.take_damage(unit.melee_damage, unit.melee_is_magic)
 
 	# tempish
@@ -421,6 +426,10 @@ func take_damage(amount : int, is_magic : bool):
 		animated_sprite.play("flinch")
 
 	if health == 0:
+		var blood = blood_prefab.instantiate()
+		get_parent().add_child(blood)
+		blood.global_position = global_position
+		blood.emitting = true
 		get_tree().create_tween().tween_property(self, "modulate:a", 0, CombatManager.TICK_LENGTH * 1/3)
 
 	await get_tree().create_timer(CombatManager.TICK_LENGTH * 1/3).timeout
@@ -476,10 +485,23 @@ func leave(combat_manager: CombatManager):
 	combat_manager.player_units.erase(self)
 
 	var tween = get_tree().create_tween().parallel()
-	tween.tween_property(self, "modulate:a", 0, 0.1)
-	tween.tween_property(self, "position", self.position + Vector2(0, -100), 0.1)
-	await tween.finished
+	tween.tween_method(set_sprite_alpha, 1.0, 0.0, 0.1)
+	tween.tween_property(healthbar, "self_modulate:a", 0, 0.1)
+	tween.tween_property(smoke, "self_modulate:a", 0, 0.1)
+	tween.tween_property(healthbar_red, "self_modulate:a", 0, 0.1)
+	tween.tween_property(healthbar_white, "self_modulate:a", 0, 0.1)
+	tween.tween_property(animated_sprite, "global_position", self.global_position + Vector2(-100, 0), 0.1)
+	await get_tree().create_timer(3.0).timeout
 	self.queue_free()
 
 func swap_colors():
 	animated_sprite.material.set("shader_param/replace_0", Color.from_string("#74e3ff", Color.WHITE))
+
+func spawn_anger():
+	var anger = anger_prefab.instantiate()
+	get_parent().add_child(anger)
+	anger.global_position = global_position
+	anger.emitting = true
+
+func set_sprite_alpha(alpha :float):
+	animated_sprite.material.set("shader_param/alpha", alpha)

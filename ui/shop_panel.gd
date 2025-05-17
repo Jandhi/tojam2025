@@ -108,7 +108,7 @@ func start_shopkeeper_loop():
 	await show_dialogue(shopkeeper_enter_dialogues.pick_random())
 
 	while in_shop:
-		await get_tree().create_timer(randf_range(5.0, 10.0)).timeout
+		await get_tree().create_timer(randf_range(5.0, 15.0)).timeout
 		var dialogue = shopkeeper_dialogues.pick_random()
 		await show_dialogue(dialogue)
 
@@ -116,6 +116,9 @@ func show_dialogue(text : String, show_time = 3.0) -> void:
 	if dialogue_tween:
 		dialogue_tween.stop()
 
+	if not in_shop:
+		return
+	
 	AudioManager.play("merchant", 0.0, 0.4, true, -0.2)
 	dialogue_tween = get_tree().create_tween().set_parallel(false)
 	dialogue_text.text = "[center]" + text

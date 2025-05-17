@@ -1,14 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://by48l1hc7jjsj"]
+[gd_scene load_steps=8 format=3 uid="uid://by48l1hc7jjsj"]
 
 [ext_resource type="FontFile" uid="uid://c5euy1idyacph" path="res://fonts/UnifrakturMaguntia-Regular.ttf" id="1_5eixk"]
 [ext_resource type="Theme" uid="uid://co5py1prs3hsj" path="res://ui/title_theme.tres" id="1_oo8kp"]
-[ext_resource type="Script" uid="uid://cl3ty3ndrfsym" path="res://ui/game_over.gd" id="2_j1fe5"]
+[ext_resource type="Script" path="res://ui/game_over.gd" id="2_j1fe5"]
 [ext_resource type="Theme" uid="uid://bwwn0jlif1hgw" path="res://ui/body_theme.tres" id="4_akjlf"]
 [ext_resource type="FontFile" uid="uid://bp0s4jass1het" path="res://fonts/PTSerif-Italic.ttf" id="5_k8651"]
 
 [sub_resource type="Theme" id="Theme_j1fe5"]
 default_font = ExtResource("1_5eixk")
 default_font_size = 40
+
+[sub_resource type="Theme" id="Theme_akjlf"]
+default_font = ExtResource("5_k8651")
 
 [node name="Control" type="VBoxContainer" node_paths=PackedStringArray("x_days")]
 z_index = 100
@@ -22,7 +25,7 @@ alignment = 1
 script = ExtResource("2_j1fe5")
 x_days = NodePath("RichTextLabel2")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
 layout_mode = 2
 theme = ExtResource("1_oo8kp")
 theme_override_font_sizes/normal_font_size = 200
@@ -31,12 +34,24 @@ text = "[center]Game Over"
 fit_content = true
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme = ExtResource("4_akjlf")
 theme_override_fonts/normal_font = ExtResource("5_k8651")
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[center]X days survioved"
+fit_content = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+theme = SubResource("Theme_akjlf")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]Thank you for playing!
+Art & Animation: E-man and Silvia George
+Game Design & Narration: Rosalind Chapman
+Programming & Music: Jan Dohring"
 fit_content = true
 
 [node name="Control" type="Control" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://trqe16na7c6n"]
+[gd_scene load_steps=23 format=3 uid="uid://trqe16na7c6n"]
 
 [ext_resource type="Script" uid="uid://bsor0m08akrft" path="res://combat/grid.gd" id="1_80nbo"]
 [ext_resource type="PackedScene" uid="uid://dj81viqtup7xf" path="res://ui/unit_display.tscn" id="1_eow3j"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://b7g2367t5hxt7" path="res://combat/combat_manager.gd" id="4_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://gf56hfundv6c" path="res://textures/selected_circle.webp" id="5_7jktm"]
 [ext_resource type="Script" uid="uid://b60f4cmajugr7" path="res://selected_circle.gd" id="6_ryrav"]
+[ext_resource type="PackedScene" uid="uid://4003wqtgxoge" path="res://ui/victory.tscn" id="8_e8heu"]
 [ext_resource type="Script" uid="uid://c1xsiv7lgwjs8" path="res://dialogue/dialogue_manager.gd" id="8_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://cl3g7x27e5sbe" path="res://dialogue/dialogue_popup.tscn" id="9_vef74"]
 [ext_resource type="PackedScene" uid="uid://b3xkk7i87uv02" path="res://ui/shop_panel.tscn" id="14_215e1"]
@@ -72,8 +73,8 @@ combat_manager = NodePath("../CombatManager")
 layout_mode = 1
 offset_left = 3.0
 offset_top = 2.0
-offset_right = 989.0
-offset_bottom = -844.0
+offset_right = 991.0
+offset_bottom = -830.0
 
 [node name="ColorRect" type="TextureRect" parent="."]
 z_index = -5
@@ -97,8 +98,9 @@ metadata/_custom_type_script = "uid://bsor0m08akrft"
 position = Vector2(89, 580)
 grid = NodePath("..")
 roster = NodePath("../../Roster")
+anger_prefab = null
 
-[node name="CombatManager" type="Node" parent="." node_paths=PackedStringArray("grid", "selected_circle", "unit_display", "dialogue_manager", "shop_panel", "roster", "main_menu", "gold_label", "pacts_label")]
+[node name="CombatManager" type="Node" parent="." node_paths=PackedStringArray("grid", "selected_circle", "unit_display", "dialogue_manager", "shop_panel", "roster", "gold_label", "pacts_label")]
 script = ExtResource("4_fc0e3")
 grid = NodePath("../MainGrid")
 selected_circle = NodePath("../SelectedCircle")
@@ -106,9 +108,9 @@ unit_display = NodePath("../UnitDisplay")
 dialogue_manager = NodePath("../DialogueManager")
 shop_panel = NodePath("../ShopPanel")
 roster = NodePath("../Roster")
-main_menu = NodePath("")
 gold_label = NodePath("../Control/HBoxContainer/RichTextLabel")
 pacts_label = NodePath("../Control/HBoxContainer/RichTextLabel2")
+victory_prefab = ExtResource("8_e8heu")
 metadata/_custom_type_script = "uid://b7g2367t5hxt7"
 
 [node name="SelectedCircle" type="AnimatedSprite2D" parent="."]

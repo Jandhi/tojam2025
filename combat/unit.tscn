@@ -1,10 +1,12 @@
-[gd_scene load_steps=28 format=3 uid="uid://cgt08rla3nihh"]
+[gd_scene load_steps=30 format=3 uid="uid://cgt08rla3nihh"]
 
 [ext_resource type="Script" uid="uid://b2clr4a6id4r5" path="res://combat/unit_controller.gd" id="1_taype"]
 [ext_resource type="PackedScene" uid="uid://bbdbsnjgohx5a" path="res://combat/arrow.tscn" id="2_oxlip"]
 [ext_resource type="Texture2D" uid="uid://bs66iawicr2ui" path="res://textures/ranged_attack.webp" id="3_2p3g0"]
+[ext_resource type="PackedScene" uid="uid://dvtjlppm73c0m" path="res://blood_drops.tscn" id="3_e3gbq"]
 [ext_resource type="Texture2D" uid="uid://38g686lmp2t5" path="res://textures/spritesheet.png" id="3_oxlip"]
 [ext_resource type="Shader" uid="uid://3mixcnx32ey3" path="res://shaders/color_swap_and_deformation.gdshader" id="3_vd5gr"]
+[ext_resource type="PackedScene" uid="uid://dapwjqyi6e13c" path="res://anger.tscn" id="4_167gt"]
 [ext_resource type="Texture2D" uid="uid://o4mxlof2xo3" path="res://textures/units/zombie.png" id="5_axs0o"]
 [ext_resource type="Texture2D" uid="uid://jge80yv8uopv" path="res://textures/angrySpritesheet.png" id="5_fo1f0"]
 
@@ -189,6 +191,8 @@ animated_sprite = NodePath("Sprite")
 hover_box = NodePath("Control")
 arrow_prefab = ExtResource("2_oxlip")
 smoke = NodePath("Healthbar/AnimatedSprite2D")
+blood_prefab = ExtResource("3_e3gbq")
+anger_prefab = ExtResource("4_167gt")
 healthbar = NodePath("Healthbar")
 healthbar_white = NodePath("Healthbar/HealthbarWhite")
 healthbar_red = NodePath("Healthbar/HealthbarRed")

@@ -33,6 +33,19 @@ vec4 swap_color(vec4 color){
 		}
 	}
 	color.a = my_alpha;
+
+	if(white) {
+		color.r = 255.0;
+		color.g = 255.0;
+		color.b = 255.0;
+	}
+
+	color.a = color.a * alpha;
+
+	color.r = color.r * (1.0 - darken);
+	color.g = color.g * (1.0 - darken);
+	color.b = color.b * (1.0 - darken);
+
 	return color;
 }
 

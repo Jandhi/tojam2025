@@ -16,6 +16,7 @@ var cant_move_commander_to_roster_dialogues = [
 
 var units_are_too_far_from_commander_dialogues = [
 	"My minions are too far away!",
+
 ]
 
 var random_dialogue_by_tag : Dictionary[String, Array] = {
@@ -32,6 +33,13 @@ var random_dialogue_by_tag : Dictionary[String, Array] = {
 		"Time to put my feet up!"
 	]
 }
+
+var leave_quotes = [
+	"I am no appreciated around here.",
+	"I resign.",
+	"I can't do this anymore.",
+	"Never again!"
+]
 
 var too_far_from_commander_dialogues = [
 	"Commander, I'm too far away!",
@@ -86,6 +94,9 @@ func cannot_afford(unit) -> void:
 
 func too_far_from_commander(unit) -> void:
 	show_dialogue(too_far_from_commander_dialogues.pick_random(), unit)
+
+func leave(unit) -> void:
+	show_dialogue(leave_quotes.pick_random(), unit)
 
 func cant_place_on_right_side(unit) -> void:
 	show_dialogue(cant_place_on_right_side_dialogues.pick_random(), unit)
