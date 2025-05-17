@@ -22,7 +22,7 @@ metadata/_custom_type_script = "uid://cw3ohthqkqyn7"
 [sub_resource type="Resource" id="Resource_fhsh6"]
 script = ExtResource("4_gjhjh")
 unit_type = "Succubus"
-name_origin = "succ"
+name_origin = "succubus"
 evil_last_name = true
 has_last_name = true
 tags = Array[String](["demon", "witch", "woman"])
